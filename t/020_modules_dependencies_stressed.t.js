@@ -1,57 +1,49 @@
-(function () {
-var t = new Test.TAP.Class();
-t.plan(319)
-
-var thistop = Test.prototype.top()
-
-t.testModuleClass = function() {
-    var self = this;
+StartTest(function(t) {
+    t.plan(88)
     
-    self.skip(typeof JooseX.Namespace.Depended != 'function', "Depended Role not included", 319, function(){
-    	
-//    	if (console) console.profile();
+//	if (console) console.profile()
 
-        Module("StressTest");
-        self.ok(StressTest, "Root module created");
-        __global__.doubleDeclarations = false;
-        __global__.unSatisfiedDeps = false;
-        //==================================================================================================================================================================================
-        self.diag("Stress testing of dependencies loading");
+    Module("StressTest")
+    
+    t.ok(StressTest, "Root module created")
+    
+    __global__.doubleDeclarations = false
+    __global__.unSatisfiedDeps = false
+    
+    //==================================================================================================================================================================================
+    t.diag("Stress testing of dependencies loading")
+    
+    var start      = new Date()
+    var async      = t.beginAsync()
+    
+    Module("StressTest", {
+        use : [ 'StressTest.Test001', 'StressTest.Test010' ],
         
-//        debugger;
-    
-        var start      = new Date();
-        Module("StressTest", {
-            use : [ 'StressTest.Test001', 'StressTest.Test010' ],
+        body : function() {
+            var end   = new Date()
             
-            //body is executing after the all dependencies are satisfied
-            body : function(){
-                var end   = new Date();
+            t.diag("Duration = " + (end.getTime() - start.getTime()) / 1000)
+            
+            t.ok(!__global__.doubleDeclarations, "Stress testing passed without redeclarations")
+            t.ok(!__global__.unSatisfiedDeps, "Stress testing passed with all dependencies satisfied")
+            
+            for (var i = 1; i <= 100; i++) {
+                var class_name = new String(i).split('')
+                while (class_name.length < 3) class_name.unshift('0')
+                class_name = 'Test' + class_name.join('')
                 
-                self.diag("Duration = " + (end.getTime() - start.getTime()) / 1000);
+                var testClass = StressTest[class_name]
                 
-                self.ok(!__global__.doubleDeclarations, "Stress testing passed without redeclarations");
-                self.ok(!__global__.unSatisfiedDeps, "Stress testing passed with all dependencies satisfied");
-                
-                for (var i = 1; i <= 100; i++) {
-                    var class_name = new String(i).split('');
-                    while (class_name.length < 3) class_name.unshift('0');
-                    class_name = 'Test' + class_name.join('');
-                    
-                    if (typeof StressTest[class_name] == 'function') {
-                        self.ok(StressTest[class_name], "StressTest." + class_name + " module created");
-                        self.ok(StressTest[class_name].meta.constructor == Joose.Meta.Class, "StressTest." + class_name + " class created");
-                        self.ok(StressTest[class_name].meta.hasMethod('result'), "StressTest." + class_name + " has method 'result'");
-                        self.ok(new (StressTest[class_name])().result() == i, "StressTest." + class_name + " can be instantiated");
-                    }
+                if (typeof testClass == 'function') {
+                    t.ok(
+                        testClass.meta.constructor == Joose.Meta.Class && testClass.meta.hasMethod('result') && new testClass().result() == i,
+                        "Class 'StressTest." + class_name + "' was loaded correctly"
+                    )
                 }
-                
-//                if (console) console.profileEnd();
             }
-        });
-        
-    });
-}
-
-return t;
-})()
+            
+            t.endAsync(async)
+//          if (console) console.profileEnd()
+        }
+    })
+})
