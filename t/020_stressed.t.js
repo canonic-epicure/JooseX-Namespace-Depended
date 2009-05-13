@@ -1,4 +1,14 @@
 StartTest(function(t) {
+    
+    var resolvedINC = []
+    
+    Joose.A.each(Joose.Namespace.Manager.my.INC, function (incPath) {
+        resolvedINC.push( [ t.harness.resolveUrl(incPath.join('/'), true) ])
+    })
+    
+    Joose.Namespace.Manager.my.INC = resolvedINC
+    
+    
     t.plan(88)
     
 //	if (console) console.profile()
@@ -34,12 +44,11 @@ StartTest(function(t) {
                 
                 var testClass = StressTest[class_name]
                 
-                if (typeof testClass == 'function') {
+                if (typeof testClass == 'function')
                     t.ok(
                         testClass.meta.constructor == Joose.Meta.Class && testClass.meta.hasMethod('result') && new testClass().result() == i,
                         "Class 'StressTest." + class_name + "' was loaded correctly"
                     )
-                }
             }
             
             t.endAsync(async)

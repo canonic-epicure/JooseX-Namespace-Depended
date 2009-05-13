@@ -1,4 +1,14 @@
 StartTest(function(t) {
+    
+    var resolvedINC = []
+    
+    Joose.A.each(Joose.Namespace.Manager.my.INC, function (incPath) {
+        resolvedINC.push( [ t.harness.resolveUrl(incPath.join('/'), true) ])
+    })
+    
+    Joose.Namespace.Manager.my.INC = resolvedINC
+    
+    
     t.plan(6)
     
     //==================================================================================================================================================================================

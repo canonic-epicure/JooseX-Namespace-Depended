@@ -1,5 +1,14 @@
 StartTest(function(t) {
-	t.plan(17)
+	
+    var resolvedINC = []
+    
+    Joose.A.each(Joose.Namespace.Manager.my.INC, function (incPath) {
+        resolvedINC.push( [ t.harness.resolveUrl(incPath.join('/'), true) ])
+    })
+    
+    Joose.Namespace.Manager.my.INC = resolvedINC
+    
+    t.plan(17)
 	
     //==================================================================================================================================================================================
     t.diag("Basic testing of dependencies loading")
