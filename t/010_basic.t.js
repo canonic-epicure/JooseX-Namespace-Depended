@@ -127,6 +127,8 @@ StartTest(function(t) {
         use : 'ext://BasicTest6',
         
         body : function(){
+            t.diag("Non-Joose dependency")
+            
             t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely")
             t.ok(BasicTest6, "Non-Joose dependency was succesfully loaded")
             t.ok(new BasicTest6().result() == 6, "And it work as expected")
@@ -135,8 +137,6 @@ StartTest(function(t) {
                 use : 'ext://BasicTest6',
                 
                 body : function(){
-                    t.diag("Non-Joose dependency")
-                    
                     t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely #2")
                     
                     t.endAsync(async6)

@@ -13,10 +13,6 @@ StartTest(function(t) {
     
 //	if (console) console.profile()
 
-    Module("StressTest")
-    
-    t.ok(StressTest, "Root module created")
-    
     __global__.doubleDeclarations = false
     __global__.unSatisfiedDeps = false
     
@@ -55,4 +51,6 @@ StartTest(function(t) {
 //          if (console) console.profileEnd()
         }
     })
+    
+    t.ok(StressTest, "Root module created")
 })

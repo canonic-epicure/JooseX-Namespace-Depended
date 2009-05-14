@@ -32,8 +32,11 @@
 			Test.Run.Harness.Browser.Multi.my.configure({
 				title : 'JooseX.Namespace.Depended test suite',
 				
+				//disableCaching : false,
+				passThroughEx : true,
+				
 				preload : [
-					'/inc/Task/Joose/Stable.js',
+					'/inc/Task/Joose/core.js',
 					'/inc/JooseX/SimpleRequest.js',
 					'+core'
 				]
