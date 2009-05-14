@@ -8,7 +8,7 @@ StartTest(function(t) {
     
     Joose.Namespace.Manager.my.INC = resolvedINC
     
-    t.plan(17)
+    t.plan(18)
 	
     //==================================================================================================================================================================================
     t.diag("Basic testing of dependencies loading")
@@ -118,7 +118,6 @@ StartTest(function(t) {
     //==================================================================================================================================================================================
     //t.diag("Non-Joose dependency")
     
-    
     var async6 = t.beginAsync()
     __global__.nonJooseDoubleDeclared = false
     
@@ -144,4 +143,22 @@ StartTest(function(t) {
             })
         }
     })
+    
+    //==================================================================================================================================================================================
+    //t.diag("Dependency from empty class")
+    
+    var async7 = t.beginAsync()
+
+    Module("Testy4", {
+        use : 'BasicTest5',
+        
+        body : function(){
+            t.diag("Dependency from empty class")
+            
+            t.ok(BasicTest5 && BasicTest5.meta instanceof Joose.Meta.Class, "Empty class successfully loaded")
+            
+            t.endAsync(async7)
+        }
+    })
+    
 })
