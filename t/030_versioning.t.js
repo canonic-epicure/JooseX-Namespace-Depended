@@ -17,7 +17,7 @@ StartTest(function(t) {
     var async      = t.beginAsync()
     
     Module("StressTest.Versioning", {
-        use : { Module : 'StressTest.Test035', version : 0.05 },
+        use : { 'StressTest.Test035' : 0.05 },
         
         body : function () {
             
@@ -33,7 +33,7 @@ StartTest(function(t) {
             //TODO Global exceptions intercepting
             //t.throws_ok(function(){
 //                Module("Level1_1", {
-//                    use : { Module : 'StressTest.Test050', version : 1.01 },
+//                    use : { 'StressTest.Test050' : 1.01 },
 //                    
 //                    body : function () {
 //                        Class("Level2_1", {
