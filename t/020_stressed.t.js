@@ -8,10 +8,11 @@ StartTest(function(t) {
     
     Joose.Namespace.Manager.my.INC = resolvedINC
     
+    var profile = false
     
     t.plan(88)
     
-//	if (console) console.profile()
+	if (profile && console) console.profile()
 
     __global__.doubleDeclarations = false
     __global__.unSatisfiedDeps = false
@@ -36,6 +37,7 @@ StartTest(function(t) {
             for (var i = 1; i <= 100; i++) {
                 var class_name = new String(i).split('')
                 while (class_name.length < 3) class_name.unshift('0')
+                
                 class_name = 'Test' + class_name.join('')
                 
                 var testClass = StressTest[class_name]
@@ -48,7 +50,8 @@ StartTest(function(t) {
             }
             
             t.endAsync(async)
-//          if (console) console.profileEnd()
+            
+            if (profile && console) console.profileEnd()
         }
     })
     
