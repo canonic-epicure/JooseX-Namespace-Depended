@@ -32,12 +32,12 @@
 			Test.Run.Harness.Browser.Multi.my.configure({
 				title : 'JooseX.Namespace.Depended test suite',
 				
-				//disableCaching : false,
 				passThroughEx : true,
 				
 				preload : [
 					'/inc/Task/Joose/core.js',
 					'/inc/JooseX/SimpleRequest.js',
+					
 					'+core'
 					
 					//,'/inc/Digest/MD5.js',
@@ -47,10 +47,11 @@
 			
 			
 			Test.Run.Harness.Browser.Multi.my.start(
-				'010_basic.t.js',
-				'020_stressed.t.js',
-				'030_versioning.t.js',
-				'040_dependency_in_isa.t.js'
+				'005_resources_manager.t.js'
+				//'010_basic.t.js',
+				//'020_stressed.t.js',
+				//'030_versioning.t.js',
+				//'040_dependency_in_isa.t.js'
 			)
 		</script>
 	</body>

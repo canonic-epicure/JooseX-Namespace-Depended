@@ -5,7 +5,7 @@ use Template;
 use Getopt::Long;
 use FindBin;
 
-my $dir			  = dir("$FindBin::Bin", '..', 'localLib');
+my $dir			  = dir("$FindBin::Bin", '..', 't', 'localLib');
 
 GetOptions(
     'directory|d=s'           => \$dir,

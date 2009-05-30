@@ -1,10 +1,15 @@
 COMPONENTS = {
 	
 	"core" : [
-	    "JooseX.Namespace.Depended",
-	    "JooseX.Namespace.Depended.Manager",
-	    "JooseX.Namespace.Depended.Transport.ScriptTag",
-	    "JooseX.Namespace.Depended.Transport.AjaxAsync"
+        "JooseX.Namespace.Depended.Manager",
+        
+        "JooseX.Namespace.Depended.Transport.AjaxAsync",
+        
+        "JooseX.Namespace.Depended.Resource",
+        "JooseX.Namespace.Depended.Resource.JS"
+	    
+//	    "JooseX.Namespace.Depended.Transport.ScriptTag",
+//	    "JooseX.Namespace.Depended.Transport.AjaxAsync"
 	]
 	
 } 
