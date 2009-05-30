@@ -37,7 +37,6 @@ StartTest(function(t) {
     t.ok(!Basic0.meta.resource.loading, 'Basic0 module is considered not loading')
     t.ok(!Basic0.meta.resource.ready, 'Basic0 module is not ready yet')
     
-    
     //==================================================================================================================================================================================
     t.diag("Basic testing of dependencies loading")
     

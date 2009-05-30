@@ -7,49 +7,45 @@ StartTest(function(t) {
     })
     
     
-    t.plan(6)
+    t.plan(12)
     
     //==================================================================================================================================================================================
     t.diag("Versioning")
     
-    var async      = t.beginAsync()
+    var async1 = t.beginAsync()
     
     Module("StressTest.Versioning", {
-        use : { 'StressTest.Test035' : 0.05 },
+        use : { 
+            'StressTest.Test097' : 0.05,
+            'StressTest.Test098' : 0.05
+        },
         
         body : function () {
             
-            t.ok(StressTest.Versioning, "Something in the Versioning module spot")
+            t.ok(StressTest.Test097, "StressTest.Test097 module created")
+            t.ok(StressTest.Test097.meta.constructor == Joose.Meta.Class, "StressTest.Test097 class created")
+            t.ok(StressTest.Test097.meta.hasMethod('result'), "StressTest.Test097 has method 'result'")
+            t.ok(new (StressTest.Test097)().result() == 97, "StressTest.Test097 can be instantiated")
             
-            t.ok(StressTest.Test035, "StressTest.Test035 module created")
-            t.ok(StressTest.Test035.meta.constructor == Joose.Meta.Class, "StressTest.Test035 class created")
-            t.ok(StressTest.Test035.meta.hasMethod('result'), "StressTest.Test035 has method 'result'")
-            t.ok(new (StressTest.Test035)().result() == 35, "StressTest.Test035 can be instantiated")
+            t.ok(StressTest.Test097.meta.version >= 0.05, "StressTest.Test097 has higher version than required")
             
-            t.ok(true, "StressTest.Test035 has higher version than required")
+            t.ok(StressTest.Test098, "StressTest.Test098 module created")
+            t.ok(StressTest.Test098.meta.constructor == Joose.Meta.Class, "StressTest.Test098 class created")
+            t.ok(StressTest.Test098.meta.hasMethod('result'), "StressTest.Test098 has method 'result'")
+            t.ok(new (StressTest.Test098)().result() == 98, "StressTest.Test098 can be instantiated")
             
-            //TODO Global exceptions intercepting
-            //t.throws_ok(function(){
-//                Module("Level1_1", {
-//                    use : { 'StressTest.Test050' : 1.01 },
-//                    
-//                    body : function () {
-//                        Class("Level2_1", {
-//                            methods : {
-//                                three : function () { return 3 }
-//                            },
-//                            body : function (){
-//                                t.ok(new StressTest.Nested.Level1_1.Level2_1().three() == 3, "StressTest.Nested.Level1_1.Level2_1 works correctly #1")
-//                            }
-//                        })
-//                        t.ok(StressTest.Nested.Level1_1.Level2_1, "Something in the nested module spot, at level 2, #1")
-//                    }
-//                })
-            //TODO Global exceptions intercepting
-            //}, 'Loaded dependency StressTest.Test050 has lower version [0.1] than required [1.01]', 'StressTest.Test050 has lower version than required')
-//            t.ok(!StressTest.Versioning.Level1_1.meta.meta.isa(Joose.Class), "There is no class in the StressTest.Versioning.Level1_1 module spot")
-
-            t.endAsync(async)
+            t.ok(StressTest.Test098.meta.version >= 0.05, "StressTest.Test098 has higher version than required")
+            
+            t.endAsync(async1)
         }
     })
+    t.ok(StressTest.Versioning, "Something in the Versioning module spot")
+    
+    
+    t.throws_ok(function(){
+        Module("Testy", {
+            use : { 'StressTest.Test097' : 1.01 }
+        })
+    }, 'Cant increase required version', 'Required version cant be increased on loaded resources')
+    
 })
