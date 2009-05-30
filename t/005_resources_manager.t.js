@@ -1,6 +1,6 @@
 StartTest(function(t) {
 	
-    t.plan(1)
+    t.plan(6)
 	
     //==================================================================================================================================================================================
     t.diag("Resources manager")
@@ -9,10 +9,14 @@ StartTest(function(t) {
     t.ok(JooseX.Namespace.Depended.Resource, 'JooseX.Namespace.Depended.Resource is here')
     t.ok(JooseX.Namespace.Depended.Resource.JS, 'JooseX.Namespace.Depended.Resource.JS is here')
     
+    t.ok(JooseX.Namespace.Depended, 'JooseX.Namespace.Depended is here')
+    t.ok(JooseX.Namespace.Depended.Transport.AjaxAsync, 'JooseX.Namespace.Depended.Transport.AjaxAsync is here')
+    
+    
     var res1 = JooseX.Namespace.Depended.Manager.my.getResource('TestClass')
     var res2 = JooseX.Namespace.Depended.Manager.my.getResource('js://TestClass')
     
-    t.ok(res1 === res2, "Default resource type is 'js'")
+    t.ok(res1 === res2, "Default resource type is 'js', resources pool works")
     
 //    var res2 = JooseX.Namespace.Depended.Manager.my.getResource({ 'TestClass' : 0.01 })
 //    var res1 = JooseX.Namespace.Depended.Manager.my.getResource('js://TestClass#0.01')
