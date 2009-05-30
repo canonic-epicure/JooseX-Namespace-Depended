@@ -16,7 +16,9 @@ StartTest(function(t) {
     Module("Basic0", {
         use : 'BasicTest2',
         
-        body : function(){
+        body : function () {
+            t.diag("Very basic testing of dependencies loading")
+            
             t.ok(Basic0.meta.resource.ready, 'Basic0 module is now ready')
             
             t.ok(BasicTest2.meta.constructor == Joose.Meta.Class, 'Basic dependencies loading passed #2-1')
@@ -27,7 +29,14 @@ StartTest(function(t) {
     })
     
     t.ok(Basic0, 'Basic0 module was created')
+    
+    var res0 = JooseX.Namespace.Depended.Manager.my.getResource('js://Basic0')
+    t.ok(res0 == Basic0.meta.resource, 'Resources pool works correctly')
+    
+    t.ok(Basic0.meta.resource.loaded, 'Basic0 module is considered loaded')
+    t.ok(!Basic0.meta.resource.loading, 'Basic0 module is considered not loading')
     t.ok(!Basic0.meta.resource.ready, 'Basic0 module is not ready yet')
+    
     
     //==================================================================================================================================================================================
     t.diag("Basic testing of dependencies loading")
@@ -38,7 +47,9 @@ StartTest(function(t) {
     Module("Basic1", {
         use : [ 'BasicTest1', 'BasicTest2' ],
         
-        body : function(){
+        body : function() {
+            t.diag("Basic testing of dependencies loading")
+            
             t.ok(BasicTest1.meta.constructor == Joose.Meta.Class, 'Basic dependencies loading passed #1-1')
             t.ok(new BasicTest1().result() == 1, "And it work as expected #1-2")
             
@@ -49,8 +60,14 @@ StartTest(function(t) {
         }
     })
     
+    t.ok(Basic1, 'Basic1 module was created')
+    t.ok(Basic1.meta.resource.loaded, 'Basic1 module is considered loaded')
+    t.ok(!Basic1.meta.resource.loading, 'Basic1 module is considered not loading')
+    t.ok(!Basic1.meta.resource.ready, 'Basic1 module is not ready yet')
+    
+    
     //==================================================================================================================================================================================
-    //t.diag("Dynamic (in-code) dependency loading")
+    t.diag("Dynamic (in-code) dependency loading")
     
     var async2 = t.beginAsync()
     
@@ -65,7 +82,7 @@ StartTest(function(t) {
     
     
     //==================================================================================================================================================================================
-    //t.diag("Loading from external url")
+    t.diag("Loading from external url")
     
     var async3 = t.beginAsync()
     
@@ -81,37 +98,43 @@ StartTest(function(t) {
             t.endAsync(async3)
         }
     })
+    
+    t.ok(GMapLoader, 'GMapLoader module was created')
+    t.ok(GMapLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
+    t.ok(!GMapLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
+    t.ok(!GMapLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
+    
         
     
-//    //==================================================================================================================================================================================
-//    //t.diag("Controllbale ready-ness of Module")
-//    
-//    var async4 = t.beginAsync()
-//    var bodyCalled = false
-//    
-//    Module("GMapEngine", {
-//        
-//        use : 'GMapLoader',
-//        
-//        BEGIN : function(ready){
-//            t.diag("Controllbale ready-ness of Module")
-//            
-//            t.ok(!bodyCalled, 'BEGIN called before body')
-//            
-//            google.load('maps', '2', {
-//                language : 'ru',
-//                callback : ready
-//            })
-//        },
-//        
-//        body : function() {
-//            bodyCalled = true
-//            t.ok(google.maps && google.maps.Map2, "Google Maps engine was loaded correctly")
-//            
-//            t.endAsync(async4)
-//        }
-//    })
-//    
+    //==================================================================================================================================================================================
+    t.diag("Controllbale ready-ness of Module")
+    
+    var async4 = t.beginAsync()
+    var bodyCalled = false
+    
+    Module("GMapEngine", {
+        
+        use : 'GMapLoader',
+        
+        BEGIN : function(ready) {
+            t.diag("Controllbale ready-ness of Module")
+            
+            t.ok(!bodyCalled, 'BEGIN called before body')
+            
+            google.load('maps', '2', {
+                language : 'ru',
+                callback : ready
+            })
+        },
+        
+        body : function() {
+            bodyCalled = true
+            t.ok(google.maps && google.maps.Map2, "Google Maps engine was loaded correctly")
+            
+            t.endAsync(async4)
+        }
+    })
+    
 //    //==================================================================================================================================================================================
 //    //t.diag("List of searchable paths (@INC)")
 //    
