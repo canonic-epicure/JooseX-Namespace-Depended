@@ -6,7 +6,7 @@ StartTest(function(t) {
         JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.resolveUrl(incPath, true)
     })
     
-    t.plan(1)
+    t.plan(34)
 	
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
@@ -43,7 +43,6 @@ StartTest(function(t) {
     
     var async1 = t.beginAsync()
     
-    //XXX Basic0 - use in extend is not supported but error message is not related to deps
     Module("Basic1", {
         use : [ 'BasicTest1', 'BasicTest2' ],
         
@@ -107,7 +106,7 @@ StartTest(function(t) {
         
     
     //==================================================================================================================================================================================
-    t.diag("Controllbale ready-ness of Module")
+    //t.diag("Controllbale ready-ness of Module")
     
     var async4 = t.beginAsync()
     var bodyCalled = false
@@ -135,69 +134,103 @@ StartTest(function(t) {
         }
     })
     
-//    //==================================================================================================================================================================================
-//    //t.diag("List of searchable paths (@INC)")
-//    
-//    var async5 = t.beginAsync()
-//
-//    Module("Testy", {
-//        use : 'BasicTest4',
-//        
-//        body : function(){
-//            t.diag("List of searchable paths (@INC)")
-//            
-//            t.ok(BasicTest4 && BasicTest4.meta instanceof Joose.Meta.Class, "Class successfully loaded from secondary libroot")
-//            t.ok(new BasicTest4().result() == 4, "And it work as expected")
-//            
-//            t.endAsync(async5)
-//        }
-//    })
-//    
-//    
-//    //==================================================================================================================================================================================
-//    //t.diag("Non-Joose dependency")
-//    
-//    var async6 = t.beginAsync()
-//    __global__.nonJooseDoubleDeclared = false
-//    
-//    
-//    Module("Testy3", {
-//        use : 'ext://BasicTest6',
-//        
-//        body : function(){
-//            t.diag("Non-Joose dependency")
-//            
-//            t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely")
-//            t.ok(BasicTest6, "Non-Joose dependency was succesfully loaded")
-//            t.ok(new BasicTest6().result() == 6, "And it work as expected")
-//            
-//            Module("Testy4", {
-//                use : 'ext://BasicTest6',
-//                
-//                body : function(){
-//                    t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely #2")
-//                    
-//                    t.endAsync(async6)
-//                }
-//            })
-//        }
-//    })
-//    
-//    //==================================================================================================================================================================================
-//    //t.diag("Dependency from empty class")
-//    
-//    var async7 = t.beginAsync()
-//
-//    Module("Testy4", {
-//        use : 'BasicTest5',
-//        
-//        body : function(){
-//            t.diag("Dependency from empty class")
-//            
-//            t.ok(BasicTest5 && BasicTest5.meta instanceof Joose.Meta.Class, "Empty class successfully loaded")
-//            
-//            t.endAsync(async7)
-//        }
-//    })
+    //==================================================================================================================================================================================
+    //t.diag("List of searchable paths (@INC)")
     
+    var async5 = t.beginAsync()
+
+    Module("Testy", {
+        use : 'BasicTest4',
+        
+        body : function(){
+            t.diag("List of searchable paths (@INC)")
+            
+            t.ok(BasicTest4 && BasicTest4.meta instanceof Joose.Meta.Class, "Class successfully loaded from secondary libroot")
+            t.ok(new BasicTest4().result() == 4, "And it work as expected")
+            
+            t.endAsync(async5)
+        }
+    })
+    
+    
+    //==================================================================================================================================================================================
+    //t.diag("Non-Joose dependency")
+    
+    var async6 = t.beginAsync()
+    __global__.nonJooseDoubleDeclared = false
+    
+    
+    Module("Testy3", {
+        use : 'BasicTest6',
+        
+        body : function(){
+            t.diag("Non-Joose dependency")
+            
+            t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely")
+            t.ok(BasicTest6, "Non-Joose dependency was succesfully loaded")
+            t.ok(new BasicTest6().result() == 6, "And it work as expected")
+            
+            Module("Testy4", {
+                use : 'BasicTest6',
+                
+                body : function(){
+                    t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely #2")
+                    
+                    t.endAsync(async6)
+                }
+            })
+        }
+    })
+    
+    //==================================================================================================================================================================================
+    //t.diag("Dependency from empty class")
+    
+    var async7 = t.beginAsync()
+
+    Module("Testy4", {
+        use : 'BasicTest5',
+        
+        body : function(){
+            t.diag("Dependency from empty class")
+            
+            t.ok(BasicTest5 && BasicTest5.meta instanceof Joose.Meta.Class, "Empty class successfully loaded")
+            
+            t.endAsync(async7)
+        }
+    })
+    
+    
+    //==================================================================================================================================================================================
+    //t.diag("Dependency from empty and already loaded class")
+    
+    var async8 = t.beginAsync()
+    
+    Class('Empty')
+    
+    Module("Testy5", {
+        use : 'Empty',
+        
+        body : function(){
+            t.diag("Dependency from empty and already loaded class")
+            
+            t.ok(Testy5 && Testy5.meta instanceof Joose.Meta.Class, "Can depend from empty preloaded class")
+            
+            t.endAsync(async8)
+        }
+    })
+    
+    
+    //==================================================================================================================================================================================
+    t.diag("Attempt to process dependencies in extending call to helpers")
+    
+    t.throws_ok(function () {
+        Module("Testy5", {
+            
+            use : 'Testy4',
+            
+            body : function(){
+            }
+        })
+    }, 'Unknow builder [use] was used during extending of [Testy5]', "Dependency processing is supported only in constructing calls to helpers")
+
 })
