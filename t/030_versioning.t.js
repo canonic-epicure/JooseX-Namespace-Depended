@@ -1,12 +1,10 @@
 StartTest(function(t) {
     
-    var resolvedINC = []
+    JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2' ]
     
-    Joose.A.each(Joose.Namespace.Manager.my.INC, function (incPath) {
-        resolvedINC.push( [ t.harness.resolveUrl(incPath.join('/'), true) ])
+    Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {
+        JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.resolveUrl(incPath, true)
     })
-    
-    Joose.Namespace.Manager.my.INC = resolvedINC
     
     
     t.plan(6)
