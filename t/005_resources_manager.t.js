@@ -22,8 +22,9 @@ StartTest(function(t) {
 //    var res1 = JooseX.Namespace.Depended.Manager.my.getResource('js://TestClass#0.01')
 //    
 //    var res3 = JooseX.Namespace.Depended.Manager.my.getResource({ 
-//        type : '',
-//        name : 'extjs://TestClass' 
+//        type : 'ext',
+//        token : 'TestClass.Yo.Yo',
+//        presence : function () { return TestClass.Yo.Yo},    
 //    })
 //    
 //    var res4 = JooseX.Namespace.Depended.Manager.my.getResource({ 

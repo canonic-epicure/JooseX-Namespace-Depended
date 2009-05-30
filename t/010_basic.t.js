@@ -161,7 +161,7 @@ StartTest(function(t) {
     
     
     Module("Testy3", {
-        use : 'BasicTest6',
+        use : 'ext://BasicTest6',
         
         body : function(){
             t.diag("Non-Joose dependency")
@@ -171,7 +171,7 @@ StartTest(function(t) {
             t.ok(new BasicTest6().result() == 6, "And it work as expected")
             
             Module("Testy4", {
-                use : 'BasicTest6',
+                use : 'ext://BasicTest6',
                 
                 body : function(){
                     t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely #2")
