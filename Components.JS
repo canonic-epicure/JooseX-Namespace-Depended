@@ -12,7 +12,7 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Resource.JS",
         
         "JooseX.Namespace.Depended.Resource.URL",
-        "JooseX.Namespace.Depended.Resource.JS.URL",
+        "JooseX.Namespace.Depended.Resource.URL.JS",
         
         "JooseX.Namespace.Depended"
 	]
