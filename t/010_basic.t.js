@@ -1,5 +1,7 @@
 StartTest(function(t) {
 	
+//    INC : [ '../localLib/root1', '../localLib/root2' ],
+    
     var resolvedINC = []
     
     Joose.A.each(Joose.Namespace.Manager.my.INC, function (incPath) {
