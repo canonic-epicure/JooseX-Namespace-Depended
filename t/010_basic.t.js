@@ -230,6 +230,6 @@ StartTest(function(t) {
             body : function(){
             }
         })
-    }, 'Unknow builder [use] was used during extending of [Testy5]', "Dependency processing is supported only in constructing calls to helpers")
+    }, Joose.is_IE ? '' : 'Unknow builder [use] was used during extending of [Testy5]', "Dependency processing is supported only in constructing calls to helpers")
 
 })

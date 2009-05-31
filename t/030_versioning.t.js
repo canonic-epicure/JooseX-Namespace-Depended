@@ -46,6 +46,6 @@ StartTest(function(t) {
         Module("Testy", {
             use : { 'StressTest.Test097' : 1.01 }
         })
-    }, 'Cant increase required version', 'Required version cant be increased on loaded resources')
+    }, Joose.is_IE ? '' : 'Cant increase required version', 'Required version cant be increased on loaded resources')
     
 })
