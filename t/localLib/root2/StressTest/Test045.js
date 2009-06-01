@@ -11,15 +11,16 @@ Class('StressTest.Test045', {
 	version : 0.1,
 	
 	use : [ 
+	       'StressTest.Test046',
 	       'StressTest.Test049',
-	       'StressTest.Test056',
-	       'StressTest.Test057',
-	       'StressTest.Test071',
-	       'StressTest.Test083',
-	       'StressTest.Test092',
+	       'StressTest.Test050',
+	       'StressTest.Test054',
+	       'StressTest.Test062',
+	       'StressTest.Test085',
+	       'StressTest.Test091',
+	       'StressTest.Test095',
 	       'StressTest.Test097',
-	       'StressTest.Test099',
-	       'StressTest.Test100'
+	       'StressTest.Test098'
 	],
 	
 	methods : {
@@ -27,14 +28,15 @@ Class('StressTest.Test045', {
 	},
 	
 	body : function(){
+			if (typeof StressTest.Test046 != 'function') throw "Dependency StressTest.Test046 is not satisfied for class StressTest.Test045" 
 			if (typeof StressTest.Test049 != 'function') throw "Dependency StressTest.Test049 is not satisfied for class StressTest.Test045" 
-			if (typeof StressTest.Test056 != 'function') throw "Dependency StressTest.Test056 is not satisfied for class StressTest.Test045" 
-			if (typeof StressTest.Test057 != 'function') throw "Dependency StressTest.Test057 is not satisfied for class StressTest.Test045" 
-			if (typeof StressTest.Test071 != 'function') throw "Dependency StressTest.Test071 is not satisfied for class StressTest.Test045" 
-			if (typeof StressTest.Test083 != 'function') throw "Dependency StressTest.Test083 is not satisfied for class StressTest.Test045" 
-			if (typeof StressTest.Test092 != 'function') throw "Dependency StressTest.Test092 is not satisfied for class StressTest.Test045" 
+			if (typeof StressTest.Test050 != 'function') throw "Dependency StressTest.Test050 is not satisfied for class StressTest.Test045" 
+			if (typeof StressTest.Test054 != 'function') throw "Dependency StressTest.Test054 is not satisfied for class StressTest.Test045" 
+			if (typeof StressTest.Test062 != 'function') throw "Dependency StressTest.Test062 is not satisfied for class StressTest.Test045" 
+			if (typeof StressTest.Test085 != 'function') throw "Dependency StressTest.Test085 is not satisfied for class StressTest.Test045" 
+			if (typeof StressTest.Test091 != 'function') throw "Dependency StressTest.Test091 is not satisfied for class StressTest.Test045" 
+			if (typeof StressTest.Test095 != 'function') throw "Dependency StressTest.Test095 is not satisfied for class StressTest.Test045" 
 			if (typeof StressTest.Test097 != 'function') throw "Dependency StressTest.Test097 is not satisfied for class StressTest.Test045" 
-			if (typeof StressTest.Test099 != 'function') throw "Dependency StressTest.Test099 is not satisfied for class StressTest.Test045" 
-			if (typeof StressTest.Test100 != 'function') throw "Dependency StressTest.Test100 is not satisfied for class StressTest.Test045" 
+			if (typeof StressTest.Test098 != 'function') throw "Dependency StressTest.Test098 is not satisfied for class StressTest.Test045" 
 	}
 })

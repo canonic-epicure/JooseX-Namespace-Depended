@@ -11,15 +11,22 @@ Class('StressTest.Test014', {
 	version : 0.1,
 	
 	use : [ 
+	       'StressTest.Test017',
+	       'StressTest.Test019',
 	       'StressTest.Test024',
-	       'StressTest.Test035',
-	       'StressTest.Test048',
-	       'StressTest.Test066',
-	       'StressTest.Test072',
-	       'StressTest.Test076',
-	       'StressTest.Test085',
-	       'StressTest.Test088',
-	       'StressTest.Test096'
+	       'StressTest.Test026',
+	       'StressTest.Test028',
+	       'StressTest.Test029',
+	       'StressTest.Test036',
+	       'StressTest.Test038',
+	       'StressTest.Test050',
+	       'StressTest.Test053',
+	       'StressTest.Test058',
+	       'StressTest.Test069',
+	       'StressTest.Test079',
+	       'StressTest.Test086',
+	       'StressTest.Test087',
+	       'StressTest.Test089'
 	],
 	
 	methods : {
@@ -27,14 +34,21 @@ Class('StressTest.Test014', {
 	},
 	
 	body : function(){
+			if (typeof StressTest.Test017 != 'function') throw "Dependency StressTest.Test017 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test019 != 'function') throw "Dependency StressTest.Test019 is not satisfied for class StressTest.Test014" 
 			if (typeof StressTest.Test024 != 'function') throw "Dependency StressTest.Test024 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test035 != 'function') throw "Dependency StressTest.Test035 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test048 != 'function') throw "Dependency StressTest.Test048 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test066 != 'function') throw "Dependency StressTest.Test066 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test072 != 'function') throw "Dependency StressTest.Test072 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test076 != 'function') throw "Dependency StressTest.Test076 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test085 != 'function') throw "Dependency StressTest.Test085 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test088 != 'function') throw "Dependency StressTest.Test088 is not satisfied for class StressTest.Test014" 
-			if (typeof StressTest.Test096 != 'function') throw "Dependency StressTest.Test096 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test026 != 'function') throw "Dependency StressTest.Test026 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test028 != 'function') throw "Dependency StressTest.Test028 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test029 != 'function') throw "Dependency StressTest.Test029 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test036 != 'function') throw "Dependency StressTest.Test036 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test038 != 'function') throw "Dependency StressTest.Test038 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test050 != 'function') throw "Dependency StressTest.Test050 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test053 != 'function') throw "Dependency StressTest.Test053 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test058 != 'function') throw "Dependency StressTest.Test058 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test069 != 'function') throw "Dependency StressTest.Test069 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test079 != 'function') throw "Dependency StressTest.Test079 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test086 != 'function') throw "Dependency StressTest.Test086 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test087 != 'function') throw "Dependency StressTest.Test087 is not satisfied for class StressTest.Test014" 
+			if (typeof StressTest.Test089 != 'function') throw "Dependency StressTest.Test089 is not satisfied for class StressTest.Test014" 
 	}
 })

@@ -8,7 +8,7 @@ StartTest(function(t) {
     
     var profile = false
     
-    t.plan(88)
+    t.plan(87)
     
 	if (profile && console) console.profile()
 
