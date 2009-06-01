@@ -1,14 +1,11 @@
-var declared = false;
+var declared = false
 try {
-	declared = typeof StressTest.Test033 == 'function';
+	declared = typeof StressTest.Test033 == 'function'
 } catch (e) {
-	
 }
 
-if (declared && StressTest.Test033.meta.constructor == Joose.Meta.Class) {
-    __global__.doubleDeclarations = true;
-    throw "Double declaration of StressTest.Test033";
-}
+if (declared) throw "Double declaration of StressTest.Test033"
+
 
 Class('StressTest.Test033', {
 	version : 0.1,
@@ -16,15 +13,17 @@ Class('StressTest.Test033', {
 	use : [ 
 	       'StressTest.Test034',
 	       'StressTest.Test036',
-	       'StressTest.Test045',
-	       'StressTest.Test057',
-	       'StressTest.Test059',
-	       'StressTest.Test068',
-	       'StressTest.Test073',
+	       'StressTest.Test039',
+	       'StressTest.Test047',
+	       'StressTest.Test061',
+	       'StressTest.Test062',
+	       'StressTest.Test066',
+	       'StressTest.Test069',
+	       'StressTest.Test070',
 	       'StressTest.Test077',
-	       'StressTest.Test081',
-	       'StressTest.Test084',
-	       'StressTest.Test094'
+	       'StressTest.Test086',
+	       'StressTest.Test090',
+	       'StressTest.Test099'
 	],
 	
 	methods : {
@@ -32,49 +31,18 @@ Class('StressTest.Test033', {
 	},
 	
 	body : function(){
-			if (StressTest.Test034.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test034 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test036.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test036 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test045.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test045 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test057.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test057 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test059.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test059 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test068.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test068 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test073.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test073 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test077.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test077 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test081.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test081 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test084.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test084 is not satisfied for class StressTest.Test033"; 
-			}
-			if (StressTest.Test094.meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency StressTest.Test094 is not satisfied for class StressTest.Test033"; 
-			}
+			if (typeof StressTest.Test034 != 'function') throw "Dependency StressTest.Test034 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test036 != 'function') throw "Dependency StressTest.Test036 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test039 != 'function') throw "Dependency StressTest.Test039 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test047 != 'function') throw "Dependency StressTest.Test047 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test061 != 'function') throw "Dependency StressTest.Test061 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test062 != 'function') throw "Dependency StressTest.Test062 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test066 != 'function') throw "Dependency StressTest.Test066 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test069 != 'function') throw "Dependency StressTest.Test069 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test070 != 'function') throw "Dependency StressTest.Test070 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test077 != 'function') throw "Dependency StressTest.Test077 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test086 != 'function') throw "Dependency StressTest.Test086 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test090 != 'function') throw "Dependency StressTest.Test090 is not satisfied for class StressTest.Test033" 
+			if (typeof StressTest.Test099 != 'function') throw "Dependency StressTest.Test099 is not satisfied for class StressTest.Test033" 
 	}
 })

@@ -12,17 +12,14 @@ GetOptions(
 );
 
 my $class_template = <<TEMPLATE
-var declared = false;
+var declared = false
 try {
-	declared = typeof [% class_name %] == 'function';
+	declared = typeof [% class_name %] == 'function'
 } catch (e) {
-	
 }
 
-if (declared && [% class_name %].meta.constructor == Joose.Meta.Class) {
-    __global__.doubleDeclarations = true;
-    throw "Double declaration of [% class_name %]";
-}
+if (declared) throw "Double declaration of [% class_name %]"
+
 
 Class('[% class_name %]', {
 	version : 0.1,
@@ -39,10 +36,7 @@ Class('[% class_name %]', {
 	
 	body : function(){
        [%- FOREACH dep IN class_dependencies %]
-			if ([% dep %].meta.constructor != Joose.Meta.Class) { 
-				__global__.unSatisfiedDeps = true;
-				throw "Dependency [% dep %] is not satisfied for class [% class_name %]"; 
-			}
+			if (typeof [% dep %] != 'function') throw "Dependency [% dep %] is not satisfied for class [% class_name %]" 
        [%- END %]
 	}
 })
@@ -55,7 +49,7 @@ my $tt = Template->new();
 my $class_number = 100;
 my $class_name_prefix = 'StressTest.Test';
 
-srand(1);
+srand(11);
 
 for (my $i = 1; $i <= $class_number; $i++) {
 	my @deps = ();

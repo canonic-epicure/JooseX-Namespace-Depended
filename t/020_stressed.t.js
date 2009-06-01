@@ -12,9 +12,6 @@ StartTest(function(t) {
     
 	if (profile && console) console.profile()
 
-    __global__.doubleDeclarations = false
-    __global__.unSatisfiedDeps = false
-    
     //==================================================================================================================================================================================
     t.diag("Stress testing of dependencies loading")
     
@@ -28,9 +25,6 @@ StartTest(function(t) {
             var end   = new Date()
             
             t.diag("Duration = " + (end.getTime() - start.getTime()) / 1000)
-            
-            t.ok(!__global__.doubleDeclarations, "Stress testing passed without redeclarations")
-            t.ok(!__global__.unSatisfiedDeps, "Stress testing passed with all dependencies satisfied")
             
             for (var i = 1; i <= 100; i++) {
                 var class_name = new String(i).split('')
