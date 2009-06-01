@@ -7,6 +7,7 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Transport.ScriptTag",
         
         "JooseX.Namespace.Depended.Materialize.Code",
+        "JooseX.Namespace.Depended.Materialize.Script",
         
         "JooseX.Namespace.Depended.Resource",
         "JooseX.Namespace.Depended.Resource.JS",
