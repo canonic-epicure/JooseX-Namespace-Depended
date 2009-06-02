@@ -9,11 +9,11 @@ StartTest(function(t) {
     t.plan(8)
 	
     //==================================================================================================================================================================================
-    t.diag("Dependency from the class on the same namespace chain")
+    t.diag("Dependency from the class earlier on the same namespace chain")
     
     var async1 = t.beginAsync()
     
-    use('Chain1', function () {
+    use('Chain1.Middle.Chain2', function () {
         
         t.ok(Chain1, "Something in the Chain1 slot")
         t.ok(Chain1.meta.constructor == Joose.Meta.Class, ".. and its a class")
