@@ -8,7 +8,7 @@ StartTest(function(t) {
     
     JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
-    t.plan(1)
+    t.plan(3)
 	
     //==================================================================================================================================================================================
     t.diag("Asynchronous Module nesting")
