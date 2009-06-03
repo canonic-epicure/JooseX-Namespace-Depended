@@ -6,6 +6,8 @@ StartTest(function(t) {
         JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.resolveUrl(incPath, true)
     })
     
+    JooseX.Namespace.Depended.Manager.my.disableCaching = false
+    
     t.plan(18)
 	
     //==================================================================================================================================================================================
