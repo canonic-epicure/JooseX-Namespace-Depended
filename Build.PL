@@ -1,8 +1,6 @@
-use lib "$ENV{HOME}/Workspace/EclipseWorkspace/JSAN/module-build-jsan/lib";
+use Module::Build::JSAN::Installable;
 
-use Module::Build::JSAN;
-
-my $build = Module::Build::JSAN->new(
+my $build = Module::Build::JSAN::Installable->new(
 	module_name    => 'JooseX.Namespace.Depended',
 	create_makefile_pl => 'passthrough',
 	dist_version   => 0.01,
