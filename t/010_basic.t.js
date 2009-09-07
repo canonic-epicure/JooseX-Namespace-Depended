@@ -89,7 +89,6 @@ StartTest(function(t) {
     Module("GMapLoader", {
         //google loader
         use : 'jsurl://http://www.google.com/jsapi?key=ABQIAAAAa2oCDn-vJ2FYnkpuhajy_BQ8NCDMUx9yLS_m39ZE2Zv5G19HFRS1GJOvVuFnjwGNLUSMM6CiGDlA7g',
-        
         body : function(){
             t.diag("Loading from external url")
             

@@ -1,6 +1,6 @@
 COMPONENTS = {
     
-    "kernel" : [
+    "Kernel" : [
         "JooseX.Namespace.Depended.Manager",
         "JooseX.Namespace.Depended.Resource",
         
@@ -8,8 +8,8 @@ COMPONENTS = {
     ],
     
     
-    "web" : [
-        "+kernel",
+    "Web" : [
+        "+Kernel",
     
         "JooseX.Namespace.Depended.Transport.AjaxAsync",
         "JooseX.Namespace.Depended.Transport.AjaxSync",
@@ -25,14 +25,8 @@ COMPONENTS = {
     ],
 	
     
-	//backward-compat
-    "core" : [
-        "+web"
-	],
-    
-    
-    "serverjs" : [
-        "+kernel",
+    "ServerJS" : [
+        "+Kernel",
         
         "JooseX.Namespace.Depended.Transport.Require",
         "JooseX.Namespace.Depended.Resource.Require",
