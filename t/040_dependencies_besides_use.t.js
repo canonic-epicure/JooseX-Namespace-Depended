@@ -55,7 +55,7 @@ StartTest(function(t) {
             t.ok(basic.result() == 7, "And it has inherited 'result' method")
             
             t.ok(basic.res1 == 'res1', "And it has composed 'res1' attribute")
-            t.ok(basic.res2 == 'res2', "And it has composed 'res1' attribute")
+            t.ok(basic.res2 == 'res2', "And it has composed 'res2' attribute")
             
             basic.process1()
             basic.process2()
