@@ -1,0 +1,10 @@
+TODO
+====
+
+- Change loading of GMap engine to something else, more predictable
+- Adapt grouped dependencies loading mode
+
+
+DONE
+====
+
