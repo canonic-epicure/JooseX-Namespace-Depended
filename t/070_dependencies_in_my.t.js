@@ -8,10 +8,10 @@ StartTest(function(t) {
     
 //    JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
-    t.plan(1)
+    t.plan(5)
 	
     //==================================================================================================================================================================================
-    t.diag("Asynchronous Module nesting")
+    //t.diag("Specifiying dependency in 'my' singleton")
     
     var async1 = t.beginAsync()
     
@@ -21,6 +21,8 @@ StartTest(function(t) {
             does : 'BasicRole1',
             
             body : function () {
+                //==================================================================================================================================================================================
+                t.diag("Specifiying dependency in 'my' singleton")
                 
                 t.ok(TestClass.my.res1 == 'res1', "Attribute 'res1' was correctly composed into 'my' instance")
                 
@@ -31,6 +33,24 @@ StartTest(function(t) {
             }
         }
     
+    })
+    
+    
+    //==================================================================================================================================================================================
+    //t.diag("Dependency from class, which have depended 'my' singleton")
+    
+    var async2 = t.beginAsync()
+    
+    use('WithDependedMy', function () {
+        t.diag("Dependency from class, which have depended 'my' singleton")
+        
+        t.ok(typeof Chain1 == 'function', "Dependency of 'WithDependedMy' was loaded")
+        
+        t.ok(WithDependedMy, "WithDependedMy was created")
+        t.ok(WithDependedMy.my, ".. and it has a singleton")
+        
+        
+        t.endAsync(async2)
     })
     
 })
