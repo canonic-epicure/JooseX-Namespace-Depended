@@ -1,6 +1,6 @@
 StartTest(function(t) {
 	
-    t.plan(19)
+    t.plan(21)
 	
     //==================================================================================================================================================================================
     t.diag("Sanity")
@@ -20,6 +20,9 @@ StartTest(function(t) {
     
     t.ok(JooseX.Namespace.Depended, 'JooseX.Namespace.Depended is here')
     
+    
+    t.ok(Joose.Meta.Class.meta.does(JooseX.Namespace.Depended), 'Joose.Meta.Class does JooseX.Namespace.Depended')
+    t.ok(Joose.Meta.Role.meta.does(JooseX.Namespace.Depended), 'Joose.Meta.Role does JooseX.Namespace.Depended')
     
     
     //==================================================================================================================================================================================

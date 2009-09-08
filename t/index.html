@@ -12,6 +12,7 @@
 
 		<script type="text/javascript" src="/inc/JooseX/Bridge/Ext.js"></script>
 		<script type="text/javascript">
+			JooseX.Bridge.Ext.meta.extend({ does : JooseX.Meta.Lazy })
 			Ext.extend = JooseX.Bridge.Ext.my.extend; 
 		</script>
 		
@@ -36,8 +37,10 @@
 				passThroughEx : true,
 				
 				preload : [
-					'/inc/Task/Joose/Stable.js',
+					'/inc/Task/Joose/Core.js',
 					'/inc/JooseX/SimpleRequest.js',
+					
+					'/inc/JooseX/Meta/Lazy.js',
 					
 					'+Web'
 					
@@ -57,7 +60,8 @@
 				'040_dependencies_besides_use.t.js',
 				'050_own_namespace_deps.t.js',
 				'060_asynchronous_nesting.t.js',
-				'070_dependencies_in_my.t.js'
+				'070_dependencies_in_my.t.js',
+				'080_dependencies_in_lazy_classes.t.js'
 			)
 		</script>
 	</body>

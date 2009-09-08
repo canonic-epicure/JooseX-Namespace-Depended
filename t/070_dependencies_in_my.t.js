@@ -42,6 +42,7 @@ StartTest(function(t) {
     var async2 = t.beginAsync()
     
     use('WithDependedMy', function () {
+        //==================================================================================================================================================================================
         t.diag("Dependency from class, which have depended 'my' singleton")
         
         t.ok(typeof Chain1 == 'function', "Dependency of 'WithDependedMy' was loaded")
@@ -54,6 +55,8 @@ StartTest(function(t) {
         t.endAsync(async2)
     })
     
+    
+    
     //==================================================================================================================================================================================
     //t.diag("Stressed test")
     
@@ -64,6 +67,7 @@ StartTest(function(t) {
         use : [ 'Chain1.Middle.Chain2', 'WithDependedMy2'],
     
         body : function () {
+            //==================================================================================================================================================================================
             t.diag("Stressed test, with mixed dependencies in usual class and 'my' singletons")
             
             t.ok(typeof MyMixed == 'function', "Class was created")
