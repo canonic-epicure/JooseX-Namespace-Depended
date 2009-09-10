@@ -8,7 +8,7 @@ StartTest(function(t) {
     
 //    JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
-    t.plan(34)
+    t.plan(37)
 	
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
@@ -71,11 +71,17 @@ StartTest(function(t) {
     
     var async2 = t.beginAsync()
     
-    use('BasicTest3', function(){
+    use('BasicTest3', function (ns) {
         t.diag("Dynamic (in-code) dependency loading")
         
         t.ok(BasicTest3.meta instanceof Joose.Meta.Class, 'Dynamic (in code context) basic dependencies loading passed')
         t.ok(new BasicTest3().result() == 3, 'Dynamic (in code context) basic dependencies loading passed #2')
+        
+        
+        t.ok(Joose.Namespace.Manager.my.getCurrent() == ns, "Dynamic 'use' executes body in the global namespace")
+        
+        t.ok(ns == Joose.Namespace.Manager.my.global, "Dynamic 'use' executes body in the global namespace")
+        t.ok(this == Joose.top, ".. and in the outerest scope")
         
         t.endAsync(async2)
     })
@@ -88,7 +94,8 @@ StartTest(function(t) {
     
     Module("GMapLoader", {
         //google loader
-        use : 'jsurl://http://www.google.com/jsapi?key=ABQIAAAAa2oCDn-vJ2FYnkpuhajy_BQ8NCDMUx9yLS_m39ZE2Zv5G19HFRS1GJOvVuFnjwGNLUSMM6CiGDlA7g',
+        use : 'jsurl://http://www.google.com/jsapi?key=ABQIAAAAa2oCDn-vJ2FYnkpuhajy_BSDn9jXERdA4aOP6lo_FKpGhkd2nRQcj6gI4e1RcxZbo3JiTeaBiKmkQg',
+        
         body : function(){
             t.diag("Loading from external url")
             
