@@ -1,4 +1,4 @@
-LazyClass('Lazy1', {
+LazyClass('Lazy.Lazy1', {
     
 	version : 0.1,
 	

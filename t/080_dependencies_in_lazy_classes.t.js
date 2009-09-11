@@ -7,27 +7,33 @@ StartTest(function(t) {
     })
     
     
-    t.plan(18)
+    t.plan(23)
     
     var async1 = t.beginAsync()
     
     //==================================================================================================================================================================================
     //t.diag("Dependency from lazy class")
     
-    use('Lazy1', function () {
-        t.diag("Dependency from lazy class")
+    Class('TestLazy.Lazy1', {
         
-        t.ok(typeof Lazy1 == 'function', "Class 'Lazy1' was loaded")
+        use : [ 'Chain1', 'Lazy.Lazy1' ],
         
-        t.ok(Lazy1.meta.pending, "Class 'Lazy1' is pending for construction")
-        t.ok(!Lazy1.prototype.result, '.. indeed')
-        
-        Lazy1.getMeta()
-        
-        t.ok(!Lazy1.meta.pending, "Class 'Lazy1' was constructed")
-        t.ok(Lazy1.prototype.result, '.. indeed')
-        
-        t.endAsync(async1)
+        body : function () {
+            //==================================================================================================================================================================================            
+            t.diag("Dependency from lazy class")
+            
+            t.ok(typeof Lazy.Lazy1 == 'function', "Class 'Lazy.Lazy1' was loaded")
+            
+            t.ok(Lazy.Lazy1.meta.pending, "Class 'Lazy.Lazy1' is pending for construction")
+            t.ok(!Lazy.Lazy1.prototype.result, '.. indeed')
+            
+            Lazy.Lazy1.getMeta()
+            
+            t.ok(!Lazy.Lazy1.meta.pending, "Class 'Lazy.Lazy1' was constructed")
+            t.ok(Lazy.Lazy1.prototype.result, '.. indeed')
+            
+            t.endAsync(async1)
+        }
     })
     
     
@@ -35,21 +41,21 @@ StartTest(function(t) {
     //t.diag("Dependency of lazy class")
     
 
-    use('Lazy2', function () {
+    use([ 'Lazy.Lazy2' ], function () {
         
         //==================================================================================================================================================================================
         t.diag("Class were loaded but not constructed")
         
-        t.ok(typeof Lazy2 == 'function', "Class 'Lazy2' was loaded")
+        t.ok(typeof Lazy.Lazy2 == 'function', "Class 'Lazy.Lazy2' was loaded")
         
-        t.ok(Lazy2.meta.pending, "Class 'Lazy2' is pending for construction")
-        t.ok(!Lazy2.prototype.result, '.. indeed')
+        t.ok(Lazy.Lazy2.meta.pending, "Class 'Lazy.Lazy2' is pending for construction")
+        t.ok(!Lazy.Lazy2.prototype.result, '.. indeed')
         
         
         //==================================================================================================================================================================================
         t.diag("Dependencies of lazy class")
         
-        t.ok(typeof Chain1.Middle.Chain2 == 'function', "Dependencies of 'Lazy2' were loaded")
+        t.ok(typeof Chain1.Middle.Chain2 == 'function', "Dependencies of 'Lazy.Lazy2' were loaded")
         t.ok(new Chain1.Middle.Chain2().result() == 2, "... and works correctly")
         
         
@@ -72,12 +78,47 @@ StartTest(function(t) {
         t.ok(my.res3 == 'processed3', "And it has composed 'process3' method")
         
         
-        var lazy = new Lazy2()
+        var lazy = new Lazy.Lazy2()
         
-        t.ok(!Lazy2.meta.pending, "Class 'Lazy2' was constructed")
-        t.ok(Lazy2.prototype.result, '.. indeed')
+        t.ok(!Lazy.Lazy2.meta.pending, "Class 'Lazy.Lazy2' was constructed")
+        t.ok(Lazy.Lazy2.prototype.result, '.. indeed')
         
-        t.endAsync(async1)
+        
+        //==================================================================================================================================================================================
+        t.diag("Dependency from lazy class inside of 'use'")
+        
+        Class('TestLazy.Lazy4', {
+            
+            use : 'Lazy.Lazy4',
+        
+            body : function () {
+                //==================================================================================================================================================================================            
+                t.diag("Dependency from lazy class")
+                
+                t.ok(typeof Lazy.Lazy3 == 'function', "Class 'Lazy.Lazy3' was loaded")
+                
+                t.ok(Lazy.Lazy3.meta.pending, "Class 'Lazy.Lazy3' is pending for construction")
+                t.ok(!Lazy.Lazy3.prototype.result, '.. indeed')
+                
+                Lazy.Lazy3.getMeta()
+                
+                t.ok(!Lazy.Lazy3.meta.pending, "Class 'Lazy.Lazy3' was constructed")
+                t.ok(Lazy.Lazy3.prototype.result, '.. indeed')
+
+                
+                
+                t.ok(typeof Lazy.Lazy4 == 'function', "Class 'Lazy.Lazy4' was loaded")
+                
+                t.ok(Lazy.Lazy4.meta.pending, "Class 'Lazy.Lazy4' is pending for construction")
+                
+                Lazy.Lazy4.getMeta()
+                
+                t.ok(!Lazy.Lazy4.meta.pending, "Class 'Lazy.Lazy4' was constructed")
+                
+                
+                t.endAsync(async1)
+            }
+        })
     })
     
 })

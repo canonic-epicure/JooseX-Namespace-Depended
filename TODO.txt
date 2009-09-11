@@ -1,11 +1,14 @@
 TODO
 ====
 
+- add resolving capabilities?
+
 - (!?)refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole
 
 - implement common mechanism for collecting stringified dependencies and replacing them with real classes
 
 
+- improve versioning support and test coverage
 
 - Change loading of GMap engine to something else, more predictable and w/o errors
 
