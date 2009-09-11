@@ -14,10 +14,9 @@ lib/JooseX/Namespace/Depended/Transport/AjaxAsync.js
 lib/JooseX/Namespace/Depended/Transport/AjaxSync.js
 lib/JooseX/Namespace/Depended/Transport/Require.js
 lib/JooseX/Namespace/Depended/Transport/ScriptTag.js
-lib/Task/JooseX/Namespace/Depended/core.js
-lib/Task/JooseX/Namespace/Depended/kernel.js
-lib/Task/JooseX/Namespace/Depended/serverjs.js
-lib/Task/JooseX/Namespace/Depended/web.js
+lib/Task/JooseX/Namespace/Depended/Kernel.js
+lib/Task/JooseX/Namespace/Depended/ServerJS.js
+lib/Task/JooseX/Namespace/Depended/Web.js
 MANIFEST			This list of files
 README
 script/generate_tests.pl
@@ -30,6 +29,9 @@ t/030_versioning.t.js
 t/040_dependencies_besides_use.t.js
 t/050_own_namespace_deps.t.js
 t/060_asynchronous_nesting.t.js
+t/070_dependencies_in_my.t.js
+t/080_dependencies_in_lazy_classes.t.js
+t/090_future_class.t.js
 t/index.html
 t/localLib/bundles/1cc93c386edc91ba233366df372e8577.js
 t/localLib/bundles/2fc9f5233756073c0542edc2e5cfa6aa.js
@@ -135,6 +137,8 @@ t/localLib/root1/BasicTest2.js
 t/localLib/root1/BasicTest3.js
 t/localLib/root1/Chain1.js
 t/localLib/root1/Chain1/Middle/Chain2.js
+t/localLib/root1/Lazy1.js
+t/localLib/root1/Lazy2.js
 t/localLib/root1/StressTest/Test004.js
 t/localLib/root1/StressTest/Test005.js
 t/localLib/root1/StressTest/Test007.js
@@ -193,6 +197,8 @@ t/localLib/root1/StressTest/Test093.js
 t/localLib/root1/StressTest/Test094.js
 t/localLib/root1/StressTest/Test095.js
 t/localLib/root1/StressTest/Test096.js
+t/localLib/root1/WithDependedMy.js
+t/localLib/root1/WithDependedMy2.js
 t/localLib/root2/BasicMetaRole.js
 t/localLib/root2/BasicRole1.js
 t/localLib/root2/BasicRole2.js
@@ -243,5 +249,6 @@ t/localLib/root2/StressTest/Test097.js
 t/localLib/root2/StressTest/Test098.js
 t/localLib/root2/StressTest/Test099.js
 t/localLib/root2/StressTest/Test100.js
+TODO.txt
 todo/Grouped.js
 todo/NonCycled.js
