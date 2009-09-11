@@ -1,17 +1,19 @@
 TODO
 ====
 
-- Change loading of GMap engine to something else, more predictable
-- Adapt grouped dependencies loading mode
-
-- add Joose.FutureClass helper Joose.FutureClass = function (class) { return function () { return eval(class) } }
-
-- refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole 
+- (!?)refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole
 
 - implement common mechanism for collecting stringified dependencies and replacing them with real classes
+
+
+
+- Change loading of GMap engine to something else, more predictable and w/o errors
+
+- Adapt grouped dependencies loading mode
 
 - fix namespace managers executeIn to omit the args?
 
 DONE
 ====
 
+- add Joose.FutureClass helper Joose.FutureClass = function (class) { return function () { return eval(class) } }
