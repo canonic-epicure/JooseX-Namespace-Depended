@@ -24,3 +24,6 @@ DONE
 - add Joose.FutureClass helper Joose.FutureClass = function (class) { return function () { return eval(class) } }
 
 - Change loading of GMap engine to something else, more predictable and w/o errors
+
+- fix double BEGIN invoking
+

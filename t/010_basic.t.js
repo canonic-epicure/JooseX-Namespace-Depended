@@ -92,12 +92,15 @@ StartTest(function(t) {
     
     var async3 = t.beginAsync()
     var bodyCalled = false
+    var beginCount = 0
 
     
     Module("ExtCoreLoader", {
         use : 'jsurl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
         
         BEGIN : function (ready) {
+            beginCount++
+            
             t.diag("Controllbale ready-ness of Module")
             
             t.ok(!bodyCalled, 'BEGIN called before body')
@@ -111,6 +114,7 @@ StartTest(function(t) {
             t.diag("Loading from external url")
             
             t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly")
+            t.ok(beginCount == 1, "Begin was called only once #1")
             
             t.endAsync(async3)
         }
@@ -120,6 +124,21 @@ StartTest(function(t) {
     t.ok(ExtCoreLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
     t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
     t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
+    
+
+    //==================================================================================================================================================================================
+    //t.diag("Checking repeating calls to BEGIN")
+    
+    var async31 = t.beginAsync()
+    
+    use('ExtCoreLoader', function () {
+        //==================================================================================================================================================================================
+        t.diag("Checking repeating calls to BEGIN")
+        
+        t.ok(beginCount == 1, "Begin was called only once #2")
+        
+        t.endAsync(async31)
+    })
     
     
     
