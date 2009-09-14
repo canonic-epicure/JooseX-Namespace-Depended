@@ -1,6 +1,8 @@
 TODO
 ====
 
+- fix some failures with ScriptTag materialization under FF 
+
 - add resolving capabilities?
 
 - (!?)refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole

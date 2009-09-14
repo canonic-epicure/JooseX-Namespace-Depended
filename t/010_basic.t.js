@@ -8,7 +8,7 @@ StartTest(function(t) {
     
 //    JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
-    t.plan(37)
+    t.plan(36)
 	
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
@@ -91,11 +91,23 @@ StartTest(function(t) {
     t.diag("Loading from external url")
     
     var async3 = t.beginAsync()
+    var bodyCalled = false
+
     
     Module("ExtCoreLoader", {
         use : 'jsurl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
         
-        body : function(){
+        BEGIN : function (ready) {
+            t.diag("Controllbale ready-ness of Module")
+            
+            t.ok(!bodyCalled, 'BEGIN called before body')
+            
+            ready()
+        },
+        
+        body : function () {
+            bodyCalled = true
+            
             t.diag("Loading from external url")
             
             t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly")
@@ -109,33 +121,7 @@ StartTest(function(t) {
     t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
     t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
     
-        
     
-    //==================================================================================================================================================================================
-    //t.diag("Controllbale ready-ness of Module")
-    
-    var async4 = t.beginAsync()
-    var bodyCalled = false
-    
-    Module("ExtCore", {
-        
-        use : 'ExtCoreLoader',
-        
-        BEGIN : function(ready) {
-            t.diag("Controllbale ready-ness of Module")
-            
-            t.ok(!bodyCalled, 'BEGIN called before body')
-            
-            ready()
-        },
-        
-        body : function() {
-            bodyCalled = true
-            t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly #2")
-            
-            t.endAsync(async4)
-        }
-    })
     
     //==================================================================================================================================================================================
     //t.diag("List of searchable paths (@INC)")
