@@ -87,23 +87,22 @@ StartTest(function(t) {
     
     var async3 = t.beginAsync()
     
-    Role("GMapLoader", {
-        //google loader
-        use : 'jsurl://http://www.google.com/jsapi?key=ABQIAAAAa2oCDn-vJ2FYnkpuhajy_BQ8NCDMUx9yLS_m39ZE2Zv5G19HFRS1GJOvVuFnjwGNLUSMM6CiGDlA7g',
+    Role("ExtCoreLoader", {
+        use : 'jsurl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
         
         body : function(){
             t.diag("Loading from external url")
             
-            t.ok(google && google.load, "Google loader was loaded correctly")
+            t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly")
             
             t.endAsync(async3)
         }
     })
     
-    t.ok(GMapLoader, 'GMapLoader module was created')
-    t.ok(GMapLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
-    t.ok(!GMapLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
-    t.ok(!GMapLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
+    t.ok(ExtCoreLoader, 'GMapLoader module was created')
+    t.ok(ExtCoreLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
+    t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
+    t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
     
         
     
@@ -113,24 +112,21 @@ StartTest(function(t) {
     var async4 = t.beginAsync()
     var bodyCalled = false
     
-    Role("GMapEngine", {
+    Role("ExtCore", {
         
-        use : 'GMapLoader',
+        use : 'ExtCoreLoader',
         
         BEGIN : function(ready) {
             t.diag("Controllbale ready-ness of Module")
             
             t.ok(!bodyCalled, 'BEGIN called before body')
             
-            google.load('maps', '2', {
-                language : 'ru',
-                callback : ready
-            })
+            ready()
         },
         
         body : function() {
             bodyCalled = true
-            t.ok(google.maps && google.maps.Map2, "Google Maps engine was loaded correctly")
+            t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly #2")
             
             t.endAsync(async4)
         }

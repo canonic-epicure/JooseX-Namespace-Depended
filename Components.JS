@@ -4,7 +4,8 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Manager",
         "JooseX.Namespace.Depended.Resource",
         
-        "JooseX.Namespace.Depended.Materialize.Code"
+        "JooseX.Namespace.Depended.Materialize.Eval",
+        "JooseX.Namespace.Depended.Materialize.ScriptTag"
     ],
     
     

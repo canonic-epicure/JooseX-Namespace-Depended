@@ -16,7 +16,7 @@ StartTest(function(t) {
     t.ok(JooseX.Namespace.Depended.Transport.AjaxAsync, 'JooseX.Namespace.Depended.Transport.AjaxAsync is here')
     t.ok(JooseX.Namespace.Depended.Transport.ScriptTag, 'JooseX.Namespace.Depended.Transport.ScriptTag is here')
     
-    t.ok(JooseX.Namespace.Depended.Materialize.Code, 'JooseX.Namespace.Depended.Materialize.Code is here')
+    t.ok(JooseX.Namespace.Depended.Materialize.Eval, 'JooseX.Namespace.Depended.Materialize.Eval is here')
     
     t.ok(JooseX.Namespace.Depended, 'JooseX.Namespace.Depended is here')
     
