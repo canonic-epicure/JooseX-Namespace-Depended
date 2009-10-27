@@ -1,5 +1,5 @@
 StartTest(function(t) {
-	
+    
     JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2', 'localLib/root3' ]
     
     Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {
@@ -9,7 +9,7 @@ StartTest(function(t) {
 //    JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
     t.plan(18)
-	
+    
     //==================================================================================================================================================================================
     //t.diag("Specifiying dependency in 'my' singleton")
     

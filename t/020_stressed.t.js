@@ -12,7 +12,7 @@ StartTest(function(t) {
     
     t.plan(87)
     
-	if (profile && console) console.profile()
+    if (profile && console) console.profile()
 
     //==================================================================================================================================================================================
     t.diag("Stress testing of dependencies loading")

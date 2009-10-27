@@ -1,9 +1,9 @@
 Class('WithDependedMy2', {
     
-	version : 0.1,
+    version : 0.1,
     
     does : 'BasicRole2',
-	
+    
     my : {
         
         use : [ 'Chain1' ],

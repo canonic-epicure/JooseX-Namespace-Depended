@@ -1,5 +1,5 @@
 StartTest(function(t) {
-	
+    
     JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2', '/inc' ]
     
     Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {

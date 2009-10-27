@@ -35,6 +35,6 @@ COMPONENTS = {
 //        //should be the last
 //        "JooseX.Namespace.Depended"
 //    ]
-	
+    
 } 
 

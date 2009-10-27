@@ -1,5 +1,5 @@
 StartTest(function(t) {
-	
+    
     JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2' ]
     
     Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {
@@ -8,7 +8,7 @@ StartTest(function(t) {
 
     
     t.plan(1)
-	
+    
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
     
