@@ -1,13 +1,12 @@
-use Module::Build::JSAN::Installable;
+use inc::Module::JSAN::DSL;
 
-my $build = Module::Build::JSAN::Installable->new(
-	module_name    => 'JooseX.Namespace.Depended',
-	create_makefile_pl => 'passthrough',
-	dist_version   => 0.01,
-	dist_author   => 'SamuraiJack',
-	dist_abstract  => 'Dependencies handling implementation, integrated with Joose3',
-	license        => 'perl',
-);
+name            JooseX.Namespace.Depended
 
-$build->create_build_script;
+version         0.01
+author          'Nickolay (SamuraiJack) Platonov <root@symbie.org>'
 
+abstract        'Dependencies handling implementation, integrated with Joose3'
+license         bsd
+
+
+requires        Joose   3.001

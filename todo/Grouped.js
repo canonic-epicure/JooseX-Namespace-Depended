@@ -129,7 +129,7 @@ Role('JooseX.Namespace.Depended.Grouped', {
                         
                         eval(text)
                         
-                        Joose.O.eachSafe(me.groupedDeps.processing, function(descriptor) {
+                        Joose.O.eachOwn(me.groupedDeps.processing, function(descriptor) {
                             var dependedMeta = descriptor.Module.meta
                             
                             //Joose deps have this code in the "initializeFromProps" method
@@ -153,7 +153,7 @@ Role('JooseX.Namespace.Depended.Grouped', {
         stringifyDependencies: function() {
             var dependenciesNames = []
             
-            Joose.O.eachSafe(this.groupedDeps.processing, function(descriptor, depName) {
+            Joose.O.eachOwn(this.groupedDeps.processing, function(descriptor, depName) {
                 dependenciesNames.push((descriptor.presence ? 'ext://' : '') + depName + (descriptor.version ? '-' + descriptor.version: ''))
             })
             

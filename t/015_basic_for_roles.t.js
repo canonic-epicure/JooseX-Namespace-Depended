@@ -32,7 +32,7 @@ StartTest(function(t) {
     
     t.ok(Basic0, 'Basic0 module was created')
     
-    var res0 = JooseX.Namespace.Depended.Manager.my.getResource('js://Basic0')
+    var res0 = JooseX.Namespace.Depended.Manager.my.getResource('joose://Basic0')
     t.ok(res0 == Basic0.meta.resource, 'Resources pool works correctly')
     
     t.ok(Basic0.meta.resource.loaded, 'Basic0 module is considered loaded')

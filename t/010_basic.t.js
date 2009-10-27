@@ -5,10 +5,9 @@ StartTest(function(t) {
     Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {
         JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.resolveUrl(incPath, true)
     })
+
     
-//    JooseX.Namespace.Depended.Manager.my.disableCaching = false
-    
-    t.plan(36)
+    t.plan(1)
 	
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
@@ -32,7 +31,7 @@ StartTest(function(t) {
     
     t.ok(Basic0, 'Basic0 module was created')
     
-    var res0 = JooseX.Namespace.Depended.Manager.my.getResource('js://Basic0')
+    var res0 = JooseX.Namespace.Depended.Manager.my.getResource('joose://Basic0')
     t.ok(res0 == Basic0.meta.resource, 'Resources pool works correctly')
     
     t.ok(Basic0.meta.resource.loaded, 'Basic0 module is considered loaded')

@@ -1,9 +1,11 @@
 TODO
 ====
 
+- class should depend from its 'my' class
+
 - fix some failures with ScriptTag materialization under FF 
 
-- add resolving capabilities?
+- add standard resolving capabilities?
 
 - (!?)refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole
 
@@ -15,15 +17,13 @@ TODO
 
 - Adapt grouped dependencies loading mode
 
-- fix namespace managers executeIn to omit the args?
+- be able to load the 'meta' class 
 
 
 DONE
 ====
 
 - add Joose.FutureClass helper Joose.FutureClass = function (class) { return function () { return eval(class) } }
-
 - Change loading of GMap engine to something else, more predictable and w/o errors
-
 - fix double BEGIN invoking
-
+- fix namespace managers executeIn to omit the args?

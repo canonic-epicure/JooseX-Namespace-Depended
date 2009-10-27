@@ -68,7 +68,7 @@ Class('JooseX.Namespace.Depended.Resource.Require', {
         
         addDescriptor : function (descriptor) {
             if (typeof descriptor == 'object' && !descriptor.token) 
-                Joose.O.eachSafe(descriptor, function (version, name) {
+                Joose.O.eachOwn(descriptor, function (version, name) {
                     this.addDescriptor({
                         type : 'require',
                         token : name,
