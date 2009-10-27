@@ -19,13 +19,13 @@ StartTest(function(t) {
     
     
     Module("Testy3", {
-        use : 'ext://BasicTest6',
+        use : 'nonjoose://BasicTest6',
         
         body : function(){
             t.ok(BasicTest6.res == 'external', "BasicTest6 was not modified")
             
             Module("Testy4", {
-                use : 'ext://BasicTest6',
+                use : 'nonjoose://BasicTest6',
                 
                 body : function(){
                     t.ok(BasicTest6.res == 'external', "BasicTest6 was not modified #2")
@@ -39,7 +39,7 @@ StartTest(function(t) {
     t.ok(!Testy3.meta.resource.loading, 'Testy3 module is considered not loading')
     t.ok(Testy3.meta.resource.ready, 'Testy3 module is ready - there were no actual loading')
     
-    var res = JooseX.Namespace.Depended.Manager.my.getResource('ext://BasicTest6')
+    var res = JooseX.Namespace.Depended.Manager.my.getResource('nonjoose://BasicTest6')
     t.ok(res.isLoaded(), 'BasicTest6 is considered loaded')
     t.ok(res.ready, 'BasicTest6 is considered ready')
     
@@ -51,7 +51,7 @@ StartTest(function(t) {
     
     Module("Testy5", {
         use : { 
-            type : 'ext',
+            type : 'nonjoose',
             token : 'Custom',
             presence : function () {
                 return true
@@ -59,13 +59,13 @@ StartTest(function(t) {
         },
         
         body : function(){
-            t.ok(typeof Custom == 'undefined', "'ext://Custom' is not actually exists")
+            t.ok(typeof Custom == 'undefined', "'nonjoose://Custom' is not actually exists")
             
             Module("Testy6", {
-                use : 'ext://Custom',
+                use : 'nonjoose://Custom',
                 
                 body : function(){
-                    t.ok(typeof Custom == 'undefined', "'ext://Custom' is not actually exists #2")
+                    t.ok(typeof Custom == 'undefined', "'nonjoose://Custom' is not actually exists #2")
                 }
             })
         }

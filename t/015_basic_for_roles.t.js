@@ -8,7 +8,7 @@ StartTest(function(t) {
     
 //    JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
-    t.plan(33)
+    t.plan(32)
     
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
@@ -139,11 +139,13 @@ StartTest(function(t) {
     //t.diag("Non-Joose dependency")
     
     var async6 = t.beginAsync()
+    
+    __global__ = {}
     __global__.nonJooseDoubleDeclared = false
     
     
     Role("Testy3", {
-        use : 'ext://BasicTest6',
+        use : 'nonjoose://BasicTest6',
         
         body : function(){
             t.diag("Non-Joose dependency")
@@ -153,7 +155,7 @@ StartTest(function(t) {
             t.ok(new BasicTest6().result() == 6, "And it work as expected")
             
             Role("Testy4", {
-                use : 'ext://BasicTest6',
+                use : 'nonjoose://BasicTest6',
                 
                 body : function(){
                     t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely #2")
@@ -200,19 +202,5 @@ StartTest(function(t) {
             t.endAsync(async8)
         }
     })
-    
-    
-    //==================================================================================================================================================================================
-    t.diag("Attempt to process dependencies in extending call to helpers")
-    
-    t.throws_ok(function () {
-        Role("Testy5", {
-            
-            use : 'Testy4',
-            
-            body : function(){
-            }
-        })
-    }, Joose.is_IE ? '' : 'Unknow builder [use] was used during extending of [Testy5]', "Dependency processing is supported only in constructing calls to helpers")
 
 })
