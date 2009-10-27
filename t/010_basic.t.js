@@ -7,7 +7,7 @@ StartTest(function(t) {
     })
 
     
-    t.plan(38)
+    t.plan(37)
     
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
@@ -228,19 +228,5 @@ StartTest(function(t) {
             t.endAsync(async8)
         }
     })
-    
-    
-    //==================================================================================================================================================================================
-    t.diag("Attempt to process dependencies in extending call to helpers")
-    
-    t.throws_ok(function () {
-        Module("Testy5", {
-            
-            use : 'Testy4',
-            
-            body : function(){
-            }
-        })
-    }, Joose.is_IE ? '' : 'Unknow builder [use] was used during extending of [Testy5]', "Dependency processing is supported only in constructing calls to helpers")
 
 })
