@@ -6,7 +6,7 @@ StartTest(function(t) {
         JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.resolveUrl(incPath, true)
     })
     
-    JooseX.Namespace.Depended.Manager.my.disableCaching = false
+//    JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
     t.plan(18)
     
@@ -84,7 +84,7 @@ StartTest(function(t) {
             t.diag("Chained dependency in 'metaRoles' builder")
             
             t.ok(Basic2, 'Class Basic2 was created')
-            t.ok(Basic2.meta.isDetached(), '.. and its meta is detached')
+            t.ok(Basic2.meta.meta.isDetached, '.. and its meta is detached')
             t.ok(!Basic2.meta.stem.opened, 'Stem of class Basic2 is closed')
             
             var basic = new Basic2()

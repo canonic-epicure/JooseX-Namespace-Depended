@@ -28,14 +28,14 @@ StartTest(function(t) {
             t.ok(StressTest.Test097.meta.hasMethod('result'), "StressTest.Test097 has method 'result'")
             t.ok(new (StressTest.Test097)().result() == 97, "StressTest.Test097 can be instantiated")
             
-            t.ok(StressTest.Test097.meta.version >= 0.05, "StressTest.Test097 has higher version than required")
+            t.ok(StressTest.Test097.meta.resource.version >= 0.05, "StressTest.Test097 has higher version than required")
             
             t.ok(StressTest.Test098, "StressTest.Test098 module created")
             t.ok(StressTest.Test098.meta.constructor == Joose.Meta.Class, "StressTest.Test098 class created")
             t.ok(StressTest.Test098.meta.hasMethod('result'), "StressTest.Test098 has method 'result'")
             t.ok(new (StressTest.Test098)().result() == 98, "StressTest.Test098 can be instantiated")
             
-            t.ok(StressTest.Test098.meta.version >= 0.05, "StressTest.Test098 has higher version than required")
+            t.ok(StressTest.Test098.meta.resource.version >= 0.05, "StressTest.Test098 has higher version than required")
             
             t.endAsync(async1)
         }

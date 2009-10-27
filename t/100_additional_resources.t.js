@@ -1,6 +1,6 @@
 StartTest(function(t) {
     
-    JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2', '/inc' ]
+    JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2' ]
     
     Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {
         JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.resolveUrl(incPath, true)
@@ -13,25 +13,26 @@ StartTest(function(t) {
     //==================================================================================================================================================================================
     t.diag("Meta class with additional resources specificator")
     
-    Class('Meta', {
-        isa : Joose.Meta.Class,
-        meta : Joose.Meta.Class,
+    Role('AlsoDepends', {
         
-        methods : {
-            alsoDependsFrom : function (extend) {
-                var res = this.collectDependenciesFrom(extend.additional, extend.also)
+        after : {
+            alsoDependsFrom : function (extend, summaredDeps) {
+                this.collectDependencies(extend.additional, summaredDeps)
+                this.collectDependencies(extend.also, summaredDeps)
                 
                 delete extend.additional
                 delete extend.also
-                
-                return res
             }
         }
         
     
     })
     
-    t.ok(Meta, 'Meta was created')
+    t.ok(AlsoDepends, "'AlsoDepends' was created")
+    
+    Joose.Namespace.Manager.meta.extend({
+        does : AlsoDepends
+    })
     
     
     var async1 = t.beginAsync()
@@ -41,8 +42,6 @@ StartTest(function(t) {
     //t.diag("Gathering resources from non-standard builders")
     
     Class('TestClass', {
-        
-        meta : Meta,
         
         also : {
             'Chain1' : 0.1

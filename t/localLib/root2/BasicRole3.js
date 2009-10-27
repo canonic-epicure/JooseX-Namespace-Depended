@@ -4,7 +4,7 @@ Role('BasicRole3', {
     
     VERSION : 0.01,
     
-    metaRoles : {
+    traits : {
         BasicMetaRole : 0.01
     },
     

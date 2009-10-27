@@ -7,7 +7,7 @@ StartTest(function(t) {
     })
     
     
-    t.plan(23)
+    t.plan(26)
     
     var async1 = t.beginAsync()
     
@@ -40,6 +40,7 @@ StartTest(function(t) {
     //==================================================================================================================================================================================
     //t.diag("Dependency of lazy class")
     
+    var async2 = t.beginAsync()
 
     use([ 'Lazy.Lazy2' ], function () {
         
@@ -116,7 +117,7 @@ StartTest(function(t) {
                 t.ok(!Lazy.Lazy4.meta.pending, "Class 'Lazy.Lazy4' was constructed")
                 
                 
-                t.endAsync(async1)
+                t.endAsync(async2)
             }
         })
     })
