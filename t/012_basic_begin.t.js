@@ -18,12 +18,14 @@ StartTest(function(t) {
         
         t.ok(Request.flXHR, 'Request.flXHR is here')
         
-        t.ok(Request.flXHR.beginCount == 1, 'BEGIN of Request.flXHR was called only once #1')
+        var resource = Request.flXHR.meta.resource
+        
+        t.ok(resource.beginCount == 1, 'BEGIN of Request.flXHR was called only once #1')
         
         
         setTimeout(function () {
             
-            t.ok(Request.flXHR.beginCount == 1, 'BEGIN of Request.flXHR was called only once #2')
+            t.ok(resource.beginCount == 1, 'BEGIN of Request.flXHR was called only once #2')
             
             t.endAsync(async1)
         }, 500)
