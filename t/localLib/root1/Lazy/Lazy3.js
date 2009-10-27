@@ -1,3 +1,5 @@
+//debugger
+
 LazyClass('Lazy.Lazy3', {
     
     VERSION : 0.1,
@@ -7,3 +9,6 @@ LazyClass('Lazy.Lazy3', {
     }
     
 })
+
+
+//debugger
