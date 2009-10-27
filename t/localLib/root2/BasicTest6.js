@@ -5,7 +5,7 @@ if (typeof BasicTest6 == 'function' && BasicTest6.nonJoose) {
 
 
 BasicTest6 = function() {
-    this.version = 0.1;
+    this.VERSION = 0.1;
 }
 BasicTest6.nonJoose = true;
 

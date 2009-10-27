@@ -8,7 +8,7 @@ if (declared) throw "Double declaration of StressTest.Test077"
 
 
 Class('StressTest.Test077', {
-    version : 0.1,
+    VERSION : 0.1,
     
     use : [ 
            'StressTest.Test080',

@@ -2,7 +2,7 @@ if (typeof BasicRole2 == 'function' && BasicRole2.meta.constructor == Joose.Meta
 
 Role('BasicRole2', {
     
-    version : 0.01,
+    VERSION : 0.01,
     
     have : {
         res2 : 'res2'

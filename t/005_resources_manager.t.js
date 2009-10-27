@@ -1,6 +1,6 @@
 StartTest(function(t) {
     
-    t.plan(20)
+    t.plan(22)
     
     //==================================================================================================================================================================================
     t.diag("Sanity")
@@ -8,10 +8,14 @@ StartTest(function(t) {
     t.ok(JooseX.Namespace.Depended.Manager, 'JooseX.Namespace.Depended.Manager is here')
     
     t.ok(JooseX.Namespace.Depended.Resource, 'JooseX.Namespace.Depended.Resource is here')
-    t.ok(JooseX.Namespace.Depended.Resource.JooseClass, 'JooseX.Namespace.Depended.Resource.JooseClass is here')
-    t.ok(JooseX.Namespace.Depended.Resource.URL, 'JooseX.Namespace.Depended.Resource.URL is here')
-    t.ok(JooseX.Namespace.Depended.Resource.URL.JS, 'JooseX.Namespace.Depended.Resource.URL.JS is here')
-    t.ok(JooseX.Namespace.Depended.Resource.JooseClass.External, 'JooseX.Namespace.Depended.Resource.JooseClass.External is here')
+    t.ok(JooseX.Namespace.Depended.Resource.JavaScript, 'JooseX.Namespace.Depended.Resource.JavaScript is here')
+    t.ok(JooseX.Namespace.Depended.Resource.JavaScript.JooseClass, 'JooseX.Namespace.Depended.Resource.JavaScript.JooseClass is here')
+    t.ok(JooseX.Namespace.Depended.Resource.JavaScript.NonJoose, 'JooseX.Namespace.Depended.Resource.JavaScript.NonJoose is here')
+    
+    t.ok(JooseX.Namespace.Depended.Resource.URLed, 'JooseX.Namespace.Depended.Resource.URLed is here')
+    t.ok(JooseX.Namespace.Depended.Resource.JavaScript.ExternalURL, 'JooseX.Namespace.Depended.Resource.JavaScript.ExternalURL is here')
+    t.ok(JooseX.Namespace.Depended.Resource.JavaScript.InternalURL, 'JooseX.Namespace.Depended.Resource.JavaScript.InternalURL is here')
+    
     
     t.ok(JooseX.Namespace.Depended.Transport.XHRAsync, 'JooseX.Namespace.Depended.Transport.XHRAsync is here')
     t.ok(JooseX.Namespace.Depended.Transport.ScriptTag, 'JooseX.Namespace.Depended.Transport.ScriptTag is here')

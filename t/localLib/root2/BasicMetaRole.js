@@ -2,7 +2,7 @@ if (typeof BasicMetaRole == 'function' && BasicMetaRole.meta.constructor == Joos
 
 Role('BasicMetaRole', {
     
-    version : 0.01,
+    VERSION : 0.01,
     
     builder : {
         

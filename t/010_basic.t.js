@@ -7,7 +7,7 @@ StartTest(function(t) {
     })
 
     
-    t.plan(1)
+    t.plan(38)
     
     //==================================================================================================================================================================================
     t.diag("Very basic testing of dependencies loading")
@@ -95,7 +95,7 @@ StartTest(function(t) {
 
     
     Module("ExtCoreLoader", {
-        use : 'jsurl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
+        use : 'exturl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
         
         BEGIN : function (ready) {
             beginCount++
@@ -164,11 +164,14 @@ StartTest(function(t) {
     //t.diag("Non-Joose dependency")
     
     var async6 = t.beginAsync()
+    
+    __global__ = {}
+    
     __global__.nonJooseDoubleDeclared = false
     
     
     Module("Testy3", {
-        use : 'ext://BasicTest6',
+        use : 'nonjoose://BasicTest6',
         
         body : function(){
             t.diag("Non-Joose dependency")
@@ -178,7 +181,7 @@ StartTest(function(t) {
             t.ok(new BasicTest6().result() == 6, "And it work as expected")
             
             Module("Testy4", {
-                use : 'ext://BasicTest6',
+                use : 'nonjoose://BasicTest6',
                 
                 body : function(){
                     t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely #2")

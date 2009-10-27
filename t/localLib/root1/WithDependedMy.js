@@ -1,6 +1,6 @@
 Class('WithDependedMy', {
     
-    version : 0.1,
+    VERSION : 0.1,
     
     my : {
         

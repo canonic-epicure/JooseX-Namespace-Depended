@@ -1,9 +1,9 @@
 COMPONENTS = {
     
     "Kernel" : [
-        "JooseX.Namespace.Depended.Resource",
-        "JooseX.Namespace.Depended.Resource.JavaScript",
-        "JooseX.Namespace.Depended.Resource.JavaScript.JooseClass"
+        "JooseX.Namespace.Depended.Manager",
+    
+        "JooseX.Namespace.Depended.Resource"
     ],
     
     
@@ -17,12 +17,18 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Transport.XHRSync",
         "JooseX.Namespace.Depended.Transport.ScriptTag",
         
-        "JooseX.Namespace.Depended.Resource.URL",
-        "JooseX.Namespace.Depended.Resource.URL.JS",
-        "JooseX.Namespace.Depended.Resource.JS.External",
+        "JooseX.Namespace.Depended.Resource.JavaScript",
+        "JooseX.Namespace.Depended.Resource.JavaScript.JooseClass",
+        "JooseX.Namespace.Depended.Resource.JavaScript.NonJoose",
+        
+        "JooseX.Namespace.Depended.Resource.URLed",
+        "JooseX.Namespace.Depended.Resource.JavaScript.ExternalURL",
+        "JooseX.Namespace.Depended.Resource.JavaScript.InternalURL",
+        
         
         //should be the last        
-        "JooseX.Namespace.Depended.Manager"
+        "JooseX.Namespace.Depended",
+        "JooseX.Namespace.Depended.Meta"
     ]
     
 //    ,

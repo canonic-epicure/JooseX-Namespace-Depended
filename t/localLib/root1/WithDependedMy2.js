@@ -1,6 +1,6 @@
 Class('WithDependedMy2', {
     
-    version : 0.1,
+    VERSION : 0.1,
     
     does : 'BasicRole2',
     
