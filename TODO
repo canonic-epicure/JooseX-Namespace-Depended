@@ -1,15 +1,18 @@
 TODO
 ====
 
-- class should depend from its 'my' class
+- switch materialiaztion interface to async?  (to execute a whole source file before fireing the ready listeners)
+
+- (?) class should depend from its 'my' class
 
 - fix some failures with ScriptTag materialization under FF 
 
-- add standard resolving capabilities?
+- add standard resolving capabilities
 
-- (!?)refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole
+
 
 - implement common mechanism for collecting stringified dependencies and replacing them with real classes
+    partially implemented
 
 
 - improve versioning support and test coverage
@@ -17,7 +20,9 @@ TODO
 
 - Adapt grouped dependencies loading mode
 
-- be able to load the 'meta' class 
+
+- refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole
+    implemented, needs test coverage
 
 
 DONE
@@ -27,3 +32,5 @@ DONE
 - Change loading of GMap engine to something else, more predictable and w/o errors
 - fix double BEGIN invoking
 - fix namespace managers executeIn to omit the args?
+- be able to load the 'meta' class 
+
