@@ -18,19 +18,20 @@ StartTest(function(t) {
     Class('TestClass', {
         
         my : {
-            does : 'BasicRole1',
+            does : 'BasicRole1'
+        },
+        
+        
+        body : function () {
+            //==================================================================================================================================================================================
+            t.diag("Specifiying dependency in 'my' singleton")
             
-            body : function () {
-                //==================================================================================================================================================================================
-                t.diag("Specifiying dependency in 'my' singleton")
-                
-                t.ok(TestClass.my.res1 == 'res1', "Attribute 'res1' was correctly composed into 'my' instance")
-                
-                TestClass.my.process1()
-                t.ok(TestClass.my.res1 == 'processed1', ".. the same about the 'process1' method")
-                
-                t.endAsync(async1)
-            }
+            t.ok(TestClass.my.res1 == 'res1', "Attribute 'res1' was correctly composed into 'my' instance")
+            
+            TestClass.my.process1()
+            t.ok(TestClass.my.res1 == 'processed1', ".. the same about the 'process1' method")
+            
+            t.endAsync(async1)
         }
     
     })
@@ -58,7 +59,7 @@ StartTest(function(t) {
     
     
     //==================================================================================================================================================================================
-    //t.diag("Stressed test")
+    //t.diag("Stressed test, with mixed dependencies in usual class and 'my' singletons")
     
     var async3 = t.beginAsync()
     
