@@ -7,10 +7,10 @@ StartTest(function(t) {
     })
 
     
-    t.plan(4)
+    t.plan(7)
     
     //==================================================================================================================================================================================
-    t.diag("Creation synchronous classes without dependencies")
+    t.diag("Synchronous creation of anonymous classes without dependencies")
 
     
     var testClass = Class({
@@ -34,5 +34,27 @@ StartTest(function(t) {
     
     t.ok(obj.attr == 'value', 'Attribute is correct')
     t.ok(obj.result() == 'result', '.. and method also')
+    
+
+    //==================================================================================================================================================================================
+    t.diag("Creation of anonymous classes with dependencies (via 'use')")
+    
+    
+    var async1 = t.beginAsync()
+    
+    use('BasicTest1', function () {
+    
+        t.ok(BasicTest1, 'BasicTest1 was loaded')
+        t.ok(BasicTest2, 'BasicTest2 was loaded')
+        
+        
+        use('BasicTest1', function () {
+            
+            t.pass('Dependency from already loaded classes works')
+            
+            t.endAsync(async1)
+        })
+    })
+    
     
 })
