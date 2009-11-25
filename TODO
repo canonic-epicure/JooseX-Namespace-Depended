@@ -1,7 +1,9 @@
 TODO
 ====
 
-- switch materialiaztion interface to async?  (to execute a whole source file before fireing the ready listeners)
+- switch materialiaztion (handleDependencies) interface to async?  (to execute a whole source file with several classes before fireing 'ready' listeners)
+
+
 
 - (?) class should depend from its 'my' class
 
@@ -12,6 +14,7 @@ TODO
 
 
 - implement common mechanism for collecting stringified dependencies and replacing them with real classes
+- call arbitrary function as dependency source (should return descriptors)    
     partially implemented
 
 
@@ -22,7 +25,7 @@ TODO
 
 
 - refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole
-    implemented, needs test coverage
+    almost implemented (need to completely cleanup JooseX.Namespace.Depended.Meta from code), needs test coverage + a hook into NS.Manager
 
 
 DONE
