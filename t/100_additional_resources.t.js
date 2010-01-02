@@ -17,8 +17,6 @@ StartTest(function(t) {
         
         after : {
             alsoDependsFrom : function (extend, summaredDeps) {
-                debugger
-                
                 this.collectDependencies(extend.additional, summaredDeps)
                 this.collectDependencies(extend.also, summaredDeps)
                 
@@ -32,10 +30,9 @@ StartTest(function(t) {
     
     t.ok(AlsoDepends, "'AlsoDepends' was created")
     
-    JooseX.Namespace.Depended.meta.extend({
+    Joose.Namespace.Manager.meta.extend({
         does : AlsoDepends
     })
-    
     
     var async1 = t.beginAsync()
     
