@@ -3,8 +3,7 @@ TODO
 
 - (!) CSS loading (including grouped mode)
 
-
-- switch materialiaztion interface to async?  (to execute a whole source file before fireing the ready listeners)
+- inlining dependencies should also be able to call function (analog of FutureClass)
 
 
 
@@ -15,6 +14,7 @@ TODO
 
 
 - implement common mechanism for collecting stringified dependencies and replacing them with real classes
+- call arbitrary function as dependency source (should return descriptors)    
     partially implemented
 
 
@@ -36,6 +36,5 @@ DONE
 - fix double BEGIN invoking
 - fix namespace managers executeIn to omit the args?
 - be able to load the 'meta' class 
-
-
 - (?) class should depend from its 'my' class
+- switch materialiaztion (handleDependencies) interface to async?  (to execute a whole source file with several classes before fireing 'ready' listeners)
