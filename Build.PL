@@ -10,3 +10,4 @@ license         bsd
 
 
 requires        Joose   3.001
+requires        JooseX.SimpleRequest   0.01

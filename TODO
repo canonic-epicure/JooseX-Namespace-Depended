@@ -1,9 +1,12 @@
 TODO
 ====
 
+- (!) CSS loading (including grouped mode)
+
+
 - switch materialiaztion interface to async?  (to execute a whole source file before fireing the ready listeners)
 
-- (?) class should depend from its 'my' class
+
 
 - fix some failures with ScriptTag materialization under FF 
 
@@ -21,7 +24,7 @@ TODO
 - Adapt grouped dependencies loading mode
 
 
-- refactor to allow dependencies from classes w/o JooseX.Namespace.Depended metarole
+- refactor to allow dependencies from classes with Joose.Proto/Managed level
     implemented, needs test coverage
 
 
@@ -34,3 +37,5 @@ DONE
 - fix namespace managers executeIn to omit the args?
 - be able to load the 'meta' class 
 
+
+- (?) class should depend from its 'my' class

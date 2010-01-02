@@ -52,3 +52,4 @@ JooseX.Namespace.Depended-0.01
 \.project$
 ^\.git\b
 ^\.externalToolBuilders\b
+^todo\b
