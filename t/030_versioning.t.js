@@ -23,6 +23,13 @@ StartTest(function(t) {
         
         body : function () {
             
+            t.throws_ok(function(){
+                Module("Testy", {
+                    use : { 'StressTest.Test097' : 1.01 }
+                })
+            }, Joose.is_IE ? '' : 'Cant increase required version', 'Required version cant be increased on loaded resources')
+
+            
             t.ok(StressTest.Test097, "StressTest.Test097 module created")
             t.ok(StressTest.Test097.meta.constructor == Joose.Meta.Class, "StressTest.Test097 class created")
             t.ok(StressTest.Test097.meta.hasMethod('result'), "StressTest.Test097 has method 'result'")
@@ -41,12 +48,5 @@ StartTest(function(t) {
         }
     })
     t.ok(StressTest.Versioning, "Something in the Versioning module spot")
-    
-    
-    t.throws_ok(function(){
-        Module("Testy", {
-            use : { 'StressTest.Test097' : 1.01 }
-        })
-    }, Joose.is_IE ? '' : 'Cant increase required version', 'Required version cant be increased on loaded resources')
     
 })

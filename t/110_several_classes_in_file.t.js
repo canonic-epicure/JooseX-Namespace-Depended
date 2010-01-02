@@ -7,7 +7,7 @@ StartTest(function(t) {
     })
     
     
-    t.plan(4)
+    t.plan(8)
     
 
     //==================================================================================================================================================================================
@@ -29,5 +29,22 @@ StartTest(function(t) {
         t.endAsync(async1)
     })
 
+
+    var async2 = t.beginAsync()
+    
+    use([ 'BasicTest3' ], function() {
+        
+        //==================================================================================================================================================================================
+        t.diag("Testing of loading several classes in a single file")
+        
+        t.ok(BasicTest3.meta.constructor == Joose.Meta.Class, 'Basic dependencies loading passed #1-1')
+        t.ok(new BasicTest3().result() == 3, "And it work as expected #1-2")
+        
+        t.ok(BasicTest4.meta.constructor == Joose.Meta.Class, 'Basic dependencies loading passed #2-1')
+        t.ok(new BasicTest4().result() == 4, "And it work as expected #2-2")
+        
+        t.endAsync(async2)
+    })
+    
     
 })
