@@ -1,0 +1,92 @@
+{
+   "resources" : {
+      "license" : "http://www.opensource.org/licenses/bsd-license.php"
+   },
+   "generated_by" : "Module::Build version 0.3601",
+   "meta-spec" : {
+      "version" : "1.4",
+      "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
+   },
+   "version" : "0.01",
+   "name" : "JooseX.Namespace.Depended",
+   "author" : [
+      "Nickolay (SamuraiJack) Platonov <root@symbie.org>"
+   ],
+   "license" : "bsd",
+   "static_dir" : "static",
+   "provides" : {
+      "Task.JooseX.Namespace.Depended.Kernel" : {
+         "version" : null,
+         "file" : "lib/Task/JooseX/Namespace/Depended/Kernel.js"
+      },
+      "Task.JooseX.Namespace.Depended.Web" : {
+         "version" : null,
+         "file" : "lib/Task/JooseX/Namespace/Depended/Web.js"
+      },
+      "JooseX.Namespace.Depended.Transport.ScriptTag" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Transport/ScriptTag.js"
+      },
+      "JooseX.Namespace.Depended.Resource.JavaScript.NonJoose" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/JavaScript/NonJoose.js"
+      },
+      "JooseX.Namespace.Depended.Resource.JavaScript.InternalURL" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/JavaScript/InternalURL.js"
+      },
+      "JooseX.Namespace.Depended.Resource.JavaScript.ExternalURL" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/JavaScript/ExternalURL.js"
+      },
+      "JooseX.Namespace.Depended.Resource" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource.js"
+      },
+      "JooseX.Namespace.Depended.Transport.XHRAsync" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Transport/XHRAsync.js"
+      },
+      "JooseX.Namespace.Depended.Resource.JavaScript.JooseClass" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/JavaScript/JooseClass.js"
+      },
+      "JooseX.Namespace.Depended.Materialize.Eval" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Materialize/Eval.js"
+      },
+      "JooseX.Namespace.Depended.Manager" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Manager.js"
+      },
+      "JooseX.Namespace.Depended.Resource.JavaScript" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/JavaScript.js"
+      },
+      "JooseX.Namespace.Depended.Transport.XHRSync" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Transport/XHRSync.js"
+      },
+      "JooseX.Namespace.Depended.Meta" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Meta.js"
+      },
+      "JooseX.Namespace.Depended.Materialize.ScriptTag" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Materialize/ScriptTag.js"
+      },
+      "JooseX.Namespace.Depended" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended.js"
+      },
+      "JooseX.Namespace.Depended.Resource.URLed" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/URLed.js"
+      }
+   },
+   "requires" : {
+      "Joose" : "3.001",
+      "JooseX.SimpleRequest" : "0.01"
+   },
+   "abstract" : "Dependencies handling implementation, integrated with Joose3"
+}

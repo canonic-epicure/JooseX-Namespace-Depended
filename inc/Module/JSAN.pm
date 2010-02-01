@@ -4,7 +4,7 @@ package Module::JSAN;
 use warnings;
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 sub import {
@@ -16,6 +16,7 @@ sub import {
         use inc::Module::Build::Functions(build_class => 'Module::Build::JSAN::Installable');
         
         Module::Build::Functions::copy_package('Module::JSAN');
+        Module::Build::Functions::copy_package('Module::Build::JSAN', 'true');
         Module::Build::Functions::copy_package('Module::Build::JSAN::Installable', 'true');
         
         Module::Build::Functions::_mb_required('0.35');
@@ -38,7 +39,7 @@ __PACKAGE__;
 
 __END__
 
-#line 48
+#line 49
 
 
-#line 415
+#line 416

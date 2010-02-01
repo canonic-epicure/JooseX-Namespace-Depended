@@ -53,3 +53,4 @@ JooseX.Namespace.Depended-0.01
 ^\.git\b
 ^\.externalToolBuilders\b
 ^todo\b
+^MYMETA.yml$
