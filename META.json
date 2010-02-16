@@ -15,6 +15,10 @@
    "license" : "bsd",
    "static_dir" : "static",
    "provides" : {
+      "Stub" : {
+         "version" : null,
+         "file" : "lib/Stub.js"
+      },
       "Task.JooseX.Namespace.Depended.Kernel" : {
          "version" : null,
          "file" : "lib/Task/JooseX/Namespace/Depended/Kernel.js"
@@ -66,10 +70,6 @@
       "JooseX.Namespace.Depended.Transport.XHRSync" : {
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Transport/XHRSync.js"
-      },
-      "JooseX.Namespace.Depended.Meta" : {
-         "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Meta.js"
       },
       "JooseX.Namespace.Depended.Materialize.ScriptTag" : {
          "version" : null,
