@@ -13,7 +13,7 @@ StartTest(function(t) {
     
     
     //==================================================================================================================================================================================
-    //t.diag("Using Joose.FutureClass for attributes declaration")
+    //t.diag("Using Joose.I.FutureClass for attributes declaration")
     
     Class('TestClass', {
         
@@ -21,13 +21,13 @@ StartTest(function(t) {
         
         has : {
             
-            metaClass : Joose.FutureClass('Chain1')
+            metaClass : Joose.I.FutureClass('Chain1')
         },
         
         
         body : function () {
             //==================================================================================================================================================================================            
-            t.diag("Using Joose.FutureClass for attributes declaration")
+            t.diag("Using Joose.I.FutureClass for attributes declaration")
             
             t.ok(TestClass, 'TestClass was created')
             t.ok(Chain1, 'Chain1 was created')

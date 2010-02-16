@@ -31,7 +31,7 @@ TODO
 DONE
 ====
 
-- add Joose.FutureClass helper Joose.FutureClass = function (class) { return function () { return eval(class) } }
+- add Joose.I.FutureClass helper Joose.I.FutureClass = function (class) { return function () { return eval(class) } }
 - Change loading of GMap engine to something else, more predictable and w/o errors
 - fix double BEGIN invoking
 - fix namespace managers executeIn to omit the args?

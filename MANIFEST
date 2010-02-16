@@ -1,6 +1,7 @@
 Build.PL
 Components.JS
 doc/html/JooseX/Namespace/Depended.html
+doc/html/JooseX/Namespace/Depended/Authoring.html
 doc/html/JooseX/Namespace/Depended/Manager.html
 doc/html/JooseX/Namespace/Depended/Materialize/Eval.html
 doc/html/JooseX/Namespace/Depended/Materialize/ScriptTag.html
@@ -18,6 +19,7 @@ doc/html/Stub.html
 doc/html/Task/JooseX/Namespace/Depended/Kernel.html
 doc/html/Task/JooseX/Namespace/Depended/Web.html
 doc/mmd/JooseX/Namespace/Depended.txt
+doc/mmd/JooseX/Namespace/Depended/Authoring.txt
 doc/mmd/JooseX/Namespace/Depended/Manager.txt
 doc/mmd/JooseX/Namespace/Depended/Materialize/Eval.txt
 doc/mmd/JooseX/Namespace/Depended/Materialize/ScriptTag.txt
@@ -42,6 +44,7 @@ inc/Module/JSAN.pm
 inc/Module/JSAN/DSL.pm
 INSTALL
 lib/JooseX/Namespace/Depended.js
+lib/JooseX/Namespace/Depended/Authoring.js
 lib/JooseX/Namespace/Depended/Manager.js
 lib/JooseX/Namespace/Depended/Materialize/Eval.js
 lib/JooseX/Namespace/Depended/Materialize/ScriptTag.js
