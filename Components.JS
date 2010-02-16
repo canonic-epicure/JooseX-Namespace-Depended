@@ -27,8 +27,7 @@ COMPONENTS = {
         
         
         //should be the last        
-        "JooseX.Namespace.Depended",
-        "JooseX.Namespace.Depended.Meta"
+        "JooseX.Namespace.Depended"
     ]
     
 //    ,

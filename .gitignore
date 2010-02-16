@@ -4,4 +4,8 @@ blib
 .project
 .externalToolBuilders
 MANIFEST.bak
-doc
+Makefile.PL
+/doc/*
+/inc/*
+/META.json
+/JooseX.Namespace.Depended-*.tar.gz

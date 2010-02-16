@@ -9,5 +9,8 @@ abstract        'Dependencies handling implementation, integrated with Joose3'
 license         bsd
 
 
-requires        Joose   3.001
-requires        JooseX.SimpleRequest   0.01
+requires        Joose                   3.005
+requires        JooseX.SimpleRequest    0.01
+
+
+docs_markup     mmd

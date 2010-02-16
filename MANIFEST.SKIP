@@ -44,13 +44,14 @@
 #   Mac OSX SMB mount metadata files
 \B\._
 # Avoid archives of this distribution
-\bJooseX.Namespace.Depended-[\d\.\_]+
-^Build.PL$
-.tar.gz$
-^tests/lib/
-JooseX.Namespace.Depended-0.01
 \.project$
 ^\.git\b
+\.tar.gz$
+^tests/lib/
+^JooseX-Namespace-Depended-*
+
 ^\.externalToolBuilders\b
-^todo\b
+^\.gitignore\b
+^TODO\b
+
 ^MYMETA.yml$

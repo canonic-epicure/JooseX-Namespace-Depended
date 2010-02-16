@@ -85,7 +85,7 @@
       }
    },
    "requires" : {
-      "Joose" : "3.001",
+      "Joose" : "3.005",
       "JooseX.SimpleRequest" : "0.01"
    },
    "abstract" : "Dependencies handling implementation, integrated with Joose3"
