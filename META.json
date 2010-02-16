@@ -15,16 +15,16 @@
    "license" : "bsd",
    "static_dir" : "static",
    "provides" : {
-      "Stub" : {
+      "JooseX.Namespace.Depended.Authoring" : {
          "version" : null,
-         "file" : "lib/Stub.js"
+         "file" : "lib/JooseX/Namespace/Depended/Authoring.js"
       },
       "Task.JooseX.Namespace.Depended.Kernel" : {
          "version" : null,
          "file" : "lib/Task/JooseX/Namespace/Depended/Kernel.js"
       },
       "Task.JooseX.Namespace.Depended.Web" : {
-         "version" : null,
+         "version" : "0.11",
          "file" : "lib/Task/JooseX/Namespace/Depended/Web.js"
       },
       "JooseX.Namespace.Depended.Transport.ScriptTag" : {
@@ -76,7 +76,7 @@
          "file" : "lib/JooseX/Namespace/Depended/Materialize/ScriptTag.js"
       },
       "JooseX.Namespace.Depended" : {
-         "version" : null,
+         "version" : "0.11",
          "file" : "lib/JooseX/Namespace/Depended.js"
       },
       "JooseX.Namespace.Depended.Resource.URLed" : {

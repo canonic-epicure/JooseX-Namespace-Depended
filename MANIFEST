@@ -64,6 +64,7 @@ lib/Task/JooseX/Namespace/Depended/Web.js
 MANIFEST			This list of files
 META.json
 README
+README.md
 script/generate_tests.pl
 t/005_resources_manager.t.js
 t/010_basic.t.js
