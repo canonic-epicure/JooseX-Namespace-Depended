@@ -7,7 +7,8 @@ StartTest(function(t) {
     })
     
     
-    JooseX.Namespace.Depended.Resource.JavaScript.meta.extend({
+    JooseX.Namespace.Depended.Resource.JooseClass.meta.extend({
+        doesnt : JooseX.Namespace.Depended.Transport.XHRAsync,
         does : JooseX.Namespace.Depended.Transport.ScriptTag
     })
     

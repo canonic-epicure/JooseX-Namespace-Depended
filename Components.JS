@@ -17,13 +17,12 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Transport.XHRSync",
         "JooseX.Namespace.Depended.Transport.ScriptTag",
         
-        "JooseX.Namespace.Depended.Resource.JavaScript",
-        "JooseX.Namespace.Depended.Resource.JavaScript.JooseClass",
-        "JooseX.Namespace.Depended.Resource.JavaScript.NonJoose",
+        "JooseX.Namespace.Depended.Resource.JooseClass",
+        "JooseX.Namespace.Depended.Resource.NonJoose",
         
         "JooseX.Namespace.Depended.Resource.URLed",
-        "JooseX.Namespace.Depended.Resource.JavaScript.ExternalURL",
-        "JooseX.Namespace.Depended.Resource.JavaScript.InternalURL",
+        "JooseX.Namespace.Depended.Resource.ExternalURL",
+        "JooseX.Namespace.Depended.Resource.InternalURL",
         
         
         //should be the last        
@@ -40,6 +39,7 @@ COMPONENTS = {
 //        //should be the last
 //        "JooseX.Namespace.Depended"
 //    ]
+
     
 } 
 
