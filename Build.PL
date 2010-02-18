@@ -11,6 +11,7 @@ license         bsd
 
 requires        Joose                   3.005
 requires        JooseX.SimpleRequest    0.01
+requires        JooseX.Meta.Lazy        0.01
 
 
 docs_markup     mmd

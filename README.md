@@ -64,6 +64,12 @@ non Joose code also allowed:
             use : [ 'nonjoose://MyApp.Widget.LoginLine' ]
         })
         
+from code:
+
+        use({ 'MyApp' : 0.01 }, function () {
+            
+            MyApp.my.run()
+        })
 
 DESCRIPTION
 ===========
@@ -76,7 +82,9 @@ Framework is highly customizable, additional resources/transport/materialization
 Please refer to [JooseX.Namespace.Depended.Authoring][authoring] for more information. 
 
 By default, framework operates in asynchronous mode, using XHR requests for transport and `eval` for "materialization".
+All edge cases like refering to already loaded class, double loading, etc are handled correctly. 
 
+ 
 
 CURRENT DEVELOPMENT STATUS
 ==========================
@@ -84,7 +92,7 @@ CURRENT DEVELOPMENT STATUS
 This framework is considered stable and thoroughly tested (more than 300 unit tests, including stress-test). 
 The use case for "pure" Joose classes will be supported without breaking changes. 
 
-However, at this stage, the syntax for loading *non Joose* code may be changed *any time*, without prior notice. 
+However, as its not settled down yet, the syntax for loading *non Joose* code may be changed any time, without prior notice.
 
 
 USAGE
@@ -107,7 +115,7 @@ In more complex case, the descriptor is an object, which keys are classes names 
         
 Such descriptors can contain several dependencies, though they are limited to Joose classes only.
 
-In general case, the dependency descriptor is an object with following structure:
+In general case, the dependency descriptor is an object with the following structure:
         
         {
             type    : 'joose',
@@ -124,23 +132,109 @@ The rule
 General rule is - whereever in your class declaration you can refer to other class (for example in the `does` builder) - you can specify the
 dependency descriptor instead. 
 
-The framework will scan class declaration for dependencies, pre-load them, then substitute descriptors with actual classes and continue the declaration process.
-
 This means, that you can specify the dependencies in:
 
-    - `isa` builder
     - `meta` builder (!)
+    - `isa` builder
     - `trait` builder
     - `does` builder
     
-Also in any other custom builder (some [authoring][authoring] required) 
     
+For example this declaration is perfectly valid:    
+    
+            Class('Some.Class', {
+                meta : 'My.Meta',
+                
+                isa : 'Super.Class',
+                
+                does : {
+                    'Some.Role'         : 0.01,
+                    'Some.Other.Role'   : 0.02
+                },
+                
+                trait : 'Some.Trait',
+                
+                ...
+            })
+    
+Also in any other custom builder (some [authoring][] required) 
+
+The framework will scan class declaration for dependencies, pre-load them, then substitute descriptors with actual classes and continue the declaration process.
+
+
+`use` builder
+-------------
+
+Additionaly, you can provide an array of dependencies (or a single dependency) in the `use` builder:
+            
+            Class('Some.Class', {
+                
+                use : [ 'Some.Other.Class', 'Some.Other.Role' ],
+                
+                ...
+            })
+
+
+`use` from code
+---------------
+
+You can also load the dependencies from code:
+
+            use([ 'Some.Class1', 'Some.Class2' ], function () {
+                
+                var a = new Some.Class1()
+                var b = new Some.Class2()
+            })
+
+
+Class name -> file name conversion
+----------------------------------
+
+The class name you are refering to, will be converted to file name using this simple scheme:
+
+        class name: MyClass
+        file  name: MyClass.js
+        
+        class name: Some.Class
+        file  name: Some/Class.js
+        
+        class name: Some.Other.Class
+        file  name: Some/Other/Class.js
+    
+Generally each dot is replaced with directory separator, and the 'js' extension is appended to result
+    
+
+The libraries
+-------------
+
+The framework can look up the classes in several *libraries*, which are just the directories, containing the source files.
+
+The current list of libraries is stored as an array in: `JooseX.Namespace.Depended.Manager.my.INC`. Default value is:
+
+        JooseX.Namespace.Depended.Manager.my.INC = [ 'lib', '/jsan' ]
+
+You can freely modify this value. For example, if you are running a test harness, as `t/index.html`, and would like to refer
+to your files, which are in `lib/`, you'll need to add the `../lib` entry.
+
+Framework will scan through the libraries list sequentially and attempt to load the class from every entry.
+Class will be loaded from the first library, which contains the corresponded file. If there are no such file,
+loading will continue to another entry.
+
+For example, if we are loading class `Some.Class`, and we have the default setting for libraries, then first it will be tried to load with the following URL:
+    
+        lib/Some/Class.js
+    
+If there are no such file, the 2nd entry will be tried:
+        
+        /jsan/Some/Class.js
+
+If there are no such file again, the exception will be thrown.
 
 
 ATTRIBUTE HELPER
 ================
 
-This package adds a new [attribute initializer](http://openjsan.org/go?l=Joose.Manual.Attribute): `Joose.I.FutureClass`
+This package adds a new [attribute initializer](http://openjsan.org/go?l=Joose.Manual.Attributes): `Joose.I.FutureClass`
 
 It can be used, when the default value of the attribute should be set to the constructor of some class, 
 which may be not yet loaded on the declaration stage:
@@ -161,18 +255,12 @@ which may be not yet loaded on the declaration stage:
 GROUPED LOADING MODE
 ====================
 
-This framework can function in special mode, in which it can load *any* class, with *any number* of dependencies (in-depth),
+This framework can operate in special mode, in which it can load *any* class, with *any number* of dependencies (in-depth),
 with **2** http requests.
 
 For more information about this mode please refer to <http://www.extjs.com/forum/showthread.php?t=69161> 
 
-This items is currently in TODO list.  
-
-
-AUTHORING
-=========
-
-If you want to add a new resource type or transport, you may find useful information in this [document][authoring].   
+This item is currently in TODO list.  
 
 
 GETTING HELP
@@ -186,6 +274,12 @@ For general Joose questions you can also visit #joose on irc.freenode.org or the
 
 SEE ALSO
 ========
+
+Main documentation page: <http://openjsan.org/go/?l=JooseX.Namespace.Depended>
+
+[Authoring this framework][authoring]
+
+Base resource class: [JooseX.Namespace.Depended.Resource](Depended/Resource.html)
 
 Web page of this module: <http://github.com/SamuraiJack/JooseX-Namespace-Depended/>
 
@@ -224,4 +318,4 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 
-[authoring]: Authoring.html
+[authoring]: Depended/Authoring.html
