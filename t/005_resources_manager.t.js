@@ -11,7 +11,7 @@ StartTest(function(t) {
     t.ok(JooseX.Namespace.Depended.Resource.JooseClass, 'JooseX.Namespace.Depended.Resource.JooseClass is here')
     t.ok(JooseX.Namespace.Depended.Resource.NonJoose, 'JooseX.Namespace.Depended.Resource.NonJoose is here')
     
-    t.ok(JooseX.Namespace.Depended.Resource.URLed, 'JooseX.Namespace.Depended.Resource.URLed is here')
+    t.ok(JooseX.Namespace.Depended.Locator.URL, 'JooseX.Namespace.Depended.Locator.URL is here')
     t.ok(JooseX.Namespace.Depended.Resource.ExternalURL, 'JooseX.Namespace.Depended.Resource.ExternalURL is here')
     t.ok(JooseX.Namespace.Depended.Resource.InternalURL, 'JooseX.Namespace.Depended.Resource.InternalURL is here')
     

@@ -20,7 +20,7 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Resource.JooseClass",
         "JooseX.Namespace.Depended.Resource.NonJoose",
         
-        "JooseX.Namespace.Depended.Resource.URLed",
+        "JooseX.Namespace.Depended.Locator.URL",
         "JooseX.Namespace.Depended.Resource.ExternalURL",
         "JooseX.Namespace.Depended.Resource.InternalURL",
         
