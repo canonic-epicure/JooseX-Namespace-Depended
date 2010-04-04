@@ -1,0 +1,17 @@
+0.02    
+
+    [ENHANCEMENTS]
+    
+    - If some class don't have the dependencies, than it becomes "ready" synchronously.
+      Thus, if we have a concatenated file with the inter-dependended classes, which are
+      sorted in the dependency order, it will be executed synchronously
+    
+    [API CHANGES]
+
+    -none-
+    
+
+    [BUG FIXES]
+    
+    -none-
+
