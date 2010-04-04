@@ -56,6 +56,7 @@ inc/Module/JSAN.pm
 inc/Module/JSAN/DSL.pm
 INSTALL
 lib/JooseX/Namespace/Depended.js
+lib/JooseX/Namespace/Depended.mmd
 lib/JooseX/Namespace/Depended/Authoring.js
 lib/JooseX/Namespace/Depended/Locator/URL.js
 lib/JooseX/Namespace/Depended/Manager.js
