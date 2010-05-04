@@ -7,7 +7,7 @@
       "version" : "1.4",
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "name" : "JooseX.Namespace.Depended",
    "author" : [
       "Nickolay (SamuraiJack) Platonov <root@symbie.org>"
@@ -19,25 +19,17 @@
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Resource/NonJoose.js"
       },
-      "JooseX.Namespace.Depended.Materialize.Eval" : {
-         "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Materialize/Eval.js"
-      },
-      "JooseX.Namespace.Depended.Manager" : {
-         "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Manager.js"
-      },
       "JooseX.Namespace.Depended.Authoring" : {
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Authoring.js"
       },
-      "Task.JooseX.Namespace.Depended.Web" : {
-         "version" : "0.11",
-         "file" : "lib/Task/JooseX/Namespace/Depended/Web.js"
-      },
       "Task.JooseX.Namespace.Depended.Kernel" : {
          "version" : null,
          "file" : "lib/Task/JooseX/Namespace/Depended/Kernel.js"
+      },
+      "Task.JooseX.Namespace.Depended.Web" : {
+         "version" : null,
+         "file" : "lib/Task/JooseX/Namespace/Depended/Web.js"
       },
       "JooseX.Namespace.Depended.Locator.URL" : {
          "version" : null,
@@ -51,21 +43,21 @@
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Resource/ExternalURL.js"
       },
-      "JooseX.Namespace.Depended.Transport.XHRSync" : {
+      "JooseX.Namespace.Depended.Bootstrap.NodeJS" : {
          "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Transport/XHRSync.js"
+         "file" : "lib/JooseX/Namespace/Depended/Bootstrap/NodeJS.js"
       },
-      "JooseX.Namespace.Depended.Materialize.ScriptTag" : {
+      "JooseX.Namespace.Depended.Bootstrap.Web" : {
          "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Materialize/ScriptTag.js"
+         "file" : "lib/JooseX/Namespace/Depended/Bootstrap/Web.js"
       },
       "JooseX.Namespace.Depended.Resource" : {
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Resource.js"
       },
-      "JooseX.Namespace.Depended.Resource.JooseClass" : {
+      "Task.JooseX.Namespace.Depended.NodeJS" : {
          "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Resource/JooseClass.js"
+         "file" : "lib/Task/JooseX/Namespace/Depended/NodeJS.js"
       },
       "JooseX.Namespace.Depended.Resource.InternalURL" : {
          "version" : null,
@@ -75,15 +67,43 @@
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Transport/XHRAsync.js"
       },
+      "JooseX.Namespace.Depended.Transport.NodeJS" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Transport/NodeJS.js"
+      },
+      "JooseX.Namespace.Depended.Materialize.Eval" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Materialize/Eval.js"
+      },
+      "JooseX.Namespace.Depended.Manager" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Manager.js"
+      },
+      "JooseX.Namespace.Depended.Materialize.NodeJS" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Materialize/NodeJS.js"
+      },
+      "JooseX.Namespace.Depended.Transport.XHRSync" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Transport/XHRSync.js"
+      },
+      "JooseX.Namespace.Depended.Materialize.ScriptTag" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Materialize/ScriptTag.js"
+      },
+      "JooseX.Namespace.Depended.Resource.JooseClass" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/JooseClass.js"
+      },
       "JooseX.Namespace.Depended" : {
-         "version" : "0.11",
+         "version" : null,
          "file" : "lib/JooseX/Namespace/Depended.js"
       }
    },
    "requires" : {
-      "JooseX.Meta.Lazy" : "0.01",
       "Joose" : "3.005",
-      "JooseX.SimpleRequest" : "0.01"
+      "JooseX.SimpleRequest" : "0.01",
+      "JooseX.Meta.Lazy" : "0.01"
    },
    "abstract" : "Dependencies handling implementation, integrated with Joose3"
 }

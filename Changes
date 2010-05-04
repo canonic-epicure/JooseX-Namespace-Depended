@@ -2,13 +2,17 @@
 
     [ENHANCEMENTS]
     
+    - added non-blocking NodeJS transport and materialization roles
+    
+    - added NodeJS package: Task.JooseX.Namespace.Depended.NodeJS
+      
     - If some class don't have the dependencies, than it becomes "ready" synchronously.
       Thus, if we have a concatenated file with the inter-dependended classes, which are
       sorted in the dependency order, it will be executed synchronously
     
     [API CHANGES]
 
-    -none-
+    `materialize` method of Resource now also receives the url of the loaded resource as 2nd argument
     
 
     [BUG FIXES]
