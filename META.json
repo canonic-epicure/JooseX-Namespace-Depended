@@ -7,7 +7,7 @@
       "version" : "1.4",
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "name" : "JooseX.Namespace.Depended",
    "author" : [
       "Nickolay (SamuraiJack) Platonov <root@symbie.org>"
@@ -50,6 +50,10 @@
       "JooseX.Namespace.Depended.Bootstrap.Web" : {
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Bootstrap/Web.js"
+      },
+      "JooseX.Namespace.Depended.Resource.Require" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/Require.js"
       },
       "JooseX.Namespace.Depended.Resource" : {
          "version" : null,
@@ -101,7 +105,7 @@
       }
    },
    "requires" : {
-      "Joose" : "3.005",
+      "Joose" : "3.008",
       "JooseX.SimpleRequest" : "0.01",
       "JooseX.Meta.Lazy" : "0.01"
    },

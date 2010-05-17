@@ -27,11 +27,9 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Resource.ExternalURL",
         "JooseX.Namespace.Depended.Resource.InternalURL",
         
-        "JooseX.Namespace.Depended.Bootstrap.Web",
+        "JooseX.Namespace.Depended",
         
-        
-        //should be the last        
-        "JooseX.Namespace.Depended"
+        "JooseX.Namespace.Depended.Bootstrap.Web"
     ],
     
     "NodeJS" : [
@@ -40,10 +38,10 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Transport.NodeJS",
         "JooseX.Namespace.Depended.Materialize.NodeJS",
         
-        "JooseX.Namespace.Depended.Bootstrap.NodeJS",
+        "JooseX.Namespace.Depended.Resource.Require",
         
-        //should be the last        
-        "JooseX.Namespace.Depended"
+        "JooseX.Namespace.Depended",
+        "JooseX.Namespace.Depended.Bootstrap.NodeJS"
     ]
     
 } 

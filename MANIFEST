@@ -65,6 +65,7 @@ lib/JooseX/Namespace/Depended/Resource/ExternalURL.js
 lib/JooseX/Namespace/Depended/Resource/InternalURL.js
 lib/JooseX/Namespace/Depended/Resource/JooseClass.js
 lib/JooseX/Namespace/Depended/Resource/NonJoose.js
+lib/JooseX/Namespace/Depended/Resource/Require.js
 lib/JooseX/Namespace/Depended/Transport/NodeJS.js
 lib/JooseX/Namespace/Depended/Transport/ScriptTag.js
 lib/JooseX/Namespace/Depended/Transport/XHRAsync.js
