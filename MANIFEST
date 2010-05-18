@@ -15,6 +15,7 @@ doc/html/JooseX/Namespace/Depended/Resource/ExternalURL.html
 doc/html/JooseX/Namespace/Depended/Resource/InternalURL.html
 doc/html/JooseX/Namespace/Depended/Resource/JooseClass.html
 doc/html/JooseX/Namespace/Depended/Resource/NonJoose.html
+doc/html/JooseX/Namespace/Depended/Resource/Require.html
 doc/html/JooseX/Namespace/Depended/Transport/NodeJS.html
 doc/html/JooseX/Namespace/Depended/Transport/ScriptTag.html
 doc/html/JooseX/Namespace/Depended/Transport/XHRAsync.html
@@ -36,6 +37,7 @@ doc/mmd/JooseX/Namespace/Depended/Resource/ExternalURL.txt
 doc/mmd/JooseX/Namespace/Depended/Resource/InternalURL.txt
 doc/mmd/JooseX/Namespace/Depended/Resource/JooseClass.txt
 doc/mmd/JooseX/Namespace/Depended/Resource/NonJoose.txt
+doc/mmd/JooseX/Namespace/Depended/Resource/Require.txt
 doc/mmd/JooseX/Namespace/Depended/Transport/NodeJS.txt
 doc/mmd/JooseX/Namespace/Depended/Transport/ScriptTag.txt
 doc/mmd/JooseX/Namespace/Depended/Transport/XHRAsync.txt
@@ -229,3 +231,4 @@ t/localLib/root3/lib/Symbie/Meta/Route/Token/Parameter.js
 t/localLib/root3/lib/Symbie/Meta/Route/Token/String.js
 t/localLib/root4/BasicTest1.js
 t/localLib/root4/BasicTest3.js
+t/test.html

@@ -1,3 +1,20 @@
+0.03    
+
+    [ENHANCEMENTS]
+    
+        - implemented 'require' resource which is just a basic wrapper around the CommonJS module
+    
+    [API CHANGES]
+
+    -none-
+
+    [BUG FIXES]
+    
+    -none-
+
+
+
+
 0.02    
 
     [ENHANCEMENTS]
