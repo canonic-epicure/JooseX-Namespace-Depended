@@ -1,13 +1,13 @@
 {
    "resources" : {
-      "license" : "http://opensource.org/licenses/bsd-license.php"
+      "license" : "http://www.opensource.org/licenses/bsd-license.php"
    },
-   "generated_by" : "Module::Build version 0.3607",
    "meta-spec" : {
       "version" : "1.4",
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "0.03",
+   "generated_by" : "Module::Build version 0.3607",
+   "version" : "0.04",
    "name" : "JooseX.Namespace.Depended",
    "author" : [
       "Nickolay (SamuraiJack) Platonov <root@symbie.org>"
@@ -19,25 +19,25 @@
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Resource/NonJoose.js"
       },
-      "JooseX.Namespace.Depended.Authoring" : {
+      "Task.JooseX.Namespace.Depended.Web" : {
          "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Authoring.js"
+         "file" : "lib/Task/JooseX/Namespace/Depended/Web.js"
       },
       "Task.JooseX.Namespace.Depended.Kernel" : {
          "version" : null,
          "file" : "lib/Task/JooseX/Namespace/Depended/Kernel.js"
       },
-      "Task.JooseX.Namespace.Depended.Web" : {
+      "JooseX.Namespace.Depended.Authoring" : {
          "version" : null,
-         "file" : "lib/Task/JooseX/Namespace/Depended/Web.js"
-      },
-      "JooseX.Namespace.Depended.Locator.URL" : {
-         "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Locator/URL.js"
+         "file" : "lib/JooseX/Namespace/Depended/Authoring.js"
       },
       "JooseX.Namespace.Depended.Transport.ScriptTag" : {
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Transport/ScriptTag.js"
+      },
+      "JooseX.Namespace.Depended.Locator.URL" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Locator/URL.js"
       },
       "JooseX.Namespace.Depended.Resource.ExternalURL" : {
          "version" : null,
@@ -63,13 +63,13 @@
          "version" : null,
          "file" : "lib/Task/JooseX/Namespace/Depended/NodeJS.js"
       },
-      "JooseX.Namespace.Depended.Resource.InternalURL" : {
-         "version" : null,
-         "file" : "lib/JooseX/Namespace/Depended/Resource/InternalURL.js"
-      },
       "JooseX.Namespace.Depended.Transport.XHRAsync" : {
          "version" : null,
          "file" : "lib/JooseX/Namespace/Depended/Transport/XHRAsync.js"
+      },
+      "JooseX.Namespace.Depended.Resource.InternalURL" : {
+         "version" : null,
+         "file" : "lib/JooseX/Namespace/Depended/Resource/InternalURL.js"
       },
       "JooseX.Namespace.Depended.Transport.NodeJS" : {
          "version" : null,
@@ -105,9 +105,9 @@
       }
    },
    "requires" : {
-      "Joose" : "3.008",
       "JooseX.SimpleRequest" : "0.01",
-      "JooseX.Meta.Lazy" : "0.01"
+      "JooseX.Meta.Lazy" : "0.01",
+      "Joose" : "3.008"
    },
    "abstract" : "Dependencies handling implementation, integrated with Joose3"
 }

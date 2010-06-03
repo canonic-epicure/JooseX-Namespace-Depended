@@ -2,7 +2,7 @@ use inc::Module::JSAN::DSL;
 
 name            JooseX.Namespace.Depended
 
-version         0.03
+version         0.04
 author          'Nickolay (SamuraiJack) Platonov <root@symbie.org>'
 
 abstract        'Dependencies handling implementation, integrated with Joose3'

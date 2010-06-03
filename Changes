@@ -1,3 +1,17 @@
+0.04    
+
+    [ENHANCEMENTS]
+    
+        - greatly improved synchronous-ness of the dependencies loading, if the files are bundled in proper order 
+    
+    [API CHANGES]
+
+    -none-
+
+    [BUG FIXES]
+    
+        - fixed bug, when already loaded non-joose classes could been handled asynchronously (instead of synchronously) 
+
 0.03    
 
     [ENHANCEMENTS]

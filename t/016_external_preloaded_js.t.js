@@ -8,7 +8,7 @@ StartTest(function(t) {
     
     JooseX.Namespace.Depended.Manager.my.disableCaching = false
     
-    t.plan(15)
+    t.plan(9)
     
     //==================================================================================================================================================================================
     //t.diag("Dependency from already loaded external code")
@@ -17,6 +17,7 @@ StartTest(function(t) {
         res : 'external'
     }
     
+    var isSync1 = false
     
     Module("Testy3", {
         use : 'nonjoose://BasicTest6',
@@ -24,22 +25,16 @@ StartTest(function(t) {
         body : function(){
             t.ok(BasicTest6.res == 'external', "BasicTest6 was not modified")
             
+            isSync1 = true
             
             //==================================================================================================================================================================================
             t.diag("Dependency from already loaded external code")
             
-            t.ok(Testy3, 'Testy3 module was created')
-            t.ok(Testy3.meta.resource.loaded, 'Testy3 module is considered loaded')
-            t.ok(!Testy3.meta.resource.loading, 'Testy3 module is considered not loading')
-            t.ok(Testy3.meta.resource.ready, 'Testy3 module is ready - there were no actual loading')
-            
             var res = JooseX.Namespace.Depended.Manager.my.getResource('nonjoose://BasicTest6')
             t.ok(res.isLoaded(), 'BasicTest6 is considered loaded')
-            t.ok(res.ready, 'BasicTest6 is considered ready')
+            t.ok(res.isReady(), 'BasicTest6 is considered ready')
             
             t.ok(res.presence() == BasicTest6, 'Default presence attribute works correctly')
-            
-            
             
             Module("Testy4", {
                 use : 'nonjoose://BasicTest6',
@@ -51,9 +46,13 @@ StartTest(function(t) {
         }
     })
     
+    t.ok(isSync1, 'Deps are handled synchronously')
+    
     
     //==================================================================================================================================================================================
     //t.diag("Custom presence attribute")
+    
+    var isSync2 = false
     
     Module("Testy5", {
         use : { 
@@ -66,15 +65,11 @@ StartTest(function(t) {
         
         body : function(){
             t.ok(typeof Custom == 'undefined', "'nonjoose://Custom' is not actually exists")
+            
+            isSync2 = true
 
             //==================================================================================================================================================================================
             t.diag("Custom presence attribute")
-            
-            t.ok(Testy5, 'Testy5 module was created')
-            t.ok(Testy5.meta.resource.loaded, 'Testy5 module is considered loaded')
-            t.ok(!Testy5.meta.resource.loading, 'Testy5 module is considered not loading')
-            t.ok(Testy5.meta.resource.ready, 'Testy5 module is ready - there were no actual loading')
-            
             
             var async3 = t.beginAsync()
             
@@ -89,5 +84,7 @@ StartTest(function(t) {
             })
         }
     })
+    
+    t.ok(isSync2, 'Deps are handled synchronously #2')
     
 })

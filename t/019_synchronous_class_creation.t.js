@@ -7,7 +7,7 @@ StartTest(function(t) {
     })
 
     
-    t.plan(7)
+    t.plan(10)
     
     //==================================================================================================================================================================================
     t.diag("Synchronous creation of anonymous classes without dependencies")
@@ -42,18 +42,36 @@ StartTest(function(t) {
     
     var async1 = t.beginAsync()
     
-    use('BasicTest1', function () {
+    use([ 'BasicTest1' ], function () {
     
         t.ok(BasicTest1, 'BasicTest1 was loaded')
         t.ok(BasicTest2, 'BasicTest2 was loaded')
         
+        var syncSemaphore1 = false
         
         use('BasicTest1', function () {
             
-            t.pass('Dependency from already loaded classes works')
+            syncSemaphore1 = true
             
-            t.endAsync(async1)
+            t.pass('Dependency from already loaded classes works #1')
         })
+        
+        t.ok(syncSemaphore1, 'And its synchronous #1')
+        
+        BasicTest6          = true
+        var syncSemaphore2  = false
+        
+        use('nonjoose://BasicTest6', function () {
+            
+            syncSemaphore2 = true
+            
+            t.pass('Dependency from already loaded classes works #2')
+        })
+        
+        
+        t.ok(syncSemaphore2, 'And its synchronous #2')
+        
+        t.endAsync(async1)
     })
     
     
