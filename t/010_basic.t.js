@@ -1,6 +1,6 @@
 StartTest(function(t) {
     
-    JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2' ]
+    JooseX.Namespace.Depended.Manager.my.INC.unshift('localLib/root1', 'localLib/root2')
     
     if (!Joose.is_NodeJS) t.harness.localizeINC(JooseX.Namespace.Depended.Manager.my.INC)
 
@@ -84,10 +84,10 @@ StartTest(function(t) {
     })
     
     
-    //==================================================================================================================================================================================
-    t.diag("Loading from external url")
-    
-//    t.skip(Joose.is_NodeJS, "XHR requests won't work in Node", function (){
+    t.skip(Joose.is_NodeJS, "XHR requests won't work in Node", function (){
+        
+        //==================================================================================================================================================================================
+        t.diag("Loading from external url")
         
         var async3 = t.beginAsync()
         var bodyCalled = false
@@ -124,23 +124,21 @@ StartTest(function(t) {
         t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
         t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
     
-//    }, 7)
-    
-
-    //==================================================================================================================================================================================
-    //t.diag("Checking repeating calls to BEGIN")
-    
-    var async31 = t.beginAsync()
-    
-    use('ExtCoreLoader', function () {
         //==================================================================================================================================================================================
-        t.diag("Checking repeating calls to BEGIN")
+        //t.diag("Checking repeating calls to BEGIN")
         
-        t.ok(beginCount == 1, "Begin was called only once #2")
+        var async31 = t.beginAsync()
         
-        t.endAsync(async31)
-    })
+        use('ExtCoreLoader', function () {
+            //==================================================================================================================================================================================
+            t.diag("Checking repeating calls to BEGIN")
+            
+            t.ok(beginCount == 1, "Begin was called only once #2")
+            
+            t.endAsync(async31)
+        })
     
+    }, 8)
     
     
     //==================================================================================================================================================================================

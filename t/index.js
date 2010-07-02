@@ -9,9 +9,18 @@ if (typeof process != 'undefined' && process.pid) {
     
     
 Harness.my.configure({
-    title   : 'JooseX.Namespace.Depended test suite',
+    title       : 'JooseX.Namespace.Depended test suite',
     
-    preload : [
+    verbosity   : 1,
+    runCore     : 'sequential',
+    
+    preload     : Joose.is_NodeJS ? [
+        
+        'jsan:Task.Joose.Core',
+        
+        'Task.JooseX.Namespace.Depended.NodeJS'
+        
+    ] : [
         'jsan:Task.Joose.Core',
         'jsan:JooseX.SimpleRequest',
         'jsan:JooseX.Meta.Lazy',

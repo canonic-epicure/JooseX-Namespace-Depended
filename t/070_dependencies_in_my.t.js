@@ -1,6 +1,6 @@
 StartTest(function(t) {
     
-    JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2', 'localLib/root3' ]
+    JooseX.Namespace.Depended.Manager.my.INC.unshift('localLib/root1', 'localLib/root2', 'localLib/root3')
     
     if (!Joose.is_NodeJS) t.harness.localizeINC(JooseX.Namespace.Depended.Manager.my.INC)
     
