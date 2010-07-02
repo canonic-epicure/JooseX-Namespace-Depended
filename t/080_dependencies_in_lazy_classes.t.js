@@ -2,9 +2,7 @@ StartTest(function(t) {
     
     JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2' ]
     
-    Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {
-        JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.localizeURL(incPath, true)
-    })
+    if (!Joose.is_NodeJS) t.harness.localizeINC(JooseX.Namespace.Depended.Manager.my.INC)
     
     
     t.plan(26)

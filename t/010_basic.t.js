@@ -2,9 +2,7 @@ StartTest(function(t) {
     
     JooseX.Namespace.Depended.Manager.my.INC = [ 'localLib/root1', 'localLib/root2' ]
     
-    Joose.A.each(JooseX.Namespace.Depended.Manager.my.INC, function (incPath, indx) {
-        JooseX.Namespace.Depended.Manager.my.INC[indx] = t.harness.localizeURL(incPath, true)
-    })
+    if (!Joose.is_NodeJS) t.harness.localizeINC(JooseX.Namespace.Depended.Manager.my.INC)
 
     
     t.plan(37)
@@ -89,40 +87,44 @@ StartTest(function(t) {
     //==================================================================================================================================================================================
     t.diag("Loading from external url")
     
-    var async3 = t.beginAsync()
-    var bodyCalled = false
-    var beginCount = 0
-
-    
-    Module("ExtCoreLoader", {
-        use : 'exturl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
+//    t.skip(Joose.is_NodeJS, "XHR requests won't work in Node", function (){
         
-        BEGIN : function (ready) {
-            beginCount++
-            
-            t.diag("Controllbale ready-ness of Module")
-            
-            t.ok(!bodyCalled, 'BEGIN called before body')
-            
-            ready()
-        },
-        
-        body : function () {
-            bodyCalled = true
-            
-            t.diag("Loading from external url")
-            
-            t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly")
-            t.ok(beginCount == 1, "Begin was called only once #1")
-            
-            t.endAsync(async3)
-        }
-    })
+        var async3 = t.beginAsync()
+        var bodyCalled = false
+        var beginCount = 0
     
-    t.ok(ExtCoreLoader, 'GMapLoader module was created')
-    t.ok(ExtCoreLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
-    t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
-    t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
+        
+        Module("ExtCoreLoader", {
+            use : 'exturl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
+            
+            BEGIN : function (ready) {
+                beginCount++
+                
+                t.diag("Controllbale ready-ness of Module")
+                
+                t.ok(!bodyCalled, 'BEGIN called before body')
+                
+                ready()
+            },
+            
+            body : function () {
+                bodyCalled = true
+                
+                t.diag("Loading from external url")
+                
+                t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly")
+                t.ok(beginCount == 1, "Begin was called only once #1")
+                
+                t.endAsync(async3)
+            }
+        })
+        
+        t.ok(ExtCoreLoader, 'GMapLoader module was created')
+        t.ok(ExtCoreLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
+        t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
+        t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
+    
+//    }, 7)
     
 
     //==================================================================================================================================================================================
