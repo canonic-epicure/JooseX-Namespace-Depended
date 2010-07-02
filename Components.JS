@@ -43,6 +43,5 @@ COMPONENTS = {
         "JooseX.Namespace.Depended",
         "JooseX.Namespace.Depended.Bootstrap.NodeJS"
     ]
-    
 } 
 

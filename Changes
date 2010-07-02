@@ -1,3 +1,9 @@
+
+{{ $NEXT }}
+
+    - switched to Dist::Zilla
+    - added `skip` sections to test suite to allow cross-platform testing
+
 0.04    
 
     [ENHANCEMENTS]
