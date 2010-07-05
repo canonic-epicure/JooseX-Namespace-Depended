@@ -8,11 +8,11 @@ if (typeof process != 'undefined' && process.pid) {
     Harness = Test.Run.Harness.Browser.ExtJS
     
     
-Harness.my.configure({
+Harness.configure({
     title       : 'JooseX.Namespace.Depended test suite',
     
     verbosity   : 0,
-    runCore     : 'sequential',
+//    runCore     : 'sequential',
     
     preload     : Joose.is_NodeJS ? [
         
@@ -33,7 +33,7 @@ Harness.my.configure({
 })
 
 
-Harness.my.start(
+Harness.start(
     '005_resources_manager.t.js',
     '010_basic.t.js',
     '011_basic_own_url.t.js',

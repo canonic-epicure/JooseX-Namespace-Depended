@@ -2,7 +2,10 @@
 {{ $NEXT }}
 
     - switched to Dist::Zilla
+    
     - added `skip` sections to test suite to allow cross-platform testing
+    
+    - test suite now passes on the NodeJS platform
 
 0.04    
 
