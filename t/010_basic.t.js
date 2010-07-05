@@ -84,7 +84,7 @@ StartTest(function(t) {
     })
     
     
-    t.skip(Joose.is_NodeJS, "XHR requests won't work in Node", function (){
+    t.skipIf(Joose.is_NodeJS, "XHR requests won't work in Node", function (){
         
         //==================================================================================================================================================================================
         t.diag("Loading from external url")

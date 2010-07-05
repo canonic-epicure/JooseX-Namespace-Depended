@@ -8,7 +8,7 @@ StartTest(function(t) {
     t.plan(1)
 
     
-    t.skip(Joose.is_NodeJS, "Won't test lazy classes for now", function () {
+    t.skipIf(Joose.is_NodeJS, "Won't test lazy classes for now", function () {
     
         var async1 = t.beginAsync()
     
