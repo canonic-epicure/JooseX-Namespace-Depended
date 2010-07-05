@@ -78,39 +78,42 @@ StartTest(function(t) {
     })
     
     
-    //==================================================================================================================================================================================
-    t.diag("Loading from external url")
+    t.skip(Joose.is_NodeJS, "XHR requests won't work in Node", function (){
     
-    var async3 = t.beginAsync()
-    var bodyCalled = false
-
-    
-    Module("ExtCoreLoader", {
-        use : 'exturl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
+        //==================================================================================================================================================================================
+        t.diag("Loading from external url")
         
-        BEGIN : function (ready) {
-            t.diag("Controllbale ready-ness of Module")
-            
-            t.ok(!bodyCalled, 'BEGIN called before body')
-            
-            ready()
-        },
-        
-        body : function () {
-            bodyCalled = true
-            
-            t.diag("Loading from external url")
-            
-            t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly")
-            
-            t.endAsync(async3)
-        }
-    })
+        var async3 = t.beginAsync()
+        var bodyCalled = false
     
-    t.ok(ExtCoreLoader, 'GMapLoader module was created')
-    t.ok(ExtCoreLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
-    t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
-    t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
+        
+        Module("ExtCoreLoader", {
+            use : 'exturl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
+            
+            BEGIN : function (ready) {
+                t.diag("Controllbale ready-ness of Module")
+                
+                t.ok(!bodyCalled, 'BEGIN called before body')
+                
+                ready()
+            },
+            
+            body : function () {
+                bodyCalled = true
+                
+                t.diag("Loading from external url")
+                
+                t.ok(Ext && Ext.util.Observable, "Ext core loaded correctly")
+                
+                t.endAsync(async3)
+            }
+        })
+        
+        t.ok(ExtCoreLoader, 'GMapLoader module was created')
+        t.ok(ExtCoreLoader.meta.resource.loaded, 'GMapLoader module is considered loaded')
+        t.ok(!ExtCoreLoader.meta.resource.loading, 'GMapLoader module is considered not loading')
+        t.ok(!ExtCoreLoader.meta.resource.ready, 'GMapLoader module is not ready yet')
+    }, 6)
     
     //==================================================================================================================================================================================
     //t.diag("List of searchable paths (@INC)")

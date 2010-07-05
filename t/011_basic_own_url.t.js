@@ -17,8 +17,7 @@ StartTest(function(t) {
         t.ok(BasicTest3.meta instanceof Joose.Meta.Class, 'Dynamic (in code context) basic dependencies loading passed')
         t.ok(new BasicTest3().result() == 3, 'Dynamic (in code context) basic dependencies loading passed #2')
         
-        t.ok(BasicTest3.meta.resource.loadedFromURL.indexOf('/localLib/root1/BasicTest3.js') != -1, "Sucess url for 'BasicTest3' was assigned correctly")
-        
+        t.ok(BasicTest3.meta.resource.loadedFromURL.indexOf('localLib/root1/BasicTest3.js') != -1, "Sucess url for 'BasicTest3' was assigned correctly")
         
         t.endAsync(async1)
     })

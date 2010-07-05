@@ -8,27 +8,30 @@ StartTest(function(t) {
     t.plan(1)
 
     
-    var async1 = t.beginAsync()
-
+    t.skip(Joose.is_NodeJS, "Won't test lazy classes for now", function () {
     
-    use([ 'Ensovis.Adapter' ], function () {
+        var async1 = t.beginAsync()
+    
         
-        //===========================================================================================================================================================================================================
-        //t.diag('RemoteClass creation')
-        
-        Class('Simple', {
+        use([ 'Ensovis.Adapter' ], function () {
             
-            use : 'Ensovis.Adapter.RemoteMethod.Add',
+            //===========================================================================================================================================================================================================
+            //t.diag('RemoteClass creation')
             
-            body : function () {
-                //===========================================================================================================================================================================================================
-                t.diag('Additional dependencies')
+            Class('Simple', {
                 
-                t.ok(Ensovis.Adapter.RemoteMethod.Add, 'Ensovis.Adapter.RemoteMethod.Add is here')
+                use : 'Ensovis.Adapter.RemoteMethod.Add',
                 
-                t.endAsync(async1)
-            }
+                body : function () {
+                    //===========================================================================================================================================================================================================
+                    t.diag('Additional dependencies')
+                    
+                    t.ok(Ensovis.Adapter.RemoteMethod.Add, 'Ensovis.Adapter.RemoteMethod.Add is here')
+                    
+                    t.endAsync(async1)
+                }
+            })
         })
-    })
     
+    }, 1)
 })
