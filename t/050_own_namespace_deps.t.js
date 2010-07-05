@@ -2,7 +2,7 @@ StartTest(function(t) {
     
     JooseX.Namespace.Depended.Manager.my.INC.unshift('localLib/root1', 'localLib/root2')
     
-    if (!Joose.is_NodeJS) t.harness.localizeINC(JooseX.Namespace.Depended.Manager.my.INC)
+    if (!Joose.is_NodeJS) t.harness.absolutizeINC(JooseX.Namespace.Depended.Manager.my.INC)
     
 //    JooseX.Namespace.Depended.Manager.my.disableCaching = false
     

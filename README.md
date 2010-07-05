@@ -210,12 +210,16 @@ The libraries
 
 The framework can look up the classes in several *libraries*, which are just the directories, containing the source files.
 
-The current list of libraries is stored as an array in: `JooseX.Namespace.Depended.Manager.my.INC`. Default value is:
+The current list of libraries is stored as an array in: `JooseX.Namespace.Depended.Manager.my.INC`. Its also aliased as `use.paths`. Default value is:
 
-        JooseX.Namespace.Depended.Manager.my.INC = [ 'lib', '/jsan' ]
+        use.paths = [ 'lib', '/jsan' ]
 
-You can freely modify this value. For example, if you are running a test harness, as `t/index.html`, and would like to refer
-to your files, which are in `lib/`, you'll need to add the `../lib` entry.
+You can freely modify this value, however it will be a good idea to use only methods of array, which mutates it in-place.
+ 
+For example, if you are running a test harness, as `t/index.html`, and would like to refer
+to your files, which are in `lib/`, you'll need to add the `../lib` entry with:
+
+        use.paths.unshift('../lib')
 
 Framework will scan through the libraries list sequentially and attempt to load the class from every entry.
 Class will be loaded from the first library, which contains the corresponded file. If there are no such file,

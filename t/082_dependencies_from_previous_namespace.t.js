@@ -2,7 +2,7 @@ StartTest(function(t) {
 
     JooseX.Namespace.Depended.Manager.my.INC.unshift('localLib/root3/lib')
     
-    if (!Joose.is_NodeJS) t.harness.localizeINC(JooseX.Namespace.Depended.Manager.my.INC)
+    if (!Joose.is_NodeJS) t.harness.absolutizeINC(JooseX.Namespace.Depended.Manager.my.INC)
     
     
     t.plan(2)
