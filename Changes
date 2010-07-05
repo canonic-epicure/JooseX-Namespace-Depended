@@ -1,6 +1,8 @@
 
 {{ $NEXT }}
 
+0.05      2010-07-05 19:21
+
     - switched to Dist::Zilla
     
     - added `skip` sections to test suite to allow cross-platform testing
