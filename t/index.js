@@ -11,7 +11,7 @@ if (typeof process != 'undefined' && process.pid) {
 Harness.my.configure({
     title       : 'JooseX.Namespace.Depended test suite',
     
-    verbosity   : 1,
+    verbosity   : 0,
     runCore     : 'sequential',
     
     preload     : Joose.is_NodeJS ? [
