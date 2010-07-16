@@ -1,6 +1,8 @@
 
 {{ $NEXT }}
 
+    - implemented "Delayed dependencies" feature
+
 0.05      2010-07-05 19:21
 
     - switched to Dist::Zilla

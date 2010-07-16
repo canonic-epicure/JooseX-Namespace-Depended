@@ -126,6 +126,8 @@ In general case, the dependency descriptor is an object with the following struc
         
 Such descriptor can contain exactly one dependency, with the resource of any type.
 
+See also [delayed dependencies].
+
 
 The rule
 --------
@@ -256,10 +258,42 @@ which may be not yet loaded on the declaration stage:
         })
 
 
+DELAYED DEPENDENCIES
+====================
+
+You can also specify a "delayed" dependency descriptors, using the attribute helper:
+
+        Class('Some.Class', {
+            
+            use     : 'Task.Some.Bundle', 
+            
+            does    : Joose.I.FutureClass('Some.Role.From.Bundle')
+        })
+        
+or just an arbitrary function (function shouldn't has a `meta` property):
+
+        Class('Some.Class', {
+            
+            use     : 'Task.Some.Bundle', 
+            
+            does    : function () { return Some.Role.From.Bundle }
+        })
+        
+        
+The framework won't attempt to load such descriptors. Instead, the provided function will called
+before class construction (when other "real dependencies" were already loaded). Function is supposed 
+to return a class (or role) which will be used as part of the class declaration.
+
+This feature is useful, when you'd like to depend from a file, containing definitions of several roles,
+and you'd like to use those roles in your class.  
+
+
 USING THIS EXTENSION WITH NODEJS
 ================================
 
-Please refer to the documentation of the [Task.Joose.NodeJS](http://openjsan.org/go/?l=Task.Joose.NodeJS)
+When using this framework on NodeJS platform, the `use.paths` will be and alias for `require.paths`.
+
+For additional information, please refer to the documentation of the [Task.Joose.NodeJS](http://openjsan.org/go/?l=Task.Joose.NodeJS)
 
 
 

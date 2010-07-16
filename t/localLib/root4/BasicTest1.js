@@ -20,3 +20,15 @@ Class('BasicTest2', {
     }
     
 })
+
+
+if (typeof BasicRole1 == 'function' && !(BasicRole1.meta instanceof Joose.Namespace.Keeper)) throw "Double declaration of BasicRole1";
+
+
+Role('BasicRole1', {
+    
+    methods : {
+        result : function () { return 3 }
+    }
+
+})

@@ -55,5 +55,6 @@ Harness.start(
     '090_future_class.t.js',
     '100_additional_resources.t.js',
     '110_several_classes_in_file.t.js',
+    '111_delayed_deps.t.js',
     '120_script_tag_transport.t.js'
 )

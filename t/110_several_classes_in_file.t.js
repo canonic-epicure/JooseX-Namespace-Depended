@@ -5,7 +5,7 @@ StartTest(function(t) {
     if (!Joose.is_NodeJS) t.harness.absolutizeINC(JooseX.Namespace.Depended.Manager.my.INC)
     
     
-    t.plan(8)
+    t.plan(10)
     
 
     //==================================================================================================================================================================================
@@ -23,6 +23,9 @@ StartTest(function(t) {
         
         t.ok(BasicTest2.meta.constructor == Joose.Meta.Class, 'Basic dependencies loading passed #2-1')
         t.ok(new BasicTest2().result() == 2, "And it work as expected #2-2")
+        
+        t.ok(BasicRole1.meta instanceof Joose.Managed.Role, '`BasicRole1` was also loaded')
+        t.ok(BasicRole1.meta.hasMethod('result'), '.. and fully declared')
         
         t.endAsync(async1)
     })
