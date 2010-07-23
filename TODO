@@ -8,8 +8,10 @@ REFACTORING
 TODO
 ====
 
+- rename `disableCaching` to `suppressCaching`
+
 -   create an "All" bundle that will auto-configurate, depending from the environment (browser/nodejs)
-    this should allow remove many Web*, NodeJS* bundles
+    this should remove many Web*, NodeJS* bundles during testing
 
 - (!) CSS loading (including grouped mode)
 
