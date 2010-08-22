@@ -6,9 +6,9 @@ StartTest(function(t) {
     
     t.plan(8)
     
-    t.skipIf(Joose.is_NodeJS, "Won't test lazy classes for now", function () {
+    t.skip(/*Joose.is_NodeJS, */"Won't test lazy classes for now", function () {
     
-        JooseX.Namespace.Depended.Resource.Code.meta.extend({
+        JooseX.Namespace.Depended.Resource.JooseClass.meta.extend({
             doesnt : JooseX.Namespace.Depended.Transport.XHRAsync,
             does : JooseX.Namespace.Depended.Transport.ScriptTag
         })
