@@ -22,11 +22,6 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Transport.XHRSync",
         "JooseX.Namespace.Depended.Transport.ScriptTag",
         
-        
-        "JooseX.Namespace.Depended.Locator.URL",
-        "JooseX.Namespace.Depended.Resource.ExternalURL",
-        "JooseX.Namespace.Depended.Resource.InternalURL",
-        
         "JooseX.Namespace.Depended",
         
         "JooseX.Namespace.Depended.Bootstrap.Web"

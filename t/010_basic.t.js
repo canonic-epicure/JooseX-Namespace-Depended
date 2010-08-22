@@ -95,7 +95,7 @@ StartTest(function(t) {
     
         
         Module("ExtCoreLoader", {
-            use : 'exturl://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
+            use : 'javascript://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
             
             BEGIN : function (ready) {
                 beginCount++

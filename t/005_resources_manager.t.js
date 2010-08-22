@@ -1,7 +1,5 @@
 StartTest(function(t) {
     
-    t.plan(21)
-    
     //==================================================================================================================================================================================
     t.diag("Sanity")
     
@@ -12,14 +10,10 @@ StartTest(function(t) {
     t.ok(JooseX.Namespace.Depended.Resource.JavaScript, 'JooseX.Namespace.Depended.Resource.JavaScript is here')
     
     t.skipIf(Joose.is_NodeJS, "Not included in NodeJS bundle", function (){
-    
-        t.ok(JooseX.Namespace.Depended.Locator.URL, 'JooseX.Namespace.Depended.Locator.URL is here')
-        t.ok(JooseX.Namespace.Depended.Resource.ExternalURL, 'JooseX.Namespace.Depended.Resource.ExternalURL is here')
-        t.ok(JooseX.Namespace.Depended.Resource.InternalURL, 'JooseX.Namespace.Depended.Resource.InternalURL is here')
         
         t.ok(JooseX.Namespace.Depended.Transport.XHRAsync, 'JooseX.Namespace.Depended.Transport.XHRAsync is here')
         t.ok(JooseX.Namespace.Depended.Transport.ScriptTag, 'JooseX.Namespace.Depended.Transport.ScriptTag is here')
-    }, 5)
+    }, 1)
     
     t.ok(JooseX.Namespace.Depended.Materialize.Eval, 'JooseX.Namespace.Depended.Materialize.Eval is here')
     
@@ -57,6 +51,8 @@ StartTest(function(t) {
     t.ok(testRes2.requiredVersion == 0.02, '.. and it has correct version')
     t.ok(testRes2.id == 'joose://Test2', '.. and it has correct id')
     t.ok(testRes2.type == 'joose', '.. and it has correct type')
+    
+    t.done()
     
 //    var res2 = JooseX.Namespace.Depended.Manager.my.getResource({ 'TestClass' : 0.01 })
 //    var res1 = JooseX.Namespace.Depended.Manager.my.getResource('joose://TestClass#0.01')
