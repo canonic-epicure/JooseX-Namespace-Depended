@@ -12,7 +12,6 @@ Harness.configure({
     title       : 'JooseX.Namespace.Depended test suite',
     
     verbosity   : 0,
-//    runCore     : 'sequential',
     
     preload     : Joose.is_NodeJS ? [
         
@@ -55,5 +54,7 @@ Harness.start(
     '090_future_class.t.js',
     '100_additional_resources.t.js',
     '110_several_classes_in_file.t.js',
-    '111_delayed_deps.t.js'
+    '111_delayed_deps.t.js',
+    '120_dep_from_static_files.t.js',
+    '121_preloaded_dep_from_static_files.t.js'
 )

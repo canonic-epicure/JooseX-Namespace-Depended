@@ -18,12 +18,13 @@ StartTest(function(t) {
     var isSync1 = false
     
     Module("Testy3", {
-        use : 'nonjoose://BasicTest6',
+        use : { 
+            type : 'nonjoose', 
+            token : 'BasicTest6' 
+        },
         
         body : function(){
             t.ok(BasicTest6.res == 'external', "BasicTest6 was not modified")
-            
-            isSync1 = true
             
             //==================================================================================================================================================================================
             t.diag("Dependency from already loaded external code")
@@ -38,6 +39,8 @@ StartTest(function(t) {
                 use : 'nonjoose://BasicTest6',
                 
                 body : function(){
+                    isSync1 = true
+                    
                     t.ok(BasicTest6.res == 'external', "BasicTest6 was not modified #2")
                 }
             })

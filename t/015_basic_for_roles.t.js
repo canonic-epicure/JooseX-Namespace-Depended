@@ -88,7 +88,7 @@ StartTest(function(t) {
     
         
         Module("ExtCoreLoader", {
-            use : 'javascript://http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
+            use : 'http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
             
             BEGIN : function (ready) {
                 t.diag("Controllbale ready-ness of Module")
@@ -144,7 +144,7 @@ StartTest(function(t) {
     
     
     Role("Testy3", {
-        use : 'nonjoose://BasicTest6',
+        use : 'BasicTest6.js',
         
         body : function(){
             t.diag("Non-Joose dependency")
@@ -154,7 +154,7 @@ StartTest(function(t) {
             t.ok(new BasicTest6().result() == 6, "And it work as expected")
             
             Role("Testy4", {
-                use : 'nonjoose://BasicTest6',
+                use : 'javascript://BasicTest6.js',
                 
                 body : function(){
                     t.ok(!__global__.nonJooseDoubleDeclared, "Non-Joose dependencies are not loading twicely #2")
