@@ -8,7 +8,7 @@ StartTest(function(t) {
     
     t.skipIf(Joose.is_NodeJS, "Won't test lazy classes for now", function () {
     
-        JooseX.Namespace.Depended.Resource.JooseClass.meta.extend({
+        JooseX.Namespace.Depended.Resource.Code.meta.extend({
             doesnt : JooseX.Namespace.Depended.Transport.XHRAsync,
             does : JooseX.Namespace.Depended.Transport.ScriptTag
         })

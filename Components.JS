@@ -7,7 +7,7 @@ COMPONENTS = {
         
         "JooseX.Namespace.Depended.Materialize.Eval",
         
-        "JooseX.Namespace.Depended.Resource.JooseClass",
+        "JooseX.Namespace.Depended.Resource.Code",
         "JooseX.Namespace.Depended.Resource.NonJoose"
     ],
     

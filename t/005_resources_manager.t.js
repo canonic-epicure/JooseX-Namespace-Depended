@@ -8,7 +8,7 @@ StartTest(function(t) {
     t.ok(JooseX.Namespace.Depended.Manager, 'JooseX.Namespace.Depended.Manager is here')
     
     t.ok(JooseX.Namespace.Depended.Resource, 'JooseX.Namespace.Depended.Resource is here')
-    t.ok(JooseX.Namespace.Depended.Resource.JooseClass, 'JooseX.Namespace.Depended.Resource.JooseClass is here')
+    t.ok(JooseX.Namespace.Depended.Resource.Code, 'JooseX.Namespace.Depended.Resource.Code is here')
     t.ok(JooseX.Namespace.Depended.Resource.NonJoose, 'JooseX.Namespace.Depended.Resource.NonJoose is here')
     
     t.skipIf(Joose.is_NodeJS, "Not included in NodeJS bundle", function (){
