@@ -19,10 +19,10 @@ StartTest(function(t) {
             t.ok(typeof some_raw_dep == 'string', 'Used preload dependency, no load attempt')
             
             t.endAsync(async1)
+            
+            t.done()
         }
     )
-
-        
-    t.done()
+    
 })
 
