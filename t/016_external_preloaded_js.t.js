@@ -64,8 +64,6 @@ StartTest(function(t) {
         body : function(){
             t.ok(typeof Custom == 'undefined', "'nonjoose://Custom' is not actually exists")
             
-            isSync2 = true
-
             //==================================================================================================================================================================================
             t.diag("Custom presence attribute")
             
@@ -74,7 +72,10 @@ StartTest(function(t) {
             Module("Testy6", {
                 use : 'nonjoose://Custom',
                 
-                body : function(){
+                body : function () {
+                    
+                    isSync2 = true
+                    
                     t.ok(typeof Custom == 'undefined', "'nonjoose://Custom' is not actually exists #2")
                     
                     t.endAsync(async3)
