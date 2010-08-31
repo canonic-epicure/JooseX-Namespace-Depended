@@ -15,6 +15,7 @@ Release history for JooseX.Namespace.Depended
     - improved version check (don't remove the VERSION from class definition)
     - improved test coverage for loading "static" files
     
+    - fixed NodeJS materialization role
 
 0.05      2010-07-05 19:21
 

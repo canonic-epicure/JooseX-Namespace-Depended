@@ -78,7 +78,7 @@ DESCRIPTION
 ===========
 
 `JooseX.Namespace.Depended` is a dependencies handling framework, tightly integrated with Joose3.
-Starting from 0.03 version it also supports the NodeJS modules system. 
+Starting from 0.05 version it also supports the NodeJS modules system. 
 
 It allows you to refer to other (not yet loaded) classes/roles in your class declaration. 
 
@@ -289,6 +289,55 @@ to return a class (or role) which will be used as part of the class declaration.
 
 This feature is useful for example, when you'd like to depend from a file, containing definitions of several roles,
 and you'd like to use those roles in your class.  
+
+
+LOADING NON-JOOSE CODE
+======================
+
+To load non-joose code, specify the descriptor with the 'javascript' type and with url to the source in token, as follows:
+        
+        {
+            type        : 'javascript',
+            
+            token       : 'MyApp/Widget/Header.js',
+            
+            presence    : function () {
+                return MyApp.Widget.Header
+            }
+        }
+
+Note the `presence` field. `presence` is function which should return `true` value, if the
+resource is already presented in the scope (for example has been loaded with the &lt;script&gt; tag). In such case, 
+the loading of resource will be skipped. `presence` can be specified as string, which will be `eval`ed (exceptions are caught).
+
+`type : 'javascript'` is optional if token contains "/" or ends with ".js". So, the descriptor above 
+could be also written as:
+ 
+        {
+            token       : 'MyApp/Widget/Header.js',
+            
+            presence    : 'MyApp.Widget.Header'
+        }
+        
+If the url in `token` is relative, then the it will prepended with paths from `use.paths` (each path will be checked, sequentially).
+If the url is absolute (starts with "/" or "http://") or starts with "=" then it will be used directly and `use.paths` will be ignored: 
+
+        {
+            token       : '=MyApp/Widget/Header.js', // ignore `use.path` settings
+            
+            presence    : 'MyApp.Widget.Header'
+        }
+        
+Also, when specifying the descriptor as string, the type of the descriptor will be switched to 'javascript' if it contains the "/" or
+ends with ".js":
+
+
+        use('http://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', function () {
+            ...
+        })
+
+The code above will load "ext-core" library. However, currently there is no way to specify the `presence` attribute in such descriptor
+and no checks will be performed prior loading (potentially allowing repeated loading). This may change in future versions.
 
 
 USING THIS EXTENSION WITH NODEJS
