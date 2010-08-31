@@ -36,7 +36,6 @@ SYNOPSIS
             }
         })
         
-        
 or with versions:         
         
         Class("MyApp.Widget.Header", {
@@ -47,7 +46,7 @@ or with versions:
             
             isa : { 'MyApp.Widget.Templated' : 0.01 },
             
-            //alternatively
+            // or
             
             use : { 
                 'MyApp.Widget.LoginLine' : 0.03,
@@ -55,16 +54,20 @@ or with versions:
             }
         })
         
-non Joose code also allowed:        
+non-Joose code also can be loaded:        
 
         Class("MyApp.Widget.Header", {
             
             VERSION : 0.11,
         
-            use : [ 'nonjoose://MyApp.Widget.LoginLine' ]
+            use : {
+                token       : 'http://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js',
+                
+                presence    : 'Ext' // skip load if `Ext` evalutes to true
+            }
         })
         
-from code:
+load from code:
 
         use({ 'MyApp' : 0.01 }, function () {
             
@@ -284,7 +287,7 @@ The framework won't attempt to load such descriptors. Instead, the provided func
 before class construction (when other "real dependencies" were already loaded). Function is supposed 
 to return a class (or role) which will be used as part of the class declaration.
 
-This feature is useful, when you'd like to depend from a file, containing definitions of several roles,
+This feature is useful for example, when you'd like to depend from a file, containing definitions of several roles,
 and you'd like to use those roles in your class.  
 
 
@@ -313,7 +316,7 @@ GETTING HELP
 
 This extension is supported via github issues tracker: <http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues>
 
-For general Joose questions you can also visit #joose on irc.freenode.org or the forum at: <http://joose.it/forum>
+For general Joose questions you can also visit #joose on irc.freenode.org or the mailing list at <http://groups.google.com/group/joose-js>
  
 
 
@@ -348,7 +351,7 @@ Nickolay Platonov <nplatonov@cpan.org>
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright (c) 2009, Nickolay Platonov
+Copyright (c) 2010, Nickolay Platonov
 
 All rights reserved.
 

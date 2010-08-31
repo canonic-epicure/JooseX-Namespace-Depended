@@ -1,7 +1,20 @@
+Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
     - implemented "Delayed dependencies" feature
+    
+    - refactored out 'inturl/exturl' resources
+    - refactored out "Locator.URL" role
+    
+    - "nonjoose" resource refactored into more general "javascript" resource
+    - "javascript" resource is automatically created, if token contain '/' or ends with '.js' 
+    
+    - added 'presence' attribute to base resource (can be specified in token)
+    
+    - improved version check (don't remove the VERSION from class definition)
+    - improved test coverage for loading "static" files
+    
 
 0.05      2010-07-05 19:21
 
