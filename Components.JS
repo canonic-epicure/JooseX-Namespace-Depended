@@ -37,6 +37,25 @@ COMPONENTS = {
         
         "JooseX.Namespace.Depended",
         "JooseX.Namespace.Depended.Bootstrap.NodeJS"
+    ],
+    
+    
+    "Auto" : [
+        "+Kernel",
+        
+        "JooseX.Namespace.Depended.Materialize.ScriptTag",
+        
+        "JooseX.Namespace.Depended.Transport.XHRAsync",
+        "JooseX.Namespace.Depended.Transport.XHRSync",
+        "JooseX.Namespace.Depended.Transport.ScriptTag",
+        
+        "JooseX.Namespace.Depended.Transport.NodeJS",
+        "JooseX.Namespace.Depended.Materialize.NodeJS",
+        
+        "JooseX.Namespace.Depended.Resource.Require",
+        
+        "JooseX.Namespace.Depended",
+        "JooseX.Namespace.Depended.Bootstrap.Auto"
     ]
 } 
 
