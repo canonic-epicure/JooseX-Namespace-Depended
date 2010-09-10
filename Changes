@@ -2,6 +2,9 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+    - added `Task.JooseX.Namespace.Depended.Auto` bundle, which autoconfigurate depending from the
+      platform (browser/nodejs)
+
 0.07      2010-08-31 15:36
 
     - really fixed NodeJS materialization
