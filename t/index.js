@@ -13,18 +13,10 @@ Harness.configure({
     
     verbosity   : 0,
     
-    preload     : Joose.is_NodeJS ? [
-        
+    preload     : [
         'jsan:Task.Joose.Core',
         
-        'Task.JooseX.Namespace.Depended.NodeJS'
-        
-    ] : [
-        'jsan:Task.Joose.Core',
-        'jsan:JooseX.SimpleRequest',
-        'jsan:JooseX.Meta.Lazy',
-        
-        'Task.JooseX.Namespace.Depended.Web'
+        'Task.JooseX.Namespace.Depended.Auto'
         
         //,'/jsan/Digest/MD5.js',
         //'JooseX.Namespace.Depended.Grouped'

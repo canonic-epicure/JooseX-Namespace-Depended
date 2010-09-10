@@ -43,6 +43,9 @@ COMPONENTS = {
     "Auto" : [
         "+Kernel",
         
+        "jsan:JooseX.SimpleRequest",
+        "jsan:JooseX.Meta.Lazy",
+        
         "JooseX.Namespace.Depended.Materialize.ScriptTag",
         
         "JooseX.Namespace.Depended.Transport.XHRAsync",
