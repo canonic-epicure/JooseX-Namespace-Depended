@@ -2,6 +2,8 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+0.08      2010-09-10 15:10
+
     - added `Task.JooseX.Namespace.Depended.Auto` bundle, which autoconfigurate depending from the
       platform (browser/nodejs)
 
