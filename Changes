@@ -2,6 +2,8 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+    - re-release with fixex in package.json, no functional changes
+
 0.09      2010-09-22 00:27
 
     - 'todo' dir renamed to 'misc' to work on case-insesitive platforms
