@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="http://bit.ly/multi_markdown_style_css " />
+	</head>
+<body>
+<h1 id="name">Name</h1>
+
+<p>JooseX.Namespace.Depended - a dependencies handling framework for Joose3 </p>
+
+<h1 id="synopsis">SYNOPSIS</h1>
+
+<pre><code>    Class("MyApp.Widget.Header", {
+
+        //declare dependencies
+        use : [ 'MyApp.Widget.LoginLine', 'MyCompany.Util.Helper'],
+
+        does : 'MyApp.Role.Templated',
+
+
+        before : {
+
+            initComponent : function () {
+
+                //dependencies will be preloaded #1
+                this.add(new MyApp.Widget.LoginLine({
+                    ...
+                }))
+            }
+        }, 
+
+        methods : {
+
+            doSomething : function () {
+                //dependencies will be preloaded #2
+                MyCompany.Util.Helper.my.doSomething()
+            }
+        }
+    })
+</code></pre>
+
+<p>or with versions:         </p>
+
+<pre><code>    Class("MyApp.Widget.Header", {
+
+        VERSION : 0.11,
+
+        use : [ { 'MyApp.Widget.LoginLine' : 0.03, { 'MyCompany.Util.Helper' : 0.01 } ],
+
+        isa : { 'MyApp.Widget.Templated' : 0.01 },
+
+        // or
+
+        use : { 
+            'MyApp.Widget.LoginLine' : 0.03,
+            'MyCompany.Util.Helper' : 0.01 
+        }
+    })
+</code></pre>
+
+<p>non-Joose code also can be loaded:        </p>
+
+<pre><code>    Class("MyApp.Widget.Header", {
+
+        VERSION : 0.11,
+
+        use : {
+            token       : 'http://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js',
+
+            presence    : 'Ext' // skip load if `Ext` evalutes to true
+        }
+    })
+</code></pre>
+
+<p>load from code:</p>
+
+<pre><code>    use({ 'MyApp' : 0.01 }, function () {
+
+        MyApp.my.run()
+    })
+</code></pre>
+
+<h1 id="description">DESCRIPTION</h1>
+
+<p><code>JooseX.Namespace.Depended</code> is a dependencies handling framework, tightly integrated with Joose3.
+Starting from 0.05 version it also supports the NodeJS modules system. </p>
+
+<p>It allows you to refer to other (not yet loaded) classes/roles in your class declaration. </p>
+
+<p>Framework is highly customizable, additional resources/transport/materialization modes can be easily added.
+Please refer to <a href="Depended/Authoring.html">JooseX.Namespace.Depended.Authoring</a> for more information. </p>
+
+<p>By default, framework operates in asynchronous mode, using XHR requests for transport and <code>eval</code> for "materialization".
+All edge cases like refering to already loaded class, double loading, etc are handled correctly. </p>
+
+<h1 id="currentdevelopmentstatus">CURRENT DEVELOPMENT STATUS</h1>
+
+<p>This framework is considered stable and thoroughly tested (more than 300 unit tests, including stress-test). 
+The use case for "pure" Joose classes will be supported without breaking changes. </p>
+
+<p>However, as its not settled down yet, the syntax for loading <em>non Joose</em> code may be changed any time, without prior notice.</p>
+
+<h1 id="usage">USAGE</h1>
+
+<h2 id="dependencydescriptor">Dependency descriptor</h2>
+
+<p>All dependencies should be specified with the <em>dependency descriptors</em>. In the simplest case, the descriptor is just a plain string 
+with the name of class:</p>
+
+<pre><code>    'MyApp.Widget.Header'
+</code></pre>
+
+<p>In more complex case, the descriptor is an object, which keys are classes names and values - their's versions:</p>
+
+<pre><code>    {
+        'MyApp.Widget.Header'   : 0.03,
+        'MyApp.Util.Helper'     : 0.01
+    }
+</code></pre>
+
+<p>Such descriptors can contain several dependencies, though they are limited to Joose classes only.</p>
+
+<p>In general case, the dependency descriptor is an object with the following structure:</p>
+
+<pre><code>    {
+        type    : 'joose',
+        token   : 'MyApp.Widget.Header',
+        version : 0.03
+    }
+</code></pre>
+
+<p>Such descriptor can contain exactly one dependency, with the resource of any type.</p>
+
+<p>See also <a href="#delayeddependencies" title="DELAYED DEPENDENCIES">delayed dependencies</a>.</p>
+
+<h2 id="therule">The rule</h2>
+
+<p>General rule is - whereever in your class declaration you can refer to other class (for example in the <code>does</code> builder) - you can specify the
+dependency descriptor instead. </p>
+
+<p>This means, that you can specify the dependencies in:</p>
+
+<pre><code>- `meta` builder (!)
+- `isa` builder
+- `trait` builder
+- `does` builder
+</code></pre>
+
+<p>For example this declaration is perfectly valid:    </p>
+
+<pre><code>        Class('Some.Class', {
+            meta : 'My.Meta',
+
+            isa : 'Super.Class',
+
+            does : {
+                'Some.Role'         : 0.01,
+                'Some.Other.Role'   : 0.02
+            },
+
+            trait : 'Some.Trait',
+
+            ...
+        })
+</code></pre>
+
+<p>Also in any other custom builder (some <a href="Depended/Authoring.html">authoring</a> required) </p>
+
+<p>The framework will scan class declaration for dependencies, pre-load them, then substitute descriptors with actual classes and continue the declaration process.</p>
+
+<h2 id="usebuilder"><code>use</code> builder</h2>
+
+<p>Additionaly, you can provide an array of dependencies (or a single dependency) in the <code>use</code> builder:</p>
+
+<pre><code>        Class('Some.Class', {
+
+            use : [ 'Some.Other.Class', 'Some.Other.Role' ],
+
+            ...
+        })
+</code></pre>
+
+<h2 id="usefromcode"><code>use</code> from code</h2>
+
+<p>You can also load the dependencies from code:</p>
+
+<pre><code>        use([ 'Some.Class1', 'Some.Class2' ], function () {
+
+            var a = new Some.Class1()
+            var b = new Some.Class2()
+        })
+</code></pre>
+
+<h2 id="classname-filenameconversion">Class name -> file name conversion</h2>
+
+<p>The class name you are refering to, will be converted to file name using this simple scheme:</p>
+
+<pre><code>    class name: MyClass
+    file  name: MyClass.js
+
+    class name: Some.Class
+    file  name: Some/Class.js
+
+    class name: Some.Other.Class
+    file  name: Some/Other/Class.js
+</code></pre>
+
+<p>Generally each dot is replaced with directory separator, and the 'js' extension is appended to result</p>
+
+<h2 id="thelibraries">The libraries</h2>
+
+<p>The framework can look up the classes in several <em>libraries</em>, which are just the directories, containing the source files.</p>
+
+<p>The current list of libraries is stored as an array in: <code>JooseX.Namespace.Depended.Manager.my.INC</code>. Its also aliased as <code>use.paths</code>. Default value is:</p>
+
+<pre><code>    use.paths = [ 'lib', '/jsan' ]
+</code></pre>
+
+<p>You can freely modify this value, however it will be a good idea to use only methods of array, which mutates it in-place.</p>
+
+<p>For example, if you are running a test harness, as <code>t/index.html</code>, and would like to refer
+to your files, which are in <code>lib/</code>, you'll need to add the <code>../lib</code> entry with:</p>
+
+<pre><code>    use.paths.unshift('../lib')
+</code></pre>
+
+<p>Framework will scan through the libraries list sequentially and attempt to load the class from every entry.
+Class will be loaded from the first library, which contains the corresponded file. If there are no such file,
+loading will continue to another entry.</p>
+
+<p>For example, if we are loading class <code>Some.Class</code>, and we have the default setting for libraries, then first it will be tried to load with the following URL:</p>
+
+<pre><code>    lib/Some/Class.js
+</code></pre>
+
+<p>If there are no such file, the 2nd entry will be tried:</p>
+
+<pre><code>    /jsan/Some/Class.js
+</code></pre>
+
+<p>If there are no such file again, the exception will be thrown.</p>
+
+<h1 id="attributehelper">ATTRIBUTE HELPER</h1>
+
+<p>This package adds a new <a href="http://openjsan.org/go?l=Joose.Manual.Attributes">attribute initializer</a>: <code>Joose.I.FutureClass</code></p>
+
+<p>It can be used, when the default value of the attribute should be set to the constructor of some class, 
+which may be not yet loaded on the declaration stage:</p>
+
+<pre><code>    Class('MyApp.Widget.Template', {
+
+        use : 'MyApp.Util.Helper',
+
+        has : {
+            helperClass : Joose.I.FutureClass('MyApp.Util.Helper')
+        }
+
+    })
+</code></pre>
+
+<h1 id="delayeddependencies">DELAYED DEPENDENCIES</h1>
+
+<p>You can also specify a "delayed" dependency descriptors, using the attribute helper:</p>
+
+<pre><code>    Class('Some.Class', {
+
+        use     : 'Task.Some.Bundle', 
+
+        does    : Joose.I.FutureClass('Some.Role.From.Bundle')
+    })
+</code></pre>
+
+<p>or just an arbitrary function (function shouldn't has a <code>meta</code> property):</p>
+
+<pre><code>    Class('Some.Class', {
+
+        use     : 'Task.Some.Bundle', 
+
+        does    : function () { return Some.Role.From.Bundle }
+    })
+</code></pre>
+
+<p>The framework won't attempt to load such descriptors. Instead, the provided function will called
+before class construction (when other "real dependencies" were already loaded). Function is supposed 
+to return a class (or role) which will be used as part of the class declaration.</p>
+
+<p>This feature is useful for example, when you'd like to depend from a file, containing definitions of several roles,
+and you'd like to use those roles in your class.  </p>
+
+<h1 id="loadingnon-joosecode">LOADING NON-JOOSE CODE</h1>
+
+<p>To load non-joose code, specify the descriptor with the 'javascript' type and with url to the source in token, as follows:</p>
+
+<pre><code>    {
+        type        : 'javascript',
+
+        token       : 'MyApp/Widget/Header.js',
+
+        presence    : function () {
+            return MyApp.Widget.Header
+        }
+    }
+</code></pre>
+
+<p>Note the <code>presence</code> field. <code>presence</code> is function which should return <code>true</code> value, if the
+resource is already presented in the scope (for example has been loaded with the &lt;script&gt; tag). In such case, 
+the loading of resource will be skipped. <code>presence</code> can be specified as string, which will be <code>eval</code>ed (exceptions are caught).</p>
+
+<p><code>type : 'javascript'</code> is optional if token contains "/" or ends with ".js". So, the descriptor above 
+could be also written as:</p>
+
+<pre><code>    {
+        token       : 'MyApp/Widget/Header.js',
+
+        presence    : 'MyApp.Widget.Header'
+    }
+</code></pre>
+
+<p>If the url in <code>token</code> is relative, then the it will prepended with paths from <code>use.paths</code> (each path will be checked, sequentially).
+If the url is absolute (starts with "/" or "http://") or starts with "=" then it will be used directly and <code>use.paths</code> will be ignored: </p>
+
+<pre><code>    {
+        token       : '=MyApp/Widget/Header.js', // ignore `use.path` settings
+
+        presence    : 'MyApp.Widget.Header'
+    }
+</code></pre>
+
+<p>Also, when specifying the descriptor as string, the type of the descriptor will be switched to 'javascript' if it contains the "/" or
+ends with ".js":</p>
+
+<pre><code>    use('http://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', function () {
+        ...
+    })
+</code></pre>
+
+<p>The code above will load "ext-core" library. However, currently there is no way to specify the <code>presence</code> attribute in such descriptor
+and no checks will be performed prior loading (potentially allowing repeated loading). This may change in future versions.</p>
+
+<h1 id="usingthisextensionwithnodejs">USING THIS EXTENSION WITH NODEJS</h1>
+
+<p>When using this framework on NodeJS platform, the <code>use.paths</code> will be and alias for <code>require.paths</code>.</p>
+
+<p>For additional information, please refer to the documentation of the <a href="http://openjsan.org/go/?l=Task.Joose.NodeJS">Task.Joose.NodeJS</a></p>
+
+<h1 id="groupedloadingmode">GROUPED LOADING MODE</h1>
+
+<p>This framework can operate in special mode, in which it can load <em>any</em> class, with <em>any number</em> of dependencies (in-depth),
+with <strong>2</strong> http requests.</p>
+
+<p>For more information about this mode please refer to <a href="http://www.extjs.com/forum/showthread.php?t=69161">http://www.extjs.com/forum/showthread.php?t=69161</a> </p>
+
+<p>This item is currently in TODO list.  </p>
+
+<h1 id="gettinghelp">GETTING HELP</h1>
+
+<p>This extension is supported via github issues tracker: <a href="http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues">http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues</a></p>
+
+<p>For general Joose questions you can also visit #joose on irc.freenode.org or the mailing list at <a href="http://groups.google.com/group/joose-js">http://groups.google.com/group/joose-js</a></p>
+
+<h1 id="seealso">SEE ALSO</h1>
+
+<p><a href="Depended/Authoring.html">Authoring this framework</a></p>
+
+<p>Base resource class: <a href="Depended/Resource.html">JooseX.Namespace.Depended.Resource</a></p>
+
+<p>Web page of this module: <a href="http://github.com/SamuraiJack/JooseX-Namespace-Depended/">http://github.com/SamuraiJack/JooseX-Namespace-Depended/</a></p>
+
+<p>General documentation for Joose: <a href="http://openjsan.org/go/?l=Joose">http://openjsan.org/go/?l=Joose</a></p>
+
+<h1 id="bugs">BUGS</h1>
+
+<p>All complex software has bugs lurking in it, and this module is no exception.</p>
+
+<p>Please report any bugs through the web interface at <a href="http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues">http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues</a></p>
+
+<h1 id="authors">AUTHORS</h1>
+
+<p>Nickolay Platonov <a href="&#109;a&#x69;&#x6C;t&#111;:&#110;&#x70;&#x6C;&#x61;&#x74;&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#x2E;&#111;&#114;&#x67;">&#110;&#x70;&#x6C;&#x61;&#x74;&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#x2E;&#111;&#114;&#x67;</a></p>
+
+<h1 id="copyrightandlicense">COPYRIGHT AND LICENSE</h1>
+
+<p>Copyright (c) 2010, Nickolay Platonov</p>
+
+<p>All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+
+<ul>
+<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
+<li>Neither the name of Nickolay Platonov nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. </li>
+</ul>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
+</body>
+</html>
