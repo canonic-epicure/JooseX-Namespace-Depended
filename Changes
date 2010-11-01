@@ -2,9 +2,11 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+    - re-release on `npm`, no functional changes
+
 0.10      2010-10-05 12:35
 
-    - re-release with fixex in package.json, no functional changes
+    - re-release with fixes in package.json, no functional changes
 
 0.09      2010-09-22 00:27
 
