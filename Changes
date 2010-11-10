@@ -2,6 +2,9 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+    - do not include JooseX.Meta.Lazy into the Auto bundle
+    - uncommented tests for dependencies in Lazy on NodeJS platform
+
 0.11      2010-11-01 13:19
 
     - re-release on `npm`, no functional changes

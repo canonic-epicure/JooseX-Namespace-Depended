@@ -44,7 +44,6 @@ COMPONENTS = {
         "+Kernel",
         
         "jsan:JooseX.SimpleRequest",
-        "jsan:JooseX.Meta.Lazy",
         
         "JooseX.Namespace.Depended.Materialize.ScriptTag",
         
