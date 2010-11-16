@@ -1,9 +1,7 @@
 Name
 ====
 
-
-JooseX.Namespace.Depended - a dependencies handling framework for Joose3 
-
+JooseX.Namespace.Depended - a cross-platform (browser/NodeJS) dependencies handling, integrated with for Joose3
 
 SYNOPSIS
 ========
@@ -11,9 +9,13 @@ SYNOPSIS
         Class("MyApp.Widget.Header", {
         
             //declare dependencies
-            use : [ 'MyApp.Widget.LoginLine', 'MyCompany.Util.Helper'],
             
-            does : 'MyApp.Role.Templated',
+            use : [ 
+                'MyApp.Widget.LoginLine', 
+                'MyCompany.Util.Helper'
+            ],
+            
+            does : 'MyApp.Role.Templated',  // dependency in 'does'
             
             
             before : {
@@ -44,7 +46,7 @@ or with versions:
         
             use : [ { 'MyApp.Widget.LoginLine' : 0.03, { 'MyCompany.Util.Helper' : 0.01 } ],
             
-            isa : { 'MyApp.Widget.Templated' : 0.01 },
+            isa : { 'MyApp.Widget.Templated' : 0.01 },  // dependency in isa
             
             // or
             
@@ -71,32 +73,17 @@ load from code:
 
         use({ 'MyApp' : 0.01 }, function () {
             
-            MyApp.my.run()
+            MyApp.run()
         })
+        
 
 DESCRIPTION
 ===========
 
-`JooseX.Namespace.Depended` is a dependencies handling framework, tightly integrated with Joose3.
-Starting from 0.05 version it also supports the NodeJS modules system. 
+`JooseX.Namespace.Depended` is a cross-platform (browsers/NodeJS) dependencies handling framework, tightly integrated with Joose3.
 
-It allows you to refer to other (not yet loaded) classes/roles in your class declaration. 
-
-Framework is highly customizable, additional resources/transport/materialization modes can be easily added.
-Please refer to [JooseX.Namespace.Depended.Authoring][authoring] for more information. 
-
-By default, framework operates in asynchronous mode, using XHR requests for transport and `eval` for "materialization".
-All edge cases like refering to already loaded class, double loading, etc are handled correctly. 
-
+It allows you to refer to other (not yet loaded) classes/roles in your class declaration. All edge cases like referring to already loaded class, double loading, etc are handled correctly. 
  
-
-CURRENT DEVELOPMENT STATUS
-==========================
-
-This framework is considered stable and thoroughly tested (more than 300 unit tests, including stress-test). 
-The use case for "pure" Joose classes will be supported without breaking changes. 
-
-However, as its not settled down yet, the syntax for loading *non Joose* code may be changed any time, without prior notice.
 
 
 USAGE
@@ -241,6 +228,11 @@ If there are no such file, the 2nd entry will be tried:
 If there are no such file again, the exception will be thrown.
 
 
+IMPORTANT NOTES
+===============
+
+
+
 ATTRIBUTE HELPER
 ================
 
@@ -348,6 +340,21 @@ When using this framework on NodeJS platform, the `use.paths` will be and alias 
 For additional information, please refer to the documentation of the [Task.Joose.NodeJS](http://openjsan.org/go/?l=Task.Joose.NodeJS)
 
 
+AUTHORING
+=========
+
+Framework is highly customizable, additional resources/transport/materialization modes can be easily added.
+Please refer to [JooseX.Namespace.Depended.Authoring][authoring] for more information. 
+
+
+CURRENT DEVELOPMENT STATUS
+==========================
+
+This framework is considered stable and thoroughly tested (more than 300 unit tests, including stress-test). 
+The use case for "pure" Joose classes will be supported without breaking changes. 
+
+However, as its not settled down yet, the syntax for loading *non Joose* code may be changed any time, without prior notice.
+
 
 GROUPED LOADING MODE
 ====================
@@ -414,3 +421,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 [authoring]: Depended/Authoring.html
+
+
+
+
+
+
+

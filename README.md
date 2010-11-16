@@ -74,7 +74,7 @@ load from code:
 
         use({ 'MyApp' : 0.01 }, function () {
             
-            MyApp.my.run()
+            MyApp.run()
         })
 
 
