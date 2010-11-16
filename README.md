@@ -47,7 +47,7 @@ or with versions:
         
             use : [ { 'MyApp.Widget.LoginLine' : 0.03, { 'MyCompany.Util.Helper' : 0.01 } ],
             
-            isa : { 'MyApp.Widget.Templated' : 0.01 },  // dependency in 
+            isa : { 'MyApp.Widget.Templated' : 0.01 },  // dependency in isa
             
             // or
             
@@ -81,25 +81,7 @@ load from code:
 DOCUMENTATION
 =============
 
-Please refer to: http://samuraijack.github.com/JooseX-Namespace-Depended
-
-
-GETTING HELP
-============
-
-This extension is supported via github issues tracker: <http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues>
-
-For general Joose questions you can also visit [#joose](http://webchat.freenode.net/?randomnick=1&channels=joose&prompt=1) on irc.freenode.org or the mailing list at <http://groups.google.com/group/joose-js>
- 
-
-
-BUGS
-====
-
-All complex software has bugs lurking in it, and this module is no exception.
-
-Please report any bugs through the web interface at <http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues>
-
+Please refer to: <http://samuraijack.github.com/JooseX-Namespace-Depended>
 
 
 AUTHORS
@@ -123,6 +105,3 @@ Redistribution and use in source and binary forms, with or without modification,
 * Neither the name of Nickolay Platonov nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. 
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-
-
-[authoring]: Depended/Authoring.html
