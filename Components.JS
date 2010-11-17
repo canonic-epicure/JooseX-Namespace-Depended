@@ -15,7 +15,7 @@ COMPONENTS = {
     "Web" : [
         "+Kernel",
     
-        
+        "jsan:JooseX.SimpleRequest",
         "JooseX.Namespace.Depended.Materialize.ScriptTag",
         
         "JooseX.Namespace.Depended.Transport.XHRAsync",
