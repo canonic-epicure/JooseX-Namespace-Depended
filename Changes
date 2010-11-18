@@ -19,6 +19,19 @@ Release history for JooseX.Namespace.Depended
     - added 'async' attribute for <script> transport
       w/o this attribute the <script>s used for transporting could interfere with <script>s used for materialization which 
       caused test failures in FF
+      
+    - now can handle dependencies from the 'has' section of class declaration:
+    
+        Class('SomeClass', {
+        
+            has : {
+                attr : {
+                    meta    : 'Attribute.Meta',
+                    trait   : 'Attribute.Trait'
+                }
+            }
+        })
+      
     
 
 0.11      2010-11-01 13:19

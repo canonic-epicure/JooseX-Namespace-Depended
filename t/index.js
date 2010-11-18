@@ -62,5 +62,6 @@ Harness.start(
     '110_several_classes_in_file.t.js',
     '111_delayed_deps.t.js',
     '120_dep_from_static_files.t.js',
-    '121_preloaded_dep_from_static_files.t.js'
+    '121_preloaded_dep_from_static_files.t.js',
+    '130_dependencies_in_has.t.js'
 )
