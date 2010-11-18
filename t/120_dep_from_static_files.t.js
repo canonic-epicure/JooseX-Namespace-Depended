@@ -4,9 +4,9 @@ StartTest(function(t) {
     t.diag("Testing of loading from static files")
     
     
-    JooseX.Namespace.Depended.Manager.my.INC.unshift('../lib')
+    use.paths.unshift('../lib')
     
-    if (!Joose.is_NodeJS) t.harness.absolutizeINC(JooseX.Namespace.Depended.Manager.my.INC)
+    if (!Joose.is_NodeJS) t.harness.absolutizeINC(use.paths)
     
     
     

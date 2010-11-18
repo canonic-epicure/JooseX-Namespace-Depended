@@ -2,8 +2,17 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
-    - do not include JooseX.Meta.Lazy into the Auto bundle
-    - uncommented tests for dependencies in Lazy on NodeJS platform
+    - various docs updates
+    
+    - NodeJS transport made synchronous
+    - uncommented tests for dependencies in "Lazy" classes on NodeJS platform
+    
+    - JooseX.Meta.Lazy excluded from the `Auto` bundle (was only required for testing) 
+    - JooseX.SimpleRequest included into the `Web` bundle
+    
+    - `use.paths` is now the preferred way to specify the INC paths instead of JooseX.Namespace.Depended.Manager.my.INC
+       using JooseX.Namespace.Depended.Manager.my.INC is still supported but will be removed in some of the future releases    
+    
 
 0.11      2010-11-01 13:19
 

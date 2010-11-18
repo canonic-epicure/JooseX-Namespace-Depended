@@ -82,8 +82,10 @@ DESCRIPTION
 
 `JooseX.Namespace.Depended` is a cross-platform (browsers/NodeJS) dependencies handling framework, tightly integrated with Joose3.
 
-It allows you to refer to other (not yet loaded) classes/roles in your class declaration. All edge cases like referring to already loaded class, double loading, etc are handled correctly. 
- 
+It allows you to refer to other (not yet loaded) classes/roles in your class declaration. Those classes will be loaded prior your class declaration.
+All edge cases like referring to already loaded class, double loading, etc are handled correctly. 
+
+If you are reading this file as README from github, you may want to open [this link](http://samuraijack.github.com/JooseX-Namespace-Depended/) instead. 
 
 
 USAGE
@@ -202,7 +204,7 @@ The libraries
 
 The framework can look up the classes in several *libraries*, which are just the directories, containing the source files.
 
-The current list of libraries is stored as an array in: `JooseX.Namespace.Depended.Manager.my.INC`. Its also aliased as `use.paths`. Default value is:
+The current list of libraries is stored as an array in: `use.paths` (on NodeJS platform its just an alias of `require.paths`). Default value is:
 
         use.paths = [ 'lib', '/jsan' ]
 
@@ -226,10 +228,6 @@ If there are no such file, the 2nd entry will be tried:
         /jsan/Some/Class.js
 
 If there are no such file again, the exception will be thrown.
-
-
-IMPORTANT NOTES
-===============
 
 
 
