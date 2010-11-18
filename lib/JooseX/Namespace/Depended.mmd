@@ -1,7 +1,7 @@
 Name
 ====
 
-JooseX.Namespace.Depended - a cross-platform (browser/NodeJS), asynchronous, 100% compatible with &lt;script&gt; dependencies handling, integrated with Joose3
+JooseX.Namespace.Depended - a cross-platform (browser/NodeJS), asynchronous, 100% compatible with &lt;script&gt; tags dependencies handling, integrated with Joose3
 
 SYNOPSIS
 ========
@@ -286,7 +286,7 @@ If there are no such file again, the exception will be thrown.
 ATTRIBUTE HELPER
 ================
 
-This package adds a new [attribute initializer](http://openjsan.org/go?l=Joose.Manual.Attributes): `Joose.I.FutureClass`
+This package adds a new [attribute initializer](http://joose.github.com/Joose/doc/html/Joose/Manual/Attributes.html): `Joose.I.FutureClass`
 
 It can be used, when the default value of the attribute should be set to the constructor of some class, 
 which may be not yet loaded on the declaration stage:
@@ -425,7 +425,7 @@ Using this library in NodeJS
 
 When using this framework on NodeJS platform, the `use.paths` will be an alias of `require.paths`.  
 
-For additional information, please refer to the documentation of the [Task.Joose.NodeJS](http://openjsan.org/go/?l=Task.Joose.NodeJS)
+For additional information, please refer to the documentation of the [Task.Joose.NodeJS](http://samuraijack.github.com/Task-Joose-NodeJS)
 
 
 Authoring
@@ -453,7 +453,7 @@ GETTING HELP
 
 This extension is supported via github issues tracker: <http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues>
 
-For general Joose questions you can also visit #joose on irc.freenode.org or the mailing list at <http://groups.google.com/group/joose-js>
+For general Joose questions you can also visit [#joose](http://webchat.freenode.net/?randomnick=1&channels=joose&prompt=1) on freenode or the mailing list at <http://groups.google.com/group/joose-js>
 
 
 SEE ALSO
@@ -465,7 +465,7 @@ Base resource class: [JooseX.Namespace.Depended.Resource](Depended/Resource.html
 
 Web page of this module: <http://github.com/SamuraiJack/JooseX-Namespace-Depended/>
 
-General documentation for Joose: <http://openjsan.org/go/?l=Joose>
+General documentation for Joose: <http://joose.github.com/Joose/>
 
 
 BUGS
