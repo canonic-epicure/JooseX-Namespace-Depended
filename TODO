@@ -1,8 +1,6 @@
 REFACTORING
 ============
 
-- merge "non-joose" into "joose" and make a single resource class "code", representing JS code
-- merge "exturl" and "inturl" into single "url" resource (resource locator?)
 
 
 TODO
@@ -10,15 +8,9 @@ TODO
 
 - rename `disableCaching` to `suppressCaching`
 
--   create an "All" bundle that will auto-configurate, depending from the environment (browser/nodejs)
-    this should remove many Web*, NodeJS* bundles during testing
-
 - (!) CSS loading (including grouped mode)
 
-- fix some failures with ScriptTag materialization under FF (still actual?) 
-
 - improve versioning and authority support and test coverage
-
 
 - Adapt grouped dependencies loading mode
 
@@ -32,6 +24,11 @@ TODO
 DONE
 ====
 
+- fix some failures with ScriptTag materialization under FF (still actual?) 
+-   create an "All" bundle that will auto-configurate, depending from the environment (browser/nodejs)
+    this should remove many Web*, NodeJS* bundles during testing
+- merge "non-joose" into "joose" and make a single resource class "code", representing JS code
+- merge "exturl" and "inturl" into single "url" resource (resource locator?)
 - call arbitrary function as dependency source (should return descriptors)    
     partially implemented
 - implement common mechanism for collecting stringified dependencies and replacing them with real classes
