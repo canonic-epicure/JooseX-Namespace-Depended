@@ -4,16 +4,17 @@ Release history for JooseX.Namespace.Depended
 
     - various docs updates
     
-    - NodeJS transport made synchronous
     - uncommented tests for dependencies in "Lazy" classes on NodeJS platform
     
     - JooseX.Meta.Lazy excluded from the `Auto` bundle (was only required for testing) 
     - JooseX.SimpleRequest included into the `Web` bundle
     
+    - removed XHRSync transport, as it turned out that truly synchronous mode won't support files concatenation 
+    
     - `use.paths` is now the preferred way to specify the INC paths instead of JooseX.Namespace.Depended.Manager.my.INC
        using JooseX.Namespace.Depended.Manager.my.INC is still supported but will be removed in some of the future releases
        
-    - improved <script> transport (still unreliable on IE)
+    - improved <script> transport (still hardly usable on IE because of lacking 'onerror' support)
     - switched to 'ScriptTag' as a default materialization for Web
     
     - added 'async' attribute for <script> transport

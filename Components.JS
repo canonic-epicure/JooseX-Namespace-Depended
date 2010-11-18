@@ -19,7 +19,6 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Materialize.ScriptTag",
         
         "JooseX.Namespace.Depended.Transport.XHRAsync",
-        "JooseX.Namespace.Depended.Transport.XHRSync",
         "JooseX.Namespace.Depended.Transport.ScriptTag",
         
         "JooseX.Namespace.Depended",
@@ -48,7 +47,6 @@ COMPONENTS = {
         "JooseX.Namespace.Depended.Materialize.ScriptTag",
         
         "JooseX.Namespace.Depended.Transport.XHRAsync",
-        "JooseX.Namespace.Depended.Transport.XHRSync",
         "JooseX.Namespace.Depended.Transport.ScriptTag",
         
         "JooseX.Namespace.Depended.Transport.NodeJS",

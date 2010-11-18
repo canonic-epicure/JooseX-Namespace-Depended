@@ -393,18 +393,28 @@ JooseX.Namespace.Depended is 100% compatible with &lt;script&gt; tag loading and
 - Make sure you always use `presence` when loading non-joose code to avoid double-loading.
 - Remember the asynchronous behavior.
 
-Additionally, if you will concatenate your JS files in a single one *in the correct order* (which is generally not required)
+Additionally, if you will concatenate your JS files in the single file *in the correct order* (which is not required(!))
 you'll receive a synchronous execution of the whole file (no `setTimeout` delays).
 
 
+Changing the default transport/materialization (advanced)
+---------------------------------------------------------
 
-            <!-- Joose ->
-            <script type="text/javascript" src="/jsan/Task/Joose/Core.js"></script>    
-            
-            <!-- JooseX.Namespace.Depended ->
-            <script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended.js"></script>
-            
+By default, JooseX.Namespace.Depended will fetch the source files with asynchronous XHR request and materialize it by the insertion of the
+&lt;script&gt; tag in the DOM. 
+
+You may want to change this behavior, for example switch to using &lt;script&gt; tags for loading as well (unreliable in IE):
+
+            <script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Web.js"></script>
             <script type="text/javascript">
+                
+                JooseX.Namespace.Depended.Resource.JavaScript.meta.extend({
+                    
+                    doesnt  : [ JooseX.Namespace.Depended.Transport.XHRAsync, JooseX.Namespace.Depended.Materialize.ScriptTag ],
+                    
+                    does    : JooseX.Namespace.Depended.Transport.ScriptTag
+                })
+                
                 use.paths = [ 'lib', '/jsan' ]
             </script>
 
