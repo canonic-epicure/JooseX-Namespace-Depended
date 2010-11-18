@@ -11,7 +11,14 @@ Release history for JooseX.Namespace.Depended
     - JooseX.SimpleRequest included into the `Web` bundle
     
     - `use.paths` is now the preferred way to specify the INC paths instead of JooseX.Namespace.Depended.Manager.my.INC
-       using JooseX.Namespace.Depended.Manager.my.INC is still supported but will be removed in some of the future releases    
+       using JooseX.Namespace.Depended.Manager.my.INC is still supported but will be removed in some of the future releases
+       
+    - improved <script> transport (still unreliable on IE)
+    - switched to 'ScriptTag' as a default materialization for Web
+    
+    - added 'async' attribute for <script> transport
+      w/o this attribute the <script>s used for transporting could interfere with <script>s used for materialization which 
+      caused test failures in FF
     
 
 0.11      2010-11-01 13:19
