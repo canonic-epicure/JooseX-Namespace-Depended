@@ -2,6 +2,8 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+0.12      2010-11-18 22:09
+
     - various docs updates
     
     - uncommented tests for dependencies in "Lazy" classes on NodeJS platform
