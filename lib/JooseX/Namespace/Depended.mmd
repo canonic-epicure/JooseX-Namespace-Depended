@@ -1,79 +1,56 @@
 Name
 ====
 
-JooseX.Namespace.Depended - a cross-platform (browser/NodeJS) dependencies handling, integrated with for Joose3
+JooseX.Namespace.Depended - a cross-platform (browser/NodeJS), asynchronous, 100% compatible with &lt;script&gt; dependencies handling, integrated with Joose3
 
 SYNOPSIS
 ========
 
-        Class("MyApp.Widget.Header", {
-        
-            //declare dependencies
-            
-            use : [ 
-                'MyApp.Widget.LoginLine', 
-                'MyCompany.Util.Helper'
-            ],
-            
-            does : 'MyApp.Role.Templated',  // dependency in 'does'
-            
-            
-            before : {
-            
-                initComponent : function () {
-                
-                    //dependencies will be preloaded #1
-                    this.add(new MyApp.Widget.LoginLine({
-                        ...
-                    }))
-                }
-            }, 
-            
-            methods : {
-            
-                doSomething : function () {
-                    //dependencies will be preloaded #2
-                    MyCompany.Util.Helper.my.doSomething()
-                }
-            }
-        })
-        
-or with versions:         
-        
-        Class("MyApp.Widget.Header", {
-            
-            VERSION : 0.11,
-        
-            use : [ { 'MyApp.Widget.LoginLine' : 0.03, { 'MyCompany.Util.Helper' : 0.01 } ],
-            
-            isa : { 'MyApp.Widget.Templated' : 0.01 },  // dependency in isa
-            
-            // or
-            
-            use : { 
-                'MyApp.Widget.LoginLine' : 0.03,
-                'MyCompany.Util.Helper' : 0.01 
-            }
-        })
-        
-non-Joose code also can be loaded:        
+Declare dependencies in various class builders:
 
-        Class("MyApp.Widget.Header", {
+            Class('Some.Class', {
+                VERSION : 0.02,
             
-            VERSION : 0.11,
-        
-            use : {
-                token       : 'http://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js',
+                meta    : 'My.Meta',
                 
-                presence    : 'Ext' // skip load if `Ext` evalutes to true
-            }
-        })
-        
-load from code:
-
-        use({ 'MyApp' : 0.01 }, function () {
+                isa     : 'Super.Class',
+                
+                does    : {
+                    'Some.Role'         : 0.01,
+                    'Some.Other.Role'   : 0.02
+                },
+                
+                trait   : 'Some.Trait',
+                
+                has     : {
+                    
+                    attr : {
+                        meta    : 'Attribute.Meta',
+                        trait   : 'Attribute.Trait',
+                        
+                        is      : 'rw'
+                    }
+                },
+                
+                use     : [ 'Cant.Get.Enough' ],
+                
+                
+            body : function (module) {
             
-            MyApp.run()
+                // All dependencies will be loaded here
+                
+            }})
+            
+            // 'Some.Class' is still fetching dependencies here, too early to instantiate it
+            
+        
+Or load them on-demand from code:
+
+        use({ 'Some.Class' : 0.01 }, function () {
+            
+            // Some.Class and all its dependencies are ready
+            
+            var obj = new Some.Class()
         })
         
 
@@ -134,6 +111,7 @@ This means, that you can specify the dependencies in:
     - `trait` builder
     - `does` builder
     
+    - `meta/trait` parameters of attributes
     
 For example this declaration is perfectly valid:    
     
@@ -148,6 +126,16 @@ For example this declaration is perfectly valid:
                 },
                 
                 trait : 'Some.Trait',
+                
+                has : {
+                    
+                    attr : {
+                        meta    : 'Attribute.Meta',
+                        trait   : 'Attribute.Trait',
+                        
+                        is      : 'rw'
+                    }
+                }
                 
                 ...
             })
