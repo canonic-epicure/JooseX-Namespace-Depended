@@ -85,7 +85,7 @@ StartTest(function(t) {
         
         var async3 = t.beginAsync()
         var bodyCalled = false
-    
+
         
         Module("ExtCoreLoader", {
             use : 'http://ajax.googleapis.com/ajax/libs/ext-core/3.0.0/ext-core.js',
