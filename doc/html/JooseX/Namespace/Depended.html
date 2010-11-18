@@ -6,99 +6,91 @@
 <body>
 <h1 id="name">Name</h1>
 
-<p>JooseX.Namespace.Depended - a dependencies handling framework for Joose3 </p>
+<p>JooseX.Namespace.Depended - a cross-platform (browser/NodeJS), asynchronous, 100% compatible with &lt;script&gt; tags dependencies handling, integrated with Joose3</p>
 
 <h1 id="synopsis">SYNOPSIS</h1>
 
-<pre><code>    Class("MyApp.Widget.Header", {
+<p>Setup for browsers (see <a href="http://joose.github.com/Joose/doc/html/Joose/Manual/Installation.html">npm installation notes</a>):</p>
 
-        //declare dependencies
-        use : [ 'MyApp.Widget.LoginLine', 'MyCompany.Util.Helper'],
+<pre><code>        &lt;!-- Joose -&gt;
+        &lt;script type="text/javascript" src="/jsan/Task/Joose/Core.js"&gt;&lt;/script&gt;    
 
-        does : 'MyApp.Role.Templated',
+            &lt;!-- JooseX.Namespace.Depended - web-specific files only -&gt;
+            &lt;script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Web.js"&gt;&lt;/script&gt;
+
+            &lt;!-- or -&gt;
+
+            &lt;!-- JooseX.Namespace.Depended - cross-platform bundle -&gt;
+            &lt;script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Auto.js"&gt;&lt;/script&gt;
 
 
-        before : {
-
-            initComponent : function () {
-
-                //dependencies will be preloaded #1
-                this.add(new MyApp.Widget.LoginLine({
-                    ...
-                }))
-            }
-        }, 
-
-        methods : {
-
-            doSomething : function () {
-                //dependencies will be preloaded #2
-                MyCompany.Util.Helper.my.doSomething()
-            }
-        }
-    })
+        &lt;script type="text/javascript"&gt;
+            use.paths = [ 'lib', '/jsan' ]
+        &lt;/script&gt;
 </code></pre>
 
-<p>or with versions:         </p>
+<p>Setup for NodeJS:</p>
 
-<pre><code>    Class("MyApp.Widget.Header", {
-
-        VERSION : 0.11,
-
-        use : [ { 'MyApp.Widget.LoginLine' : 0.03, { 'MyCompany.Util.Helper' : 0.01 } ],
-
-        isa : { 'MyApp.Widget.Templated' : 0.01 },
-
-        // or
-
-        use : { 
-            'MyApp.Widget.LoginLine' : 0.03,
-            'MyCompany.Util.Helper' : 0.01 
-        }
-    })
+<pre><code>        // this extension is bundled into the following package
+        require('task-joose-nodejs')
 </code></pre>
 
-<p>non-Joose code also can be loaded:        </p>
+<p>Declare dependencies in various class builders:</p>
 
-<pre><code>    Class("MyApp.Widget.Header", {
+<pre><code>        Class('Some.Class', {
+            VERSION : 0.02,
 
-        VERSION : 0.11,
+            meta    : 'My.Meta',
 
-        use : {
-            token       : 'http://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js',
+            isa     : 'Super.Class',
 
-            presence    : 'Ext' // skip load if `Ext` evalutes to true
-        }
-    })
+            does    : {
+                'Some.Role'         : 0.01,
+                'Some.Other.Role'   : 0.02
+            },
+
+            trait   : 'Some.Trait',
+
+            has     : {
+
+                attr : {
+                    meta    : 'Attribute.Meta',
+                    trait   : 'Attribute.Trait',
+
+                    is      : 'rw'
+                }
+            },
+
+            use     : [ 'Cant.Get.Enough' ],
+
+
+        body : function (module) {
+
+            // All dependencies will be loaded here
+
+        }})
+
+        // 'Some.Class' is still fetching dependencies here, too early to instantiate it
 </code></pre>
 
-<p>load from code:</p>
+<p>Or load them on-demand from code:</p>
 
-<pre><code>    use({ 'MyApp' : 0.01 }, function () {
+<pre><code>    use({ 'Some.Class' : 0.01 }, function () {
 
-        MyApp.my.run()
+        // Some.Class and all its dependencies are ready
+
+        var obj = new Some.Class()
     })
 </code></pre>
 
 <h1 id="description">DESCRIPTION</h1>
 
-<p><code>JooseX.Namespace.Depended</code> is a dependencies handling framework, tightly integrated with Joose3.
-Starting from 0.05 version it also supports the NodeJS modules system. </p>
+<p><code>JooseX.Namespace.Depended</code> is a cross-platform (browsers/NodeJS) dependencies handling framework, tightly integrated with Joose3.</p>
 
-<p>It allows you to refer to other (not yet loaded) classes/roles in your class declaration. </p>
+<p>It allows you to refer to other (not yet loaded) classes/roles in your class declaration. Those classes will be loaded prior your class declaration.
+All edge cases like referring to already loaded class, double loading, etc are handled correctly. </p>
 
-<p>Framework is highly customizable, additional resources/transport/materialization modes can be easily added.
-Please refer to <a href="Depended/Authoring.html">JooseX.Namespace.Depended.Authoring</a> for more information. </p>
-
-<p>By default, framework operates in asynchronous mode, using XHR requests for transport and <code>eval</code> for "materialization".
-All edge cases like refering to already loaded class, double loading, etc are handled correctly. </p>
-
-<h1 id="currentdevelopmentstatus">CURRENT DEVELOPMENT STATUS</h1>
-
-<p>This framework is considered stable and thoroughly tested (more than 300 unit tests, including stress-test). 
-The use case for "pure" Joose classes will be supported without breaking changes. </p>
-
-<p>However, as its not settled down yet, the syntax for loading <em>non Joose</em> code may be changed any time, without prior notice.</p>
+<p>If you are reading this file as README from github, you may want to open <a href="http://samuraijack.github.com/JooseX-Namespace-Depended/">this link</a> instead. </p>
 
 <h1 id="usage">USAGE</h1>
 
@@ -144,6 +136,8 @@ dependency descriptor instead. </p>
 - `isa` builder
 - `trait` builder
 - `does` builder
+
+- `meta/trait` parameters of attributes
 </code></pre>
 
 <p>For example this declaration is perfectly valid:    </p>
@@ -160,11 +154,21 @@ dependency descriptor instead. </p>
 
             trait : 'Some.Trait',
 
+            has : {
+
+                attr : {
+                    meta    : 'Attribute.Meta',
+                    trait   : 'Attribute.Trait',
+
+                    is      : 'rw'
+                }
+            }
+
             ...
         })
 </code></pre>
 
-<p>Also in any other custom builder (some <a href="Depended/Authoring.html">authoring</a> required) </p>
+<p>Also in any other custom builder (some <a href="#authoring" title="Authoring">authoring</a> required) </p>
 
 <p>The framework will scan class declaration for dependencies, pre-load them, then substitute descriptors with actual classes and continue the declaration process.</p>
 
@@ -179,6 +183,45 @@ dependency descriptor instead. </p>
             ...
         })
 </code></pre>
+
+<h1 id="asynchronouswarning">ASYNCHRONOUS WARNING</h1>
+
+<p>This framework behaves totally asynchronously, so pay attention to the following notes. </p>
+
+<p>The dependencies of the class won't be available immediately after class declaration:  </p>
+
+<pre><code>        Class('Some.Class', {
+
+            isa : 'Super.Class',
+
+            does : {
+                'Some.Role'         : 0.01
+            }
+        })
+
+        // kaboom! - 'Super.Class' and 'Some.Role' are not yet loaded at this point
+        var a = new Some.Class 
+</code></pre>
+
+<p>Dependencies will be available in the <code>body</code> builder of the class:</p>
+
+<pre><code>        Class('Some.Class', {
+
+            isa : 'Super.Class',
+
+            does : {
+                'Some.Role'         : 0.01
+            },
+
+        body : function () {
+
+            // ok
+            var a = new Some.Class()
+        }})
+</code></pre>
+
+<p>In general, for example if you've included some class with &lt;script&gt; tag, and that class has declared but not yet loaded dependencies,
+wrap the usage of the class with <code>use</code> from code (see below).</p>
 
 <h2 id="usefromcode"><code>use</code> from code</h2>
 
@@ -209,9 +252,9 @@ dependency descriptor instead. </p>
 
 <h2 id="thelibraries">The libraries</h2>
 
-<p>The framework can look up the classes in several <em>libraries</em>, which are just the directories, containing the source files.</p>
+<p>The framework will look up the classes in several <em>libraries</em>, which are just the directories, containing the source files.</p>
 
-<p>The current list of libraries is stored as an array in: <code>JooseX.Namespace.Depended.Manager.my.INC</code>. Its also aliased as <code>use.paths</code>. Default value is:</p>
+<p>The current list of libraries is stored as an array in: <code>use.paths</code> (on NodeJS platform its just an alias of <code>require.paths</code>). Default value is:</p>
 
 <pre><code>    use.paths = [ 'lib', '/jsan' ]
 </code></pre>
@@ -242,7 +285,7 @@ loading will continue to another entry.</p>
 
 <h1 id="attributehelper">ATTRIBUTE HELPER</h1>
 
-<p>This package adds a new <a href="http://openjsan.org/go?l=Joose.Manual.Attributes">attribute initializer</a>: <code>Joose.I.FutureClass</code></p>
+<p>This package adds a new <a href="http://joose.github.com/Joose/doc/html/Joose/Manual/Attributes.html">attribute initializer</a>: <code>Joose.I.FutureClass</code></p>
 
 <p>It can be used, when the default value of the attribute should be set to the constructor of some class, 
 which may be not yet loaded on the declaration stage:</p>
@@ -337,13 +380,53 @@ ends with ".js":</p>
 <p>The code above will load "ext-core" library. However, currently there is no way to specify the <code>presence</code> attribute in such descriptor
 and no checks will be performed prior loading (potentially allowing repeated loading). This may change in future versions.</p>
 
-<h1 id="usingthisextensionwithnodejs">USING THIS EXTENSION WITH NODEJS</h1>
+<h1 id="additionalinformation">ADDITIONAL INFORMATION</h1>
 
-<p>When using this framework on NodeJS platform, the <code>use.paths</code> will be and alias for <code>require.paths</code>.</p>
+<h2 id="usingthislibraryinbrowsers">Using this library in browsers</h2>
 
-<p>For additional information, please refer to the documentation of the <a href="http://openjsan.org/go/?l=Task.Joose.NodeJS">Task.Joose.NodeJS</a></p>
+<p>JooseX.Namespace.Depended is 100% compatible with &lt;script&gt; tag loading and files concatenation. Some notes:</p>
 
-<h1 id="groupedloadingmode">GROUPED LOADING MODE</h1>
+<ul>
+<li>Make sure you always use <code>presence</code> when loading non-joose code to avoid double-loading.</li>
+<li>Remember the asynchronous behavior.</li>
+</ul>
+
+<p>Additionally, if you will concatenate your JS files in the single file <em>in the correct order</em> (which is not required(!))
+you'll receive a synchronous execution of the whole file (no <code>setTimeout</code> delays).</p>
+
+<h2 id="changingthedefaulttransportmaterializationadvanced">Changing the default transport/materialization (advanced)</h2>
+
+<p>By default, JooseX.Namespace.Depended will fetch the source files with asynchronous XHR request and materialize it by the insertion of the
+&lt;script&gt; tag in the DOM. </p>
+
+<p>You may want to change this behavior, for example switch to using &lt;script&gt; tags for loading as well (unreliable in IE):</p>
+
+<pre><code>        &lt;script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Web.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+
+            JooseX.Namespace.Depended.Resource.JavaScript.meta.extend({
+
+                doesnt  : [ JooseX.Namespace.Depended.Transport.XHRAsync, JooseX.Namespace.Depended.Materialize.ScriptTag ],
+
+                does    : JooseX.Namespace.Depended.Transport.ScriptTag
+            })
+
+            use.paths = [ 'lib', '/jsan' ]
+        &lt;/script&gt;
+</code></pre>
+
+<h2 id="usingthislibraryinnodejs">Using this library in NodeJS</h2>
+
+<p>When using this framework on NodeJS platform, the <code>use.paths</code> will be an alias of <code>require.paths</code>.  </p>
+
+<p>For additional information, please refer to the documentation of the <a href="http://samuraijack.github.com/Task-Joose-NodeJS">Task.Joose.NodeJS</a></p>
+
+<h2 id="authoring">Authoring</h2>
+
+<p>Framework is highly customizable, additional resources/transport/materialization modes can be easily added.
+Please refer to <a href="#authoring" title="Authoring">JooseX.Namespace.Depended.Authoring</a> for more information. </p>
+
+<h2 id="groupedloadingmode">Grouped loading mode</h2>
 
 <p>This framework can operate in special mode, in which it can load <em>any</em> class, with <em>any number</em> of dependencies (in-depth),
 with <strong>2</strong> http requests.</p>
@@ -356,17 +439,17 @@ with <strong>2</strong> http requests.</p>
 
 <p>This extension is supported via github issues tracker: <a href="http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues">http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues</a></p>
 
-<p>For general Joose questions you can also visit #joose on irc.freenode.org or the mailing list at <a href="http://groups.google.com/group/joose-js">http://groups.google.com/group/joose-js</a></p>
+<p>For general Joose questions you can also visit <a href="http://webchat.freenode.net/?randomnick=1&amp;channels=joose&amp;prompt=1">#joose </a> on freenode or the mailing list at <a href="http://groups.google.com/group/joose-js">http://groups.google.com/group/joose-js</a></p>
 
 <h1 id="seealso">SEE ALSO</h1>
 
-<p><a href="Depended/Authoring.html">Authoring this framework</a></p>
+<p><a href="#authoring" title="Authoring">Authoring this framework</a></p>
 
 <p>Base resource class: <a href="Depended/Resource.html">JooseX.Namespace.Depended.Resource</a></p>
 
 <p>Web page of this module: <a href="http://github.com/SamuraiJack/JooseX-Namespace-Depended/">http://github.com/SamuraiJack/JooseX-Namespace-Depended/</a></p>
 
-<p>General documentation for Joose: <a href="http://openjsan.org/go/?l=Joose">http://openjsan.org/go/?l=Joose</a></p>
+<p>General documentation for Joose: <a href="http://joose.github.com/Joose/">http://joose.github.com/Joose/</a></p>
 
 <h1 id="bugs">BUGS</h1>
 
@@ -376,7 +459,7 @@ with <strong>2</strong> http requests.</p>
 
 <h1 id="authors">AUTHORS</h1>
 
-<p>Nickolay Platonov <a href="&#109;a&#x69;&#x6C;t&#111;:&#110;&#x70;&#x6C;&#x61;&#x74;&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#x2E;&#111;&#114;&#x67;">&#110;&#x70;&#x6C;&#x61;&#x74;&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#x2E;&#111;&#114;&#x67;</a></p>
+<p>Nickolay Platonov <a href="&#x6D;&#x61;&#x69;&#108;&#116;&#111;:&#110;&#112;&#108;at&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#46;&#111;&#x72;&#x67;">&#110;&#112;&#108;at&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#46;&#111;&#x72;&#x67;</a></p>
 
 <h1 id="copyrightandlicense">COPYRIGHT AND LICENSE</h1>
 
