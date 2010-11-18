@@ -6,6 +6,30 @@ JooseX.Namespace.Depended - a cross-platform (browser/NodeJS), asynchronous, 100
 SYNOPSIS
 ========
 
+Setup for browsers (see [npm installation notes](http://joose.github.com/Joose/doc/html/Joose/Manual/Installation.html)):
+
+            <!-- Joose ->
+            <script type="text/javascript" src="/jsan/Task/Joose/Core.js"></script>    
+            
+                <!-- JooseX.Namespace.Depended - web-specific files only ->
+                <script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Web.js"></script>
+    
+                <!-- or ->
+                
+                <!-- JooseX.Namespace.Depended - cross-platform bundle ->
+                <script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Auto.js"></script>
+
+            
+            <script type="text/javascript">
+                use.paths = [ 'lib', '/jsan' ]
+            </script>
+
+Setup for NodeJS:
+
+            // this extension is bundled into the following package
+            require('task-joose-nodejs')
+
+
 Declare dependencies in various class builders:
 
             Class('Some.Class', {
@@ -158,6 +182,46 @@ Additionaly, you can provide an array of dependencies (or a single dependency) i
             })
 
 
+
+ASYNCHRONOUS WARNING
+====================
+
+This framework behaves totally asynchronously, so pay attention to the following notes. 
+
+The dependencies of the class won't be available immediately after class declaration:  
+
+            Class('Some.Class', {
+               
+                isa : 'Super.Class',
+                
+                does : {
+                    'Some.Role'         : 0.01
+                }
+            })
+            
+            // kaboom! - 'Super.Class' and 'Some.Role' are not yet loaded at this point
+            var a = new Some.Class 
+
+Dependencies will be available in the `body` builder of the class:
+
+            Class('Some.Class', {
+               
+                isa : 'Super.Class',
+                
+                does : {
+                    'Some.Role'         : 0.01
+                },
+                
+            body : function () {
+            
+                // ok
+                var a = new Some.Class()
+            }})
+
+In general, for example if you've included some class with &lt;script&gt; tag, and that class has declared but not yet loaded dependencies,
+wrap the usage of the class with `use` from code (see below).
+
+
 `use` from code
 ---------------
 
@@ -190,7 +254,7 @@ Generally each dot is replaced with directory separator, and the 'js' extension 
 The libraries
 -------------
 
-The framework can look up the classes in several *libraries*, which are just the directories, containing the source files.
+The framework will look up the classes in several *libraries*, which are just the directories, containing the source files.
 
 The current list of libraries is stored as an array in: `use.paths` (on NodeJS platform its just an alias of `require.paths`). Default value is:
 
@@ -318,32 +382,52 @@ The code above will load "ext-core" library. However, currently there is no way 
 and no checks will be performed prior loading (potentially allowing repeated loading). This may change in future versions.
 
 
-USING THIS EXTENSION WITH NODEJS
-================================
+ADDITIONAL INFORMATION
+======================
 
-When using this framework on NodeJS platform, the `use.paths` will be and alias for `require.paths`.
+Using this library in browsers
+------------------------------
+
+JooseX.Namespace.Depended is 100% compatible with &lt;script&gt; tag loading and files concatenation. Some notes:
+
+- Make sure you always use `presence` when loading non-joose code to avoid double-loading.
+- Remember the asynchronous behavior.
+
+Additionally, if you will concatenate your JS files in a single one *in the correct order* (which is generally not required)
+you'll receive a synchronous execution of the whole file (no `setTimeout` delays).
+
+
+
+            <!-- Joose ->
+            <script type="text/javascript" src="/jsan/Task/Joose/Core.js"></script>    
+            
+            <!-- JooseX.Namespace.Depended ->
+            <script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended.js"></script>
+            
+            <script type="text/javascript">
+                use.paths = [ 'lib', '/jsan' ]
+            </script>
+
+
+
+Using this library in NodeJS
+------------------------------
+
+When using this framework on NodeJS platform, the `use.paths` will be an alias of `require.paths`.  
 
 For additional information, please refer to the documentation of the [Task.Joose.NodeJS](http://openjsan.org/go/?l=Task.Joose.NodeJS)
 
 
-AUTHORING
-=========
+Authoring
+---------
 
 Framework is highly customizable, additional resources/transport/materialization modes can be easily added.
 Please refer to [JooseX.Namespace.Depended.Authoring][authoring] for more information. 
 
 
-CURRENT DEVELOPMENT STATUS
-==========================
 
-This framework is considered stable and thoroughly tested (more than 300 unit tests, including stress-test). 
-The use case for "pure" Joose classes will be supported without breaking changes. 
-
-However, as its not settled down yet, the syntax for loading *non Joose* code may be changed any time, without prior notice.
-
-
-GROUPED LOADING MODE
-====================
+Grouped loading mode
+--------------------
 
 This framework can operate in special mode, in which it can load *any* class, with *any number* of dependencies (in-depth),
 with **2** http requests.
@@ -353,13 +437,13 @@ For more information about this mode please refer to <http://www.extjs.com/forum
 This item is currently in TODO list.  
 
 
+
 GETTING HELP
 ============
 
 This extension is supported via github issues tracker: <http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues>
 
 For general Joose questions you can also visit #joose on irc.freenode.org or the mailing list at <http://groups.google.com/group/joose-js>
- 
 
 
 SEE ALSO
