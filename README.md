@@ -397,27 +397,33 @@ Additionally, if you will concatenate your JS files in the single file *in the c
 you'll receive a synchronous execution of the whole file (no `setTimeout` delays).
 
 
+Debugging in firebug
+--------------------
+
+When debugging the code, loaded with JooseX.Namespace.Depended in FireBug, switch to the "Show Static and eval Scripts" option
+on the Scripts panel (2nd button from on the toolbar, probably "static"). Also make sure, the "Decompile for eval() sources" option is *unchecked*
+otherwise Firebug will re-format your sources.
+
+
 Changing the default transport/materialization (advanced)
 ---------------------------------------------------------
 
-By default, JooseX.Namespace.Depended will fetch the source files with asynchronous XHR request and materialize it by the insertion of the
-&lt;script&gt; tag in the DOM. 
+By default, JooseX.Namespace.Depended will fetch the source files with asynchronous XHR request and execute it with "eval". 
 
-You may want to change this behavior, for example switch to using &lt;script&gt; tags for loading as well (unreliable in IE):
+You may want to change this behavior, for example switch to using &lt;script&gt; tags for loading & execution (unreliable in IE):
 
             <script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Web.js"></script>
             <script type="text/javascript">
                 
                 JooseX.Namespace.Depended.Resource.JavaScript.meta.extend({
                     
-                    doesnt  : [ JooseX.Namespace.Depended.Transport.XHRAsync, JooseX.Namespace.Depended.Materialize.ScriptTag ],
+                    doesnt  : [ JooseX.Namespace.Depended.Transport.XHRAsync, JooseX.Namespace.Depended.Materialize.Eval ],
                     
                     does    : JooseX.Namespace.Depended.Transport.ScriptTag
                 })
                 
                 use.paths = [ 'lib', '/jsan' ]
             </script>
-
 
 
 Using this library in NodeJS
