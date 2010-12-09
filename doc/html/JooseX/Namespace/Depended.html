@@ -394,19 +394,24 @@ and no checks will be performed prior loading (potentially allowing repeated loa
 <p>Additionally, if you will concatenate your JS files in the single file <em>in the correct order</em> (which is not required(!))
 you'll receive a synchronous execution of the whole file (no <code>setTimeout</code> delays).</p>
 
+<h2 id="debugginginfirebug">Debugging in firebug</h2>
+
+<p>When debugging the code, loaded with JooseX.Namespace.Depended in FireBug, switch to the "Show Static and eval Scripts" option
+on the Scripts panel (2nd button from on the toolbar, probably "static"). Also make sure, the "Decompile for eval() sources" option is <em>unchecked</em>
+otherwise Firebug will re-format your sources.</p>
+
 <h2 id="changingthedefaulttransportmaterializationadvanced">Changing the default transport/materialization (advanced)</h2>
 
-<p>By default, JooseX.Namespace.Depended will fetch the source files with asynchronous XHR request and materialize it by the insertion of the
-&lt;script&gt; tag in the DOM. </p>
+<p>By default, JooseX.Namespace.Depended will fetch the source files with asynchronous XHR request and execute it with "eval". </p>
 
-<p>You may want to change this behavior, for example switch to using &lt;script&gt; tags for loading as well (unreliable in IE):</p>
+<p>You may want to change this behavior, for example switch to using &lt;script&gt; tags for loading &amp; execution (unreliable in IE):</p>
 
 <pre><code>        &lt;script type="text/javascript" src="/jsan/Task/JooseX/Namespace/Depended/Web.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript"&gt;
 
             JooseX.Namespace.Depended.Resource.JavaScript.meta.extend({
 
-                doesnt  : [ JooseX.Namespace.Depended.Transport.XHRAsync, JooseX.Namespace.Depended.Materialize.ScriptTag ],
+                doesnt  : [ JooseX.Namespace.Depended.Transport.XHRAsync, JooseX.Namespace.Depended.Materialize.Eval ],
 
                 does    : JooseX.Namespace.Depended.Transport.ScriptTag
             })
@@ -459,7 +464,7 @@ with <strong>2</strong> http requests.</p>
 
 <h1 id="authors">AUTHORS</h1>
 
-<p>Nickolay Platonov <a href="&#x6D;&#x61;&#x69;&#108;&#116;&#111;:&#110;&#112;&#108;at&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#46;&#111;&#x72;&#x67;">&#110;&#112;&#108;at&#x6F;&#x6E;&#111;&#x76;&#64;&#x63;&#x70;&#x61;&#x6E;&#46;&#111;&#x72;&#x67;</a></p>
+<p>Nickolay Platonov <a href="&#109;&#x61;&#105;&#x6C;&#x74;&#x6F;:&#110;&#x70;&#x6C;&#97;&#116;&#111;&#x6E;&#x6F;&#x76;&#64;&#99;&#x70;&#97;&#x6E;&#46;&#x6F;&#114;&#x67;">&#110;&#x70;&#x6C;&#97;&#116;&#111;&#x6E;&#x6F;&#x76;&#64;&#99;&#x70;&#97;&#x6E;&#46;&#x6F;&#114;&#x67;</a></p>
 
 <h1 id="copyrightandlicense">COPYRIGHT AND LICENSE</h1>
 
