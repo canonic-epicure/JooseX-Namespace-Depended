@@ -2,6 +2,13 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+    - fixed bug, when the current module was not being taken into account during deps loading 
+    (affected classes wrapped with Modules) 
+
+    - default Materialization role switched back to Eval, since its been finally turned out, that Firebug
+    *can* debug the code, executed with "eval". In the same time, Firebug *can't* (at least AFAIK) debug
+    the code, executed with assignment to `text` property of <script> tag 
+
 0.12      2010-11-18 22:09
 
     - various docs updates
