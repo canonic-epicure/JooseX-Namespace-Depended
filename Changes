@@ -2,6 +2,8 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+0.14      2010-12-14 20:48
+
     - bumped deps
     - tests for lazy classes upgraded to recent changes in JooseX.Meta.Lazy
     - throw Error instances and not strings in several places
