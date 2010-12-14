@@ -25,7 +25,7 @@ StartTest(function(t) {
             t.ok(Lazy.Lazy1.meta.pending, "Class 'Lazy.Lazy1' is pending for construction")
             t.ok(!Lazy.Lazy1.prototype.result, '.. indeed')
             
-            Lazy.Lazy1.getMeta()
+            Lazy.Lazy1.$meta()
             
             t.ok(!Lazy.Lazy1.meta.pending, "Class 'Lazy.Lazy1' was constructed")
             t.ok(Lazy.Lazy1.prototype.result, '.. indeed')
@@ -99,7 +99,7 @@ StartTest(function(t) {
                 t.ok(Lazy.Lazy3.meta.pending, "Class 'Lazy.Lazy3' is pending for construction")
                 t.ok(!Lazy.Lazy3.prototype.result, '.. indeed')
                 
-                Lazy.Lazy3.getMeta()
+                Lazy.Lazy3.$meta()
                 
                 t.ok(!Lazy.Lazy3.meta.pending, "Class 'Lazy.Lazy3' was constructed")
                 t.ok(Lazy.Lazy3.prototype.result, '.. indeed')
@@ -110,7 +110,7 @@ StartTest(function(t) {
                 
                 t.ok(Lazy.Lazy4.meta.pending, "Class 'Lazy.Lazy4' is pending for construction")
                 
-                Lazy.Lazy4.getMeta()
+                Lazy.Lazy4.$meta()
                 
                 t.ok(!Lazy.Lazy4.meta.pending, "Class 'Lazy.Lazy4' was constructed")
                 

@@ -6,7 +6,7 @@ JooseX.Namespace.Depended - a cross-platform (browser/NodeJS), asynchronous, 100
 SYNOPSIS
 ========
 
-Setup for browsers (see [npm installation notes](http://joose.github.com/Joose/doc/html/Joose/Manual/Installation.html)):
+Setup for browsers (see [Joose installation notes](http://joose.github.com/Joose/doc/html/Joose/Manual/Installation.html)):
 
             <!-- Joose ->
             <script type="text/javascript" src="/jsan/Task/Joose/Core.js"></script>    
@@ -459,7 +459,7 @@ GETTING HELP
 
 This extension is supported via github issues tracker: <http://github.com/SamuraiJack/JooseX-Namespace-Depended/issues>
 
-For general Joose questions you can also visit [#joose ](http://webchat.freenode.net/?randomnick=1&channels=joose&prompt=1) on freenode or the mailing list at <http://groups.google.com/group/joose-js>
+For general Joose questions you can also visit [#joose](http://webchat.freenode.net/?randomnick=1&channels=joose&prompt=1) on freenode or the mailing list at <http://groups.google.com/group/joose-js>
 
 
 SEE ALSO
@@ -507,10 +507,3 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 [authoring]: Depended/Authoring.html
-
-
-
-
-
-
-
