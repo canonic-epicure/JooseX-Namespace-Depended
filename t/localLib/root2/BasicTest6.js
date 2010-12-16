@@ -10,3 +10,5 @@ BasicTest6 = function() {
 BasicTest6.nonJoose = true;
 
 BasicTest6.prototype.result = function () { return 6 };
+
+var someGlobalVar = true
