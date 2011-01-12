@@ -12,10 +12,7 @@ StartTest(function(t) {
     
     use('BasicTest6.js', function () {
         
-        t.skipIf(Joose.is_NodeJS, "Not supposed to work in NodeJS", function (){
-            
-            t.ok(typeof someGlobalVar == 'boolean', 'Global var has been established')
-        }, 1)
+        t.ok(typeof someGlobalVar == 'boolean', 'Global var has been established')
         
         t.endAsync(async1)
         t.done()

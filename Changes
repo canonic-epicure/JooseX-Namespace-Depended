@@ -3,6 +3,7 @@ Release history for JooseX.Namespace.Depended
 {{ $NEXT }}
 
     - "eval" materializer now evalutes the code in the global scope (indirect eval or `execScript` in IE)
+    - more robust detection whether we run in Test.Run scope or in normal interpreter (allows to have file names in stack traces)
 
 0.14      2010-12-14 20:48
 
