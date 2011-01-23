@@ -3,6 +3,9 @@ Release history for JooseX.Namespace.Depended
 {{ $NEXT }}
 
     - minor performance improvement - avoid extra `prepareProperties` call, instead call directly to SUPER method
+    
+    - fixed bug, when the loaded scripts could not use require (`runInThisContext` runs the scripts in clear scope, which
+      doesn't have usual node globals, like `require`)
 
 0.15      2011-01-12 21:40
 

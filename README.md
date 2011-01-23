@@ -21,7 +21,7 @@ Setup for browsers (see [Joose installation notes](http://joose.github.com/Joose
 
             
             <script type="text/javascript">
-                use.paths = [ 'lib', '/jsan' ]
+                use.paths = [ 'lib', '/jsan' ] // this is default and can be omitted
             </script>
 
 Setup for NodeJS:
@@ -76,6 +76,17 @@ Or load them on-demand from code:
             
             var obj = new Some.Class()
         })
+
+
+INSTALLATION
+============
+
+From `npm`:
+
+    > [sudo] npm install joosex-namespace-depended
+
+Tarballs are available for downloading at: <http://search.npmjs.org/#/joosex-namespace-depended>
+
         
 
 DESCRIPTION
