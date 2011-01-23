@@ -2,6 +2,8 @@ Release history for JooseX.Namespace.Depended
 
 {{ $NEXT }}
 
+    - minor performance improvement - avoid extra `prepareProperties` call, instead call directly to SUPER method
+
 0.15      2011-01-12 21:40
 
     - "eval" materializer now evalutes the code in the global scope (indirect eval or `execScript` in IE)
