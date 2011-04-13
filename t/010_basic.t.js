@@ -77,8 +77,8 @@ StartTest(function(t) {
         
         t.ok(Joose.Namespace.Manager.my.getCurrent() == ns, "Dynamic 'use' executes body in the global namespace")
         
-        t.ok(ns == Joose.Namespace.Manager.my.global, "Dynamic 'use' executes body in the global namespace")
-        t.ok(this == Joose.top, ".. and in the outerest scope")
+        t.ok(ns == Joose.top, "Dynamic 'use' executes body in the global namespace")
+        t.ok(this == ns, ".. and in the outerest scope")
         
         t.endAsync(async2)
     })
