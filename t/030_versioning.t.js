@@ -66,6 +66,4 @@ StartTest(function(t) {
             t.done()
         }
     })
-    
-    t.ok(StressTest.Versioning, "Something in the Versioning module spot")
 })

@@ -34,7 +34,11 @@ StartTest(function(t) {
     
     t.ok(Basic0.meta.resource.loaded, 'Basic0 module is considered loaded')
     t.ok(!Basic0.meta.resource.loading, 'Basic0 module is considered not loading')
-    t.ok(!Basic0.meta.resource.ready, 'Basic0 module is not ready yet')
+    
+    if (Joose.is_NodeJS)
+        t.ok(Basic0.meta.resource.ready, 'Basic0 module is ready')
+    else
+        t.ok(!Basic0.meta.resource.ready, 'Basic0 module is not ready yet')
     
     //==================================================================================================================================================================================
     t.diag("Basic testing of dependencies loading")
@@ -60,7 +64,11 @@ StartTest(function(t) {
     t.ok(Basic1, 'Basic1 module was created')
     t.ok(Basic1.meta.resource.loaded, 'Basic1 module is considered loaded')
     t.ok(!Basic1.meta.resource.loading, 'Basic1 module is considered not loading')
-    t.ok(!Basic1.meta.resource.ready, 'Basic1 module is not ready yet')
+
+    if (Joose.is_NodeJS)
+        t.ok(Basic1.meta.resource.ready, 'Basic1 module is ready')
+    else
+        t.ok(!Basic1.meta.resource.ready, 'Basic1 module is not ready yet')
     
     
     //==================================================================================================================================================================================

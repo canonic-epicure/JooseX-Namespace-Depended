@@ -1,13 +1,12 @@
 StartTest(function(t) {
     
+    t.plan(10)
+
     use.paths.unshift('localLib/root4')
     
     if (!Joose.is_NodeJS) t.harness.absolutizeINC(use.paths)
     
     
-    t.plan(10)
-    
-
     //==================================================================================================================================================================================
     //t.diag("Testing of loading several classes in a single file")
     
@@ -46,6 +45,4 @@ StartTest(function(t) {
         
         t.endAsync(async2)
     })
-    
-    
 })

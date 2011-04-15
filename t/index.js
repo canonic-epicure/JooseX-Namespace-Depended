@@ -11,7 +11,8 @@ if (typeof process != 'undefined' && process.pid) {
 Harness.configure({
     title       : 'JooseX.Namespace.Depended test suite',
     
-    verbosity   : 0,
+//    transparentEx   : true,
+    verbosity       : 0,
     
     preload     : [
         'jsan:Task.Joose.Core',
