@@ -12,12 +12,11 @@ Harness.configure({
     title       : 'JooseX.Namespace.Depended test suite',
     
 //    transparentEx   : true,
-    verbosity       : 0,
     
     preload     : [
-        'jsan:Task.Joose.Core',
+        '../node_modules/joose/joose-all.js',
         
-        'Task.JooseX.Namespace.Depended.Auto'
+        '../joosex-namespace-depended-all.js'
     ]
 })
 
@@ -38,25 +37,25 @@ Harness.start(
     '050_own_namespace_deps.t.js',
     '060_asynchronous_nesting.t.js',
     '070_dependencies_in_my.t.js',
-    {
-        url         : '080_dependencies_in_lazy_classes.t.js',
-        preload     : [
-            'jsan:Task.Joose.Core',
-            
-            'Task.JooseX.Namespace.Depended.Auto',
-            'jsan:JooseX.Meta.Lazy'
-        ]
-    },
-    
-    {
-        url         : '081_dependencies_in_lazy_classes.t.js',
-        preload     : [
-            'jsan:Task.Joose.Core',
-            
-            'Task.JooseX.Namespace.Depended.Auto',
-            'jsan:JooseX.Meta.Lazy'
-        ]
-    },
+//    {
+//        url         : '080_dependencies_in_lazy_classes.t.js',
+//        preload     : [
+//            'jsan:Task.Joose.Core',
+//            
+//            'Task.JooseX.Namespace.Depended.Auto',
+//            'jsan:JooseX.Meta.Lazy'
+//        ]
+//    },
+//    
+//    {
+//        url         : '081_dependencies_in_lazy_classes.t.js',
+//        preload     : [
+//            'jsan:Task.Joose.Core',
+//            
+//            'Task.JooseX.Namespace.Depended.Auto',
+//            'jsan:JooseX.Meta.Lazy'
+//        ]
+//    },
     '082_dependencies_from_previous_namespace.t.js',
     '090_future_class.t.js',
     '100_additional_resources.t.js',
