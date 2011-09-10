@@ -1,11 +1,10 @@
 var Harness
 
-if (typeof process != 'undefined' && process.pid) {
-    require('Task/Test/Run/NodeJSBundle')
-    
-    Harness = Test.Run.Harness.NodeJS
-} else
-    Harness = Test.Run.Harness.Browser.ExtJS
+
+if (typeof process != 'undefined' && process.pid)
+    Harness = require('test-run')
+else
+    Harness = Test.Run.Harness.Browser
     
     
 Harness.configure({
@@ -64,6 +63,7 @@ Harness.start(
     '120_dep_from_static_files.t.js',
     '121_preloaded_dep_from_static_files.t.js',
     '130_dependencies_in_has.t.js',
-    '140_deps_in_classes_from_modules.t.js',
-    '150_indirect_eval.t.js'
+    '140_deps_in_classes_from_modules.t.js'
+//    ,
+//    '150_indirect_eval.t.js'
 )
