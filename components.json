@@ -45,7 +45,15 @@
         contains    :     [
             '+Kernel',
             
+            {
+                // do not re-declare JooseX.SimpleRequest
+                text    : 'if (typeof JooseX != \"undefined\" && !JooseX.SimpleRequest) {'
+            },
             'node_modules/joosex-simplerequest/lib/JooseX/SimpleRequest.js',
+            {
+                text    : '}'
+            },
+            
             
             'JooseX.Namespace.Depended.Materialize.ScriptTag',
             
